@@ -1,0 +1,8 @@
+prefix=/home/andy/xRobot_ws/devel
+
+Name: xqserial_server
+Description: Description of xqserial_server
+Version: 1.0.1
+Cflags: -I/home/andy/xRobot_ws/src/xqserial_server/include
+Libs: -L${prefix}/lib 
+Requires: nav_msgs roscpp rospy sensor_msgs std_msgs geometry_msgs

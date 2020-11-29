@@ -1,0 +1,8 @@
+启动机器底盘：roslaunch startup startup.launch 
+启动激光雷达：rosrun urg_node urg_node
+启动手柄控制：roslaunch jyr jyr_teleop.launch（手柄控制和rviz内运动控制有冲突，最好不要同时运行） 
+关闭红外传感：roslaunch jyr infrared_close.launch （空间狭隘可关闭）
+gmaping建图：roslaunch jyr jyr_gmapping_demo.launch 
+amcl：roslaunch jyr jyr_nav_test_amcl.launch 
+
+
