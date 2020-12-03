@@ -1,11 +1,5 @@
 (cl:in-package turtlebot_teleop-msg)
-(cl:export '(ODOM_LINEAR-VAL
-          ODOM_LINEAR
-          ODOM_ANGULAR-VAL
-          ODOM_ANGULAR
-          CAMERA_ANGLE-VAL
-          CAMERA_ANGLE
-          LINEAR_MODULE-VAL
+(cl:export '(LINEAR_MODULE-VAL
           LINEAR_MODULE
           PUTTER_1-VAL
           PUTTER_1
@@ -19,6 +13,8 @@
           FLAT_DRAWER
           BELT-VAL
           BELT
+          CAMERA_ANGLE-VAL
+          CAMERA_ANGLE
           CAMERA_TILT-VAL
           CAMERA_TILT
 ))

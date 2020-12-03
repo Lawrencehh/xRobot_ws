@@ -3,6 +3,8 @@
 
 turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
 turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/logitech_joy.cpp
+turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Twist.h
+turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /opt/ros/kinetic/include/geometry_msgs/Vector3.h
 turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /opt/ros/kinetic/include/ros/advertise_options.h
 turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /opt/ros/kinetic/include/ros/advertise_service_options.h
 turtlebot/turtlebot_teleop/CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o: /opt/ros/kinetic/include/ros/assert.h

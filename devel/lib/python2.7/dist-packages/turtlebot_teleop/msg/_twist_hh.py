@@ -8,15 +8,12 @@ import struct
 
 
 class twist_hh(genpy.Message):
-  _md5sum = "6e4dda92ec0f9bb71528efd408daa7bf"
+  _md5sum = "18a62653abd37f23cf97caba6719e246"
   _type = "turtlebot_teleop/twist_hh"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# This expresses velocity in free space broken into its linear and angular parts.
 
-float32 odom_linear
-float32 odom_angular
 
-int8 camera_angle
 
 float32 linear_module
 float32 putter_1
@@ -25,10 +22,12 @@ float32 putter_2
 int8 oblique_angle
 int8 oblique_drawer
 int8 flat_drawer
+
 uint8 belt
+int8 camera_angle
 int8 camera_tilt"""
-  __slots__ = ['odom_linear','odom_angular','camera_angle','linear_module','putter_1','putter_2','oblique_angle','oblique_drawer','flat_drawer','belt','camera_tilt']
-  _slot_types = ['float32','float32','int8','float32','float32','float32','int8','int8','int8','uint8','int8']
+  __slots__ = ['linear_module','putter_1','putter_2','oblique_angle','oblique_drawer','flat_drawer','belt','camera_angle','camera_tilt']
+  _slot_types = ['float32','float32','float32','int8','int8','int8','uint8','int8','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -38,7 +37,7 @@ int8 camera_tilt"""
     changes.  You cannot mix in-order arguments and keyword arguments.
 
     The available fields are:
-       odom_linear,odom_angular,camera_angle,linear_module,putter_1,putter_2,oblique_angle,oblique_drawer,flat_drawer,belt,camera_tilt
+       linear_module,putter_1,putter_2,oblique_angle,oblique_drawer,flat_drawer,belt,camera_angle,camera_tilt
 
     :param args: complete set of field values, in .msg order
     :param kwds: use keyword arguments corresponding to message field names
@@ -47,12 +46,6 @@ int8 camera_tilt"""
     if args or kwds:
       super(twist_hh, self).__init__(*args, **kwds)
       # message fields cannot be None, assign default values for those that are
-      if self.odom_linear is None:
-        self.odom_linear = 0.
-      if self.odom_angular is None:
-        self.odom_angular = 0.
-      if self.camera_angle is None:
-        self.camera_angle = 0
       if self.linear_module is None:
         self.linear_module = 0.
       if self.putter_1 is None:
@@ -67,12 +60,11 @@ int8 camera_tilt"""
         self.flat_drawer = 0
       if self.belt is None:
         self.belt = 0
+      if self.camera_angle is None:
+        self.camera_angle = 0
       if self.camera_tilt is None:
         self.camera_tilt = 0
     else:
-      self.odom_linear = 0.
-      self.odom_angular = 0.
-      self.camera_angle = 0
       self.linear_module = 0.
       self.putter_1 = 0.
       self.putter_2 = 0.
@@ -80,6 +72,7 @@ int8 camera_tilt"""
       self.oblique_drawer = 0
       self.flat_drawer = 0
       self.belt = 0
+      self.camera_angle = 0
       self.camera_tilt = 0
 
   def _get_types(self):
@@ -95,7 +88,7 @@ int8 camera_tilt"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2fb3f3bBb().pack(_x.odom_linear, _x.odom_angular, _x.camera_angle, _x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_tilt))
+      buff.write(_get_struct_3f3bB2b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -109,8 +102,8 @@ int8 camera_tilt"""
       end = 0
       _x = self
       start = end
-      end += 26
-      (_x.odom_linear, _x.odom_angular, _x.camera_angle, _x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_tilt,) = _get_struct_2fb3f3bBb().unpack(str[start:end])
+      end += 18
+      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt,) = _get_struct_3f3bB2b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -124,7 +117,7 @@ int8 camera_tilt"""
     """
     try:
       _x = self
-      buff.write(_get_struct_2fb3f3bBb().pack(_x.odom_linear, _x.odom_angular, _x.camera_angle, _x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_tilt))
+      buff.write(_get_struct_3f3bB2b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -139,8 +132,8 @@ int8 camera_tilt"""
       end = 0
       _x = self
       start = end
-      end += 26
-      (_x.odom_linear, _x.odom_angular, _x.camera_angle, _x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_tilt,) = _get_struct_2fb3f3bBb().unpack(str[start:end])
+      end += 18
+      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt,) = _get_struct_3f3bB2b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -149,9 +142,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_2fb3f3bBb = None
-def _get_struct_2fb3f3bBb():
-    global _struct_2fb3f3bBb
-    if _struct_2fb3f3bBb is None:
-        _struct_2fb3f3bBb = struct.Struct("<2fb3f3bBb")
-    return _struct_2fb3f3bBb
+_struct_3f3bB2b = None
+def _get_struct_3f3bB2b():
+    global _struct_3f3bB2b
+    if _struct_3f3bB2b is None:
+        _struct_3f3bB2b = struct.Struct("<3f3bB2b")
+    return _struct_3f3bB2b

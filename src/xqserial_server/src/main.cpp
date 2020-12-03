@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     try {
         CallbackAsyncSerial serial(port,baud);
         serial.setCallback(boost::bind(&xqserial_server::StatusPublisher::Update,&xq_status,_1,_2));
-        xqserial_server::DiffDriverController xq_diffdriver(max_speed,cmd_topic,&xq_status,&serial);
+        xqserial_server::DiffDriverController xq_diffdriver(max_speed,cmd_topic,func_motors_topic,&xq_status,&serial);
         boost::thread cmd2serialThread(& xqserial_server::DiffDriverController::run,&xq_diffdriver);
         // send test flag
         char debugFlagCmd[] = {(char)0xcd, (char)0xeb, (char)0xd7, (char)0x01, 'T',(char)0x0d,(char)0x0a};

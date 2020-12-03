@@ -83,6 +83,8 @@ std_msgs/Bool.h
 -
 turtlebot_teleop/twist_hh.h
 /home/andy/xRobot_ws/src/xqserial_server/src/turtlebot_teleop/twist_hh.h
+geometry_msgs/Twist.h
+/home/andy/xRobot_ws/src/xqserial_server/src/geometry_msgs/Twist.h
 
 /home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.cpp
 StatusPublisher.h

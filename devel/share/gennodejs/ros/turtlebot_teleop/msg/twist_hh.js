@@ -18,9 +18,6 @@ class twist_hh {
   constructor(initObj={}) {
     if (initObj === null) {
       // initObj === null is a special case for deserialization where we don't initialize fields
-      this.odom_linear = null;
-      this.odom_angular = null;
-      this.camera_angle = null;
       this.linear_module = null;
       this.putter_1 = null;
       this.putter_2 = null;
@@ -28,27 +25,10 @@ class twist_hh {
       this.oblique_drawer = null;
       this.flat_drawer = null;
       this.belt = null;
+      this.camera_angle = null;
       this.camera_tilt = null;
     }
     else {
-      if (initObj.hasOwnProperty('odom_linear')) {
-        this.odom_linear = initObj.odom_linear
-      }
-      else {
-        this.odom_linear = 0.0;
-      }
-      if (initObj.hasOwnProperty('odom_angular')) {
-        this.odom_angular = initObj.odom_angular
-      }
-      else {
-        this.odom_angular = 0.0;
-      }
-      if (initObj.hasOwnProperty('camera_angle')) {
-        this.camera_angle = initObj.camera_angle
-      }
-      else {
-        this.camera_angle = 0;
-      }
       if (initObj.hasOwnProperty('linear_module')) {
         this.linear_module = initObj.linear_module
       }
@@ -91,6 +71,12 @@ class twist_hh {
       else {
         this.belt = 0;
       }
+      if (initObj.hasOwnProperty('camera_angle')) {
+        this.camera_angle = initObj.camera_angle
+      }
+      else {
+        this.camera_angle = 0;
+      }
       if (initObj.hasOwnProperty('camera_tilt')) {
         this.camera_tilt = initObj.camera_tilt
       }
@@ -102,12 +88,6 @@ class twist_hh {
 
   static serialize(obj, buffer, bufferOffset) {
     // Serializes a message object of type twist_hh
-    // Serialize message field [odom_linear]
-    bufferOffset = _serializer.float32(obj.odom_linear, buffer, bufferOffset);
-    // Serialize message field [odom_angular]
-    bufferOffset = _serializer.float32(obj.odom_angular, buffer, bufferOffset);
-    // Serialize message field [camera_angle]
-    bufferOffset = _serializer.int8(obj.camera_angle, buffer, bufferOffset);
     // Serialize message field [linear_module]
     bufferOffset = _serializer.float32(obj.linear_module, buffer, bufferOffset);
     // Serialize message field [putter_1]
@@ -122,6 +102,8 @@ class twist_hh {
     bufferOffset = _serializer.int8(obj.flat_drawer, buffer, bufferOffset);
     // Serialize message field [belt]
     bufferOffset = _serializer.uint8(obj.belt, buffer, bufferOffset);
+    // Serialize message field [camera_angle]
+    bufferOffset = _serializer.int8(obj.camera_angle, buffer, bufferOffset);
     // Serialize message field [camera_tilt]
     bufferOffset = _serializer.int8(obj.camera_tilt, buffer, bufferOffset);
     return bufferOffset;
@@ -131,12 +113,6 @@ class twist_hh {
     //deserializes a message object of type twist_hh
     let len;
     let data = new twist_hh(null);
-    // Deserialize message field [odom_linear]
-    data.odom_linear = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [odom_angular]
-    data.odom_angular = _deserializer.float32(buffer, bufferOffset);
-    // Deserialize message field [camera_angle]
-    data.camera_angle = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [linear_module]
     data.linear_module = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [putter_1]
@@ -151,13 +127,15 @@ class twist_hh {
     data.flat_drawer = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [belt]
     data.belt = _deserializer.uint8(buffer, bufferOffset);
+    // Deserialize message field [camera_angle]
+    data.camera_angle = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [camera_tilt]
     data.camera_tilt = _deserializer.int8(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 26;
+    return 18;
   }
 
   static datatype() {
@@ -167,7 +145,7 @@ class twist_hh {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '6e4dda92ec0f9bb71528efd408daa7bf';
+    return '18a62653abd37f23cf97caba6719e246';
   }
 
   static messageDefinition() {
@@ -175,10 +153,7 @@ class twist_hh {
     return `
     # This expresses velocity in free space broken into its linear and angular parts.
     
-    float32 odom_linear
-    float32 odom_angular
     
-    int8 camera_angle
     
     float32 linear_module
     float32 putter_1
@@ -187,7 +162,9 @@ class twist_hh {
     int8 oblique_angle
     int8 oblique_drawer
     int8 flat_drawer
+    
     uint8 belt
+    int8 camera_angle
     int8 camera_tilt
     `;
   }
@@ -198,27 +175,6 @@ class twist_hh {
       msg = {};
     }
     const resolved = new twist_hh(null);
-    if (msg.odom_linear !== undefined) {
-      resolved.odom_linear = msg.odom_linear;
-    }
-    else {
-      resolved.odom_linear = 0.0
-    }
-
-    if (msg.odom_angular !== undefined) {
-      resolved.odom_angular = msg.odom_angular;
-    }
-    else {
-      resolved.odom_angular = 0.0
-    }
-
-    if (msg.camera_angle !== undefined) {
-      resolved.camera_angle = msg.camera_angle;
-    }
-    else {
-      resolved.camera_angle = 0
-    }
-
     if (msg.linear_module !== undefined) {
       resolved.linear_module = msg.linear_module;
     }
@@ -266,6 +222,13 @@ class twist_hh {
     }
     else {
       resolved.belt = 0
+    }
+
+    if (msg.camera_angle !== undefined) {
+      resolved.camera_angle = msg.camera_angle;
+    }
+    else {
+      resolved.camera_angle = 0
     }
 
     if (msg.camera_tilt !== undefined) {

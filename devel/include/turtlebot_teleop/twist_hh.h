@@ -24,43 +24,30 @@ struct twist_hh_
   typedef twist_hh_<ContainerAllocator> Type;
 
   twist_hh_()
-    : odom_linear(0.0)
-    , odom_angular(0.0)
-    , camera_angle(0)
-    , linear_module(0.0)
+    : linear_module(0.0)
     , putter_1(0.0)
     , putter_2(0.0)
     , oblique_angle(0)
     , oblique_drawer(0)
     , flat_drawer(0)
     , belt(0)
+    , camera_angle(0)
     , camera_tilt(0)  {
     }
   twist_hh_(const ContainerAllocator& _alloc)
-    : odom_linear(0.0)
-    , odom_angular(0.0)
-    , camera_angle(0)
-    , linear_module(0.0)
+    : linear_module(0.0)
     , putter_1(0.0)
     , putter_2(0.0)
     , oblique_angle(0)
     , oblique_drawer(0)
     , flat_drawer(0)
     , belt(0)
+    , camera_angle(0)
     , camera_tilt(0)  {
   (void)_alloc;
     }
 
 
-
-   typedef float _odom_linear_type;
-  _odom_linear_type odom_linear;
-
-   typedef float _odom_angular_type;
-  _odom_angular_type odom_angular;
-
-   typedef int8_t _camera_angle_type;
-  _camera_angle_type camera_angle;
 
    typedef float _linear_module_type;
   _linear_module_type linear_module;
@@ -82,6 +69,9 @@ struct twist_hh_
 
    typedef uint8_t _belt_type;
   _belt_type belt;
+
+   typedef int8_t _camera_angle_type;
+  _camera_angle_type camera_angle;
 
    typedef int8_t _camera_tilt_type;
   _camera_tilt_type camera_tilt;
@@ -121,7 +111,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/andy/mz_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -164,12 +154,12 @@ struct MD5Sum< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "6e4dda92ec0f9bb71528efd408daa7bf";
+    return "18a62653abd37f23cf97caba6719e246";
   }
 
   static const char* value(const ::turtlebot_teleop::twist_hh_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x6e4dda92ec0f9bb7ULL;
-  static const uint64_t static_value2 = 0x1528efd408daa7bfULL;
+  static const uint64_t static_value1 = 0x18a62653abd37f23ULL;
+  static const uint64_t static_value2 = 0xcf97caba6719e246ULL;
 };
 
 template<class ContainerAllocator>
@@ -190,10 +180,7 @@ struct Definition< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
   {
     return "# This expresses velocity in free space broken into its linear and angular parts.\n\
 \n\
-float32 odom_linear\n\
-float32 odom_angular\n\
 \n\
-int8 camera_angle\n\
 \n\
 float32 linear_module\n\
 float32 putter_1\n\
@@ -202,7 +189,9 @@ float32 putter_2\n\
 int8 oblique_angle\n\
 int8 oblique_drawer\n\
 int8 flat_drawer\n\
+\n\
 uint8 belt\n\
+int8 camera_angle\n\
 int8 camera_tilt\n\
 ";
   }
@@ -222,9 +211,6 @@ namespace serialization
   {
     template<typename Stream, typename T> inline static void allInOne(Stream& stream, T m)
     {
-      stream.next(m.odom_linear);
-      stream.next(m.odom_angular);
-      stream.next(m.camera_angle);
       stream.next(m.linear_module);
       stream.next(m.putter_1);
       stream.next(m.putter_2);
@@ -232,6 +218,7 @@ namespace serialization
       stream.next(m.oblique_drawer);
       stream.next(m.flat_drawer);
       stream.next(m.belt);
+      stream.next(m.camera_angle);
       stream.next(m.camera_tilt);
     }
 
@@ -251,12 +238,6 @@ struct Printer< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
 {
   template<typename Stream> static void stream(Stream& s, const std::string& indent, const ::turtlebot_teleop::twist_hh_<ContainerAllocator>& v)
   {
-    s << indent << "odom_linear: ";
-    Printer<float>::stream(s, indent + "  ", v.odom_linear);
-    s << indent << "odom_angular: ";
-    Printer<float>::stream(s, indent + "  ", v.odom_angular);
-    s << indent << "camera_angle: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.camera_angle);
     s << indent << "linear_module: ";
     Printer<float>::stream(s, indent + "  ", v.linear_module);
     s << indent << "putter_1: ";
@@ -271,6 +252,8 @@ struct Printer< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
     Printer<int8_t>::stream(s, indent + "  ", v.flat_drawer);
     s << indent << "belt: ";
     Printer<uint8_t>::stream(s, indent + "  ", v.belt);
+    s << indent << "camera_angle: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.camera_angle);
     s << indent << "camera_tilt: ";
     Printer<int8_t>::stream(s, indent + "  ", v.camera_tilt);
   }

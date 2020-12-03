@@ -99,16 +99,17 @@ install/local/fast: install/local
 
 .PHONY : install/local/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install
 
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/usr/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
 
 # Special rule for the target test
 test:
@@ -121,17 +122,16 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target install
-install: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
 
-# Special rule for the target install
-install/fast: preinstall/fast
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
-	/usr/bin/cmake -P cmake_install.cmake
-.PHONY : install/fast
+# Special rule for the target install/strip
+install/strip/fast: install/strip
+
+.PHONY : install/strip/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -241,64 +241,19 @@ nodelet_generate_messages_py/fast:
 .PHONY : nodelet_generate_messages_py/fast
 
 # Convenience name for target.
-turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
-.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
+.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
 
 # Convenience name for target.
-nodelet_generate_messages_cpp: turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+turtlebot_msgs_generate_messages_cpp: turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
 
-.PHONY : nodelet_generate_messages_cpp
+.PHONY : turtlebot_msgs_generate_messages_cpp
 
 # fast build rule for target.
-nodelet_generate_messages_cpp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/build
-.PHONY : nodelet_generate_messages_cpp/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-std_srvs_generate_messages_nodejs: turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
-
-.PHONY : std_srvs_generate_messages_nodejs
-
-# fast build rule for target.
-std_srvs_generate_messages_nodejs/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
-.PHONY : std_srvs_generate_messages_nodejs/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-nodelet_generate_messages_eus: turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
-
-.PHONY : nodelet_generate_messages_eus
-
-# fast build rule for target.
-nodelet_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/build
-.PHONY : nodelet_generate_messages_eus/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
-.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
-
-# Convenience name for target.
-turtlebot_msgs_generate_messages_py: turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
-
-.PHONY : turtlebot_msgs_generate_messages_py
-
-# fast build rule for target.
-turtlebot_msgs_generate_messages_py/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/build
-.PHONY : turtlebot_msgs_generate_messages_py/fast
+turtlebot_msgs_generate_messages_cpp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/build
+.PHONY : turtlebot_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_py.dir/rule:
@@ -376,19 +331,64 @@ turtlebot_follower_gencfg/fast:
 .PHONY : turtlebot_follower_gencfg/fast
 
 # Convenience name for target.
-turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
-.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
+turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
+.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-turtlebot_msgs_generate_messages_cpp: turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/rule
+std_srvs_generate_messages_nodejs: turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/rule
 
-.PHONY : turtlebot_msgs_generate_messages_cpp
+.PHONY : std_srvs_generate_messages_nodejs
 
 # fast build rule for target.
-turtlebot_msgs_generate_messages_cpp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_cpp.dir/build
-.PHONY : turtlebot_msgs_generate_messages_cpp/fast
+std_srvs_generate_messages_nodejs/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/std_srvs_generate_messages_nodejs.dir/build
+.PHONY : std_srvs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
+.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+nodelet_generate_messages_eus: turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/rule
+
+.PHONY : nodelet_generate_messages_eus
+
+# fast build rule for target.
+nodelet_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_eus.dir/build
+.PHONY : nodelet_generate_messages_eus/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
+.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
+
+# Convenience name for target.
+turtlebot_msgs_generate_messages_py: turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/rule
+
+.PHONY : turtlebot_msgs_generate_messages_py
+
+# fast build rule for target.
+turtlebot_msgs_generate_messages_py/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_py.dir/build
+.PHONY : turtlebot_msgs_generate_messages_py/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+.PHONY : turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+nodelet_generate_messages_cpp: turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/rule
+
+.PHONY : nodelet_generate_messages_cpp
+
+# fast build rule for target.
+nodelet_generate_messages_cpp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/build.make turtlebot_apps/turtlebot_follower/CMakeFiles/nodelet_generate_messages_cpp.dir/build
+.PHONY : nodelet_generate_messages_cpp/fast
 
 # Convenience name for target.
 turtlebot_apps/turtlebot_follower/CMakeFiles/turtlebot_msgs_generate_messages_eus.dir/rule:
@@ -532,29 +532,29 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... install/local"
-	@echo "... install/strip"
 	@echo "... bond_generate_messages_lisp"
 	@echo "... bond_generate_messages_eus"
 	@echo "... bond_generate_messages_nodejs"
 	@echo "... bond_generate_messages_cpp"
 	@echo "... nodelet_generate_messages_py"
-	@echo "... nodelet_generate_messages_cpp"
-	@echo "... std_srvs_generate_messages_nodejs"
-	@echo "... nodelet_generate_messages_eus"
-	@echo "... test"
-	@echo "... turtlebot_msgs_generate_messages_py"
+	@echo "... turtlebot_msgs_generate_messages_cpp"
 	@echo "... std_srvs_generate_messages_py"
 	@echo "... bond_generate_messages_py"
 	@echo "... install"
 	@echo "... nodelet_generate_messages_nodejs"
 	@echo "... nodelet_generate_messages_lisp"
 	@echo "... turtlebot_follower_gencfg"
-	@echo "... turtlebot_msgs_generate_messages_cpp"
+	@echo "... std_srvs_generate_messages_nodejs"
+	@echo "... nodelet_generate_messages_eus"
+	@echo "... test"
+	@echo "... turtlebot_msgs_generate_messages_py"
+	@echo "... nodelet_generate_messages_cpp"
 	@echo "... turtlebot_msgs_generate_messages_eus"
 	@echo "... turtlebot_msgs_generate_messages_nodejs"
 	@echo "... turtlebot_msgs_generate_messages_lisp"
 	@echo "... std_srvs_generate_messages_cpp"
 	@echo "... turtlebot_follower"
+	@echo "... install/strip"
 	@echo "... std_srvs_generate_messages_eus"
 	@echo "... std_srvs_generate_messages_lisp"
 	@echo "... src/follower.o"
