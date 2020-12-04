@@ -48,7 +48,8 @@ private:
 
   ros::NodeHandle ph_, nh_;
 
-  int linear_x,linear_y, angular_, deadman_axis_; //履带底盘的按键设置
+  int linear_x, angular_, deadman_axis_; //履带底盘的按键设置
+  int deadman_func_axis_;      //功能电机的使能
 
  
 
@@ -85,7 +86,9 @@ private:
 
   boost::mutex publish_mutex_;
   bool deadman_pressed_;
+  bool deadman_func_pressed_;
   bool zero_twist_published_;
+  bool zero_func_published_;
   ros::Timer timer_;
 
 };
@@ -94,19 +97,22 @@ TurtlebotTeleop::TurtlebotTeleop():
   ph_("~"),
   linear_x(1),
   angular_(0),    //将罗技左摇杆的左右设置为旋转变量
-  deadman_axis_(10), //使能键,这里设置的罗技的RT键
+  deadman_axis_(10), //履带电机使能键,这里设置的罗技的左摇杆按键
+  deadman_func_axis_(6), //功能电机使能键,这里设置的罗技的LB键
 
-  camera_angle(4),      //将罗技左上角方向键的左右设置为摄像头旋转
+  
 
   oblique_angle1(3),  //斜板角度
   oblique_angle2(1),  //斜板角度
   oblique_drawer1(2), //斜板抽屉
   oblique_drawer2(0), //斜板抽屉
-  flat_drawer1(5),    //伸缩柜控制
-  flat_drawer2(4),    //伸缩柜控制
-  belt(7),           //输送带控制
-  camera_tilt1(9),    //摄像头俯仰角
-  camera_tilt2(8),    //摄像头俯仰角
+  flat_drawer1(9),    //伸缩柜控制
+  flat_drawer2(8),    //伸缩柜控制
+
+  belt(4),           //输送带控制
+  camera_tilt1(5),    //摄像头俯仰角
+  camera_tilt2(7),    //摄像头俯仰角
+  camera_angle(4),      //将罗技左上角方向键的左右设置为摄像头旋转
 
   linear_module(5), //线性模组设置为罗技左上角方向键的前后
   putter_1(3),      //大臂设置为罗技右摇杆的前后
@@ -121,6 +127,8 @@ TurtlebotTeleop::TurtlebotTeleop():
   ph_.param("axis_linear_x", linear_x, linear_x);
   ph_.param("axis_angular", angular_, angular_);
   ph_.param("axis_deadman", deadman_axis_, deadman_axis_);
+  ph_.param("axis_func_deadman", deadman_func_axis_, deadman_func_axis_);
+
   ph_.param("scale_angular", a_scale_, a_scale_);
   ph_.param("scale_linear_x", l_scale_x, l_scale_x);
   ph_.param("scale_linear_y", l_scale_y, l_scale_y);
@@ -145,7 +153,9 @@ TurtlebotTeleop::TurtlebotTeleop():
   
 
   deadman_pressed_ = false;
+  deadman_func_pressed_ = false;
   zero_twist_published_ = false;
+  zero_func_published_ = false;
 
   vel_pub_ = ph_.advertise<geometry_msgs::Twist>("cmd_vel", 1, true); //所有电机的状态发布
   func_motors_pub_ = ph_.advertise<turtlebot_teleop::twist_hh>("func_motors",1,true); //所有电机的状态发布
@@ -186,6 +196,8 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   last_published_ = vel;
   last_pubulished_add = func_motors;    //加一个临时值存放
   deadman_pressed_ = joy->buttons[deadman_axis_];
+  deadman_func_pressed_ = joy->buttons[deadman_func_axis_];
+  
 }
 
 void TurtlebotTeleop::publish()
@@ -195,14 +207,27 @@ void TurtlebotTeleop::publish()
   if (deadman_pressed_)
   {
     vel_pub_.publish(last_published_);
-    func_motors_pub_.publish(last_pubulished_add);    //发布功能电机控制话题
+    // func_motors_pub_.publish(last_pubulished_add);    //发布功能电机控制话题
     zero_twist_published_=false;
   }
   else if(!deadman_pressed_ && !zero_twist_published_)
   {
     vel_pub_.publish(*new geometry_msgs::Twist());
-    func_motors_pub_.publish(*new turtlebot_teleop::twist_hh());    //第一次时发布空话题
+    // func_motors_pub_.publish(*new turtlebot_teleop::twist_hh());    //第一次时发布空话题
     zero_twist_published_=true;
+  }
+
+    if (deadman_func_pressed_)
+  {
+    // vel_pub_.publish(last_published_);
+    func_motors_pub_.publish(last_pubulished_add);    //发布功能电机控制话题
+    zero_func_published_=false;
+  }
+  else if(!deadman_func_pressed_ && !zero_func_published_)
+  {
+    // vel_pub_.publish(*new geometry_msgs::Twist());
+    func_motors_pub_.publish(*new turtlebot_teleop::twist_hh());    //第一次时发布空话题
+    zero_func_published_=true;
   }
 }
 

@@ -5,11 +5,12 @@
     <param name="scale_angular" value="1.0"/>
     <param name="scale_linear_x" value="1.0"/>
     <param name="scale_linear_y" value="1.0"/>
-    <param name="axis_deadman" value="7"/>
+    <param name="axis_deadman" value="10"/>
+    <param name="axis_func_deadman" value="6"/>
     <param name="axis_linear_x" value="1"/>
     <param name="axis_linear_y" value="0"/>
     <remap from="meizhong_teleop_joystick/cmd_vel" to="cmd_vel" />
-    <!-- <remap from="meizhong_teleop_joystick/func_motors" to="func_motors" /> -->
+    <remap from="meizhong_teleop_joystick/func_motors" to="func_motors" />
   </node>
   <!--  smooths inputs from cmd_vel_mux/input/teleop_raw to cmd_vel_mux/input/teleop -->
   <!--include file="$(find jyr)/launch/includes/velocity_smoother.launch.xml"/-->

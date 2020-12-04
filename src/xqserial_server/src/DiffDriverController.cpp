@@ -244,7 +244,7 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
 /*****************摄像头俯仰********************/
 
 
-  boost::mutex::scoped_lock lock(mMutex);//???????这个需要查一下什么意思
+//   boost::mutex::scoped_lock lock(mMutex);//???????这个需要查一下什么意思
    /* if(!MoveFlag)
     {
       cmd_str[5]=(char)0x53;
@@ -381,7 +381,7 @@ void DiffDriverController::sendcmd(const geometry_msgs::Twist &command)
 /***************履带电机**********************/
 
 
-  boost::mutex::scoped_lock lock(mMutex);
+//   boost::mutex::scoped_lock lock(mMutex);
    /* if(!MoveFlag)
     {
       cmd_str[5]=(char)0x53;
