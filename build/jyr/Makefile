@@ -346,6 +346,36 @@ tf_generate_messages_eus/fast:
 .PHONY : tf_generate_messages_eus/fast
 
 # Convenience name for target.
+jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
+.PHONY : jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_cpp: jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
+
+.PHONY : tf_generate_messages_cpp
+
+# fast build rule for target.
+tf_generate_messages_cpp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/tf_generate_messages_cpp.dir/build.make jyr/CMakeFiles/tf_generate_messages_cpp.dir/build
+.PHONY : tf_generate_messages_cpp/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+.PHONY : jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+rosgraph_msgs_generate_messages_cpp: jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
+
+.PHONY : rosgraph_msgs_generate_messages_cpp
+
+# fast build rule for target.
+rosgraph_msgs_generate_messages_cpp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
+.PHONY : rosgraph_msgs_generate_messages_cpp/fast
+
+# Convenience name for target.
 jyr/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
 .PHONY : jyr/CMakeFiles/roscpp_generate_messages_nodejs.dir/rule
@@ -389,21 +419,6 @@ rosgraph_msgs_generate_messages_py: jyr/CMakeFiles/rosgraph_msgs_generate_messag
 rosgraph_msgs_generate_messages_py/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build.make jyr/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/build
 .PHONY : rosgraph_msgs_generate_messages_py/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-.PHONY : jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_cpp: jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_cpp
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_cpp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build.make jyr/CMakeFiles/rosgraph_msgs_generate_messages_cpp.dir/build
-.PHONY : rosgraph_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
 jyr/CMakeFiles/roscpp_generate_messages_eus.dir/rule:
@@ -479,126 +494,6 @@ dynamic_reconfigure_generate_messages_lisp: jyr/CMakeFiles/dynamic_reconfigure_g
 dynamic_reconfigure_generate_messages_lisp/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build.make jyr/CMakeFiles/dynamic_reconfigure_generate_messages_lisp.dir/build
 .PHONY : dynamic_reconfigure_generate_messages_lisp/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-.PHONY : jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-rosgraph_msgs_generate_messages_eus: jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
-
-.PHONY : rosgraph_msgs_generate_messages_eus
-
-# fast build rule for target.
-rosgraph_msgs_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
-.PHONY : rosgraph_msgs_generate_messages_eus/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-.PHONY : jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_nodejs: jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
-
-.PHONY : tf_generate_messages_nodejs
-
-# fast build rule for target.
-tf_generate_messages_nodejs/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/tf_generate_messages_nodejs.dir/build.make jyr/CMakeFiles/tf_generate_messages_nodejs.dir/build
-.PHONY : tf_generate_messages_nodejs/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
-.PHONY : jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-# Convenience name for target.
-roscpp_generate_messages_py: jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
-
-.PHONY : roscpp_generate_messages_py
-
-# fast build rule for target.
-roscpp_generate_messages_py/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/roscpp_generate_messages_py.dir/build.make jyr/CMakeFiles/roscpp_generate_messages_py.dir/build
-.PHONY : roscpp_generate_messages_py/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-.PHONY : jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_eus: jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
-
-.PHONY : actionlib_generate_messages_eus
-
-# fast build rule for target.
-actionlib_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_eus.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_eus.dir/build
-.PHONY : actionlib_generate_messages_eus/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-.PHONY : jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-# Convenience name for target.
-move_base_msgs_generate_messages_lisp: jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
-
-.PHONY : move_base_msgs_generate_messages_lisp
-
-# fast build rule for target.
-move_base_msgs_generate_messages_lisp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build.make jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build
-.PHONY : move_base_msgs_generate_messages_lisp/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
-.PHONY : jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-# Convenience name for target.
-tf_generate_messages_cpp: jyr/CMakeFiles/tf_generate_messages_cpp.dir/rule
-
-.PHONY : tf_generate_messages_cpp
-
-# fast build rule for target.
-tf_generate_messages_cpp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/tf_generate_messages_cpp.dir/build.make jyr/CMakeFiles/tf_generate_messages_cpp.dir/build
-.PHONY : tf_generate_messages_cpp/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
-.PHONY : jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-# Convenience name for target.
-actionlib_generate_messages_py: jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
-
-.PHONY : actionlib_generate_messages_py
-
-# fast build rule for target.
-actionlib_generate_messages_py/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_py.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_py.dir/build
-.PHONY : actionlib_generate_messages_py/fast
-
-# Convenience name for target.
-jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-.PHONY : jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-nav_msgs_generate_messages_nodejs: jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : nav_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-nav_msgs_generate_messages_nodejs/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
-.PHONY : nav_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 jyr/CMakeFiles/std_msgs_generate_messages_lisp.dir/rule:
@@ -734,6 +629,96 @@ move_base_msgs_generate_messages_nodejs: jyr/CMakeFiles/move_base_msgs_generate_
 move_base_msgs_generate_messages_nodejs/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build.make jyr/CMakeFiles/move_base_msgs_generate_messages_nodejs.dir/build
 .PHONY : move_base_msgs_generate_messages_nodejs/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+.PHONY : jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_eus: jyr/CMakeFiles/actionlib_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_generate_messages_eus
+
+# fast build rule for target.
+actionlib_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_eus.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_eus.dir/build
+.PHONY : actionlib_generate_messages_eus/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+.PHONY : jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+tf_generate_messages_nodejs: jyr/CMakeFiles/tf_generate_messages_nodejs.dir/rule
+
+.PHONY : tf_generate_messages_nodejs
+
+# fast build rule for target.
+tf_generate_messages_nodejs/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/tf_generate_messages_nodejs.dir/build.make jyr/CMakeFiles/tf_generate_messages_nodejs.dir/build
+.PHONY : tf_generate_messages_nodejs/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
+.PHONY : jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+# Convenience name for target.
+roscpp_generate_messages_py: jyr/CMakeFiles/roscpp_generate_messages_py.dir/rule
+
+.PHONY : roscpp_generate_messages_py
+
+# fast build rule for target.
+roscpp_generate_messages_py/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/roscpp_generate_messages_py.dir/build.make jyr/CMakeFiles/roscpp_generate_messages_py.dir/build
+.PHONY : roscpp_generate_messages_py/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+.PHONY : jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+move_base_msgs_generate_messages_lisp: jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : move_base_msgs_generate_messages_lisp
+
+# fast build rule for target.
+move_base_msgs_generate_messages_lisp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build.make jyr/CMakeFiles/move_base_msgs_generate_messages_lisp.dir/build
+.PHONY : move_base_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+.PHONY : jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+actionlib_generate_messages_lisp: jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+
+.PHONY : actionlib_generate_messages_lisp
+
+# fast build rule for target.
+actionlib_generate_messages_lisp/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/build
+.PHONY : actionlib_generate_messages_lisp/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+.PHONY : jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+actionlib_msgs_generate_messages_eus: jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+
+.PHONY : actionlib_msgs_generate_messages_eus
+
+# fast build rule for target.
+actionlib_msgs_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
+.PHONY : actionlib_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
 jyr/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule:
@@ -886,34 +871,49 @@ move_base_msgs_generate_messages_eus/fast:
 .PHONY : move_base_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
-.PHONY : jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
+.PHONY : jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
 # Convenience name for target.
-actionlib_generate_messages_lisp: jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/rule
+rosgraph_msgs_generate_messages_eus: jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/rule
 
-.PHONY : actionlib_generate_messages_lisp
+.PHONY : rosgraph_msgs_generate_messages_eus
 
 # fast build rule for target.
-actionlib_generate_messages_lisp/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_lisp.dir/build
-.PHONY : actionlib_generate_messages_lisp/fast
+rosgraph_msgs_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build.make jyr/CMakeFiles/rosgraph_msgs_generate_messages_eus.dir/build
+.PHONY : rosgraph_msgs_generate_messages_eus/fast
 
 # Convenience name for target.
-jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
-.PHONY : jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
+.PHONY : jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
 # Convenience name for target.
-actionlib_msgs_generate_messages_eus: jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/rule
+actionlib_generate_messages_py: jyr/CMakeFiles/actionlib_generate_messages_py.dir/rule
 
-.PHONY : actionlib_msgs_generate_messages_eus
+.PHONY : actionlib_generate_messages_py
 
 # fast build rule for target.
-actionlib_msgs_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build.make jyr/CMakeFiles/actionlib_msgs_generate_messages_eus.dir/build
-.PHONY : actionlib_msgs_generate_messages_eus/fast
+actionlib_generate_messages_py/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/actionlib_generate_messages_py.dir/build.make jyr/CMakeFiles/actionlib_generate_messages_py.dir/build
+.PHONY : actionlib_generate_messages_py/fast
+
+# Convenience name for target.
+jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+.PHONY : jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+nav_msgs_generate_messages_nodejs: jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : nav_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+nav_msgs_generate_messages_nodejs/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build.make jyr/CMakeFiles/nav_msgs_generate_messages_nodejs.dir/build
+.PHONY : nav_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 jyr/CMakeFiles/sensor_msgs_generate_messages_eus.dir/rule:
@@ -1218,24 +1218,17 @@ help:
 	@echo "... tf_generate_messages_py"
 	@echo "... rebuild_cache"
 	@echo "... tf_generate_messages_eus"
+	@echo "... tf_generate_messages_cpp"
+	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... roscpp_generate_messages_nodejs"
 	@echo "... tf_generate_messages_lisp"
 	@echo "... rosgraph_msgs_generate_messages_py"
-	@echo "... rosgraph_msgs_generate_messages_cpp"
 	@echo "... list_install_components"
 	@echo "... roscpp_generate_messages_eus"
 	@echo "... dynamic_reconfigure_generate_messages_cpp"
 	@echo "... std_msgs_generate_messages_eus"
 	@echo "... roscpp_generate_messages_lisp"
 	@echo "... dynamic_reconfigure_generate_messages_lisp"
-	@echo "... rosgraph_msgs_generate_messages_eus"
-	@echo "... tf_generate_messages_nodejs"
-	@echo "... roscpp_generate_messages_py"
-	@echo "... actionlib_generate_messages_eus"
-	@echo "... move_base_msgs_generate_messages_lisp"
-	@echo "... tf_generate_messages_cpp"
-	@echo "... actionlib_generate_messages_py"
-	@echo "... nav_msgs_generate_messages_nodejs"
 	@echo "... install"
 	@echo "... std_msgs_generate_messages_lisp"
 	@echo "... geometry_msgs_generate_messages_lisp"
@@ -1246,6 +1239,12 @@ help:
 	@echo "... geometry_msgs_generate_messages_eus"
 	@echo "... rosgraph_msgs_generate_messages_lisp"
 	@echo "... move_base_msgs_generate_messages_nodejs"
+	@echo "... actionlib_generate_messages_eus"
+	@echo "... tf_generate_messages_nodejs"
+	@echo "... roscpp_generate_messages_py"
+	@echo "... move_base_msgs_generate_messages_lisp"
+	@echo "... actionlib_generate_messages_lisp"
+	@echo "... actionlib_msgs_generate_messages_eus"
 	@echo "... visualization_msgs_generate_messages_eus"
 	@echo "... dynamic_reconfigure_generate_messages_nodejs"
 	@echo "... install/strip"
@@ -1257,8 +1256,9 @@ help:
 	@echo "... visualization_msgs_generate_messages_py"
 	@echo "... dynamic_reconfigure_generate_messages_py"
 	@echo "... move_base_msgs_generate_messages_eus"
-	@echo "... actionlib_generate_messages_lisp"
-	@echo "... actionlib_msgs_generate_messages_eus"
+	@echo "... rosgraph_msgs_generate_messages_eus"
+	@echo "... actionlib_generate_messages_py"
+	@echo "... nav_msgs_generate_messages_nodejs"
 	@echo "... sensor_msgs_generate_messages_eus"
 	@echo "... std_msgs_generate_messages_cpp"
 	@echo "... actionlib_generate_messages_nodejs"

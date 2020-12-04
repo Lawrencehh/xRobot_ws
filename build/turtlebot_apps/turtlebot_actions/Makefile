@@ -56,17 +56,6 @@ CMAKE_BINARY_DIR = /home/andy/xRobot_ws/build
 #=============================================================================
 # Targets provided globally by CMake.
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -77,6 +66,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target install/strip
 install/strip: preinstall
@@ -194,21 +194,6 @@ turtlebot_actions_generate_messages_py: turtlebot_apps/turtlebot_actions/CMakeFi
 turtlebot_actions_generate_messages_py/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_actions_generate_messages_py.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_actions_generate_messages_py.dir/build
 .PHONY : turtlebot_actions_generate_messages_py/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
-.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
-
-# Convenience name for target.
-_turtlebot_actions_generate_messages_check_deps_FindFiducialAction: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
-
-.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialAction
-
-# fast build rule for target.
-_turtlebot_actions_generate_messages_check_deps_FindFiducialAction/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/build
-.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialAction/fast
 
 # Convenience name for target.
 turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_actions_gennodejs.dir/rule:
@@ -346,6 +331,36 @@ _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveResult/fast:
 .PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveResult/fast
 
 # Convenience name for target.
+turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
+.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
+
+# Convenience name for target.
+_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
+
+.PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback
+
+# fast build rule for target.
+_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/build
+.PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
+.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
+
+# Convenience name for target.
+_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
+
+.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback
+
+# fast build rule for target.
+_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/build
+.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback/fast
+
+# Convenience name for target.
 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialActionFeedback.dir/rule:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialActionFeedback.dir/rule
 .PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialActionFeedback.dir/rule
@@ -391,34 +406,19 @@ _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveGoal/fast:
 .PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveGoal/fast
 
 # Convenience name for target.
-turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
-.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
+turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
+.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
 
 # Convenience name for target.
-_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/rule
+_turtlebot_actions_generate_messages_check_deps_FindFiducialAction: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/rule
 
-.PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback
+.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialAction
 
 # fast build rule for target.
-_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback.dir/build
-.PHONY : _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
-.PHONY : turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
-
-# Convenience name for target.
-_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback: turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/rule
-
-.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback
-
-# fast build rule for target.
-_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback.dir/build
-.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback/fast
+_turtlebot_actions_generate_messages_check_deps_FindFiducialAction/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/build.make turtlebot_apps/turtlebot_actions/CMakeFiles/_turtlebot_actions_generate_messages_check_deps_FindFiducialAction.dir/build
+.PHONY : _turtlebot_actions_generate_messages_check_deps_FindFiducialAction/fast
 
 # Convenience name for target.
 turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_actions_genpy.dir/rule:
@@ -657,11 +657,10 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
-	@echo "... test"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... find_fiducial_pose"
 	@echo "... turtlebot_actions_generate_messages_py"
-	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialAction"
 	@echo "... turtlebot_actions_gennodejs"
 	@echo "... install/strip"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialActionResult"
@@ -674,12 +673,13 @@ help:
 	@echo "... list_install_components"
 	@echo "... turtlebot_actions_generate_messages"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveResult"
+	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback"
+	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialActionFeedback"
 	@echo "... install/local"
 	@echo "... turtlebot_actions_generate_messages_cpp"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveGoal"
-	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionFeedback"
-	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialFeedback"
+	@echo "... _turtlebot_actions_generate_messages_check_deps_FindFiducialAction"
 	@echo "... turtlebot_actions_genpy"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveAction"
 	@echo "... _turtlebot_actions_generate_messages_check_deps_TurtlebotMoveActionResult"

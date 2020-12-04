@@ -93,9 +93,8 @@ private:
 TurtlebotTeleop::TurtlebotTeleop():
   ph_("~"),
   linear_x(1),
-  linear_y(3),
   angular_(0),    //将罗技左摇杆的左右设置为旋转变量
-  deadman_axis_(7), //使能键,这里设置的罗技的RT键
+  deadman_axis_(10), //使能键,这里设置的罗技的RT键
 
   camera_angle(4),      //将罗技左上角方向键的左右设置为摄像头旋转
 
@@ -105,7 +104,7 @@ TurtlebotTeleop::TurtlebotTeleop():
   oblique_drawer2(0), //斜板抽屉
   flat_drawer1(5),    //伸缩柜控制
   flat_drawer2(4),    //伸缩柜控制
-  belt(6),           //输送带控制
+  belt(7),           //输送带控制
   camera_tilt1(9),    //摄像头俯仰角
   camera_tilt2(8),    //摄像头俯仰角
 

@@ -79,17 +79,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -100,6 +89,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target install/local
 install/local: preinstall
@@ -166,6 +166,36 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
+turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
+.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
+
+# Convenience name for target.
+turtlebot_calibration_genpy: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
+
+.PHONY : turtlebot_calibration_genpy
+
+# fast build rule for target.
+turtlebot_calibration_genpy/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/build
+.PHONY : turtlebot_calibration_genpy/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
+.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
+
+# Convenience name for target.
+turtlebot_calibration_generate_messages_py: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
+
+.PHONY : turtlebot_calibration_generate_messages_py
+
+# fast build rule for target.
+turtlebot_calibration_generate_messages_py/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/build
+.PHONY : turtlebot_calibration_generate_messages_py/fast
+
+# Convenience name for target.
 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_cpp.dir/rule:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_cpp.dir/rule
 .PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_cpp.dir/rule
@@ -196,21 +226,6 @@ turtlebot_calibration_generate_messages/fast:
 .PHONY : turtlebot_calibration_generate_messages/fast
 
 # Convenience name for target.
-turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
-.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-turtlebot_calibration_generate_messages_eus: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
-
-.PHONY : turtlebot_calibration_generate_messages_eus
-
-# fast build rule for target.
-turtlebot_calibration_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/build
-.PHONY : turtlebot_calibration_generate_messages_eus/fast
-
-# Convenience name for target.
 turtlebot_apps/turtlebot_calibration/CMakeFiles/_turtlebot_calibration_generate_messages_check_deps_ScanAngle.dir/rule:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/_turtlebot_calibration_generate_messages_check_deps_ScanAngle.dir/rule
 .PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/_turtlebot_calibration_generate_messages_check_deps_ScanAngle.dir/rule
@@ -224,6 +239,21 @@ _turtlebot_calibration_generate_messages_check_deps_ScanAngle: turtlebot_apps/tu
 _turtlebot_calibration_generate_messages_check_deps_ScanAngle/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/_turtlebot_calibration_generate_messages_check_deps_ScanAngle.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/_turtlebot_calibration_generate_messages_check_deps_ScanAngle.dir/build
 .PHONY : _turtlebot_calibration_generate_messages_check_deps_ScanAngle/fast
+
+# Convenience name for target.
+turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
+.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+turtlebot_calibration_generate_messages_eus: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/rule
+
+.PHONY : turtlebot_calibration_generate_messages_eus
+
+# fast build rule for target.
+turtlebot_calibration_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_eus.dir/build
+.PHONY : turtlebot_calibration_generate_messages_eus/fast
 
 # Convenience name for target.
 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_gencpp.dir/rule:
@@ -315,36 +345,6 @@ turtlebot_calibration_gennodejs/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_gennodejs.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_gennodejs.dir/build
 .PHONY : turtlebot_calibration_gennodejs/fast
 
-# Convenience name for target.
-turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
-.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
-
-# Convenience name for target.
-turtlebot_calibration_genpy: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/rule
-
-.PHONY : turtlebot_calibration_genpy
-
-# fast build rule for target.
-turtlebot_calibration_genpy/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_genpy.dir/build
-.PHONY : turtlebot_calibration_genpy/fast
-
-# Convenience name for target.
-turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
-.PHONY : turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
-
-# Convenience name for target.
-turtlebot_calibration_generate_messages_py: turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/rule
-
-.PHONY : turtlebot_calibration_generate_messages_py
-
-# fast build rule for target.
-turtlebot_calibration_generate_messages_py/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/build.make turtlebot_apps/turtlebot_calibration/CMakeFiles/turtlebot_calibration_generate_messages_py.dir/build
-.PHONY : turtlebot_calibration_generate_messages_py/fast
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -353,23 +353,23 @@ help:
 	@echo "... depend"
 	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... install/local"
 	@echo "... list_install_components"
 	@echo "... install/strip"
+	@echo "... turtlebot_calibration_genpy"
+	@echo "... turtlebot_calibration_generate_messages_py"
 	@echo "... turtlebot_calibration_generate_messages_cpp"
 	@echo "... turtlebot_calibration_generate_messages"
-	@echo "... turtlebot_calibration_generate_messages_eus"
 	@echo "... _turtlebot_calibration_generate_messages_check_deps_ScanAngle"
+	@echo "... turtlebot_calibration_generate_messages_eus"
 	@echo "... turtlebot_calibration_gencpp"
 	@echo "... turtlebot_calibration_generate_messages_lisp"
 	@echo "... turtlebot_calibration_geneus"
 	@echo "... turtlebot_calibration_genlisp"
 	@echo "... turtlebot_calibration_generate_messages_nodejs"
 	@echo "... turtlebot_calibration_gennodejs"
-	@echo "... turtlebot_calibration_genpy"
-	@echo "... turtlebot_calibration_generate_messages_py"
 .PHONY : help
 
 

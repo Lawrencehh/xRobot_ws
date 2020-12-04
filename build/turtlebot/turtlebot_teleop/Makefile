@@ -79,17 +79,6 @@ rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -100,6 +89,17 @@ edit_cache:
 edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # Special rule for the target list_install_components
 list_install_components:
@@ -211,36 +211,6 @@ turtlebot_teleop_genpy/fast:
 .PHONY : turtlebot_teleop_genpy/fast
 
 # Convenience name for target.
-turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
-.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
-
-# Convenience name for target.
-turtlebot_teleop_generate_messages_eus: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
-
-.PHONY : turtlebot_teleop_generate_messages_eus
-
-# fast build rule for target.
-turtlebot_teleop_generate_messages_eus/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/build
-.PHONY : turtlebot_teleop_generate_messages_eus/fast
-
-# Convenience name for target.
-turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
-.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
-
-# Convenience name for target.
-turtlebot_teleop_generate_messages: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
-
-.PHONY : turtlebot_teleop_generate_messages
-
-# fast build rule for target.
-turtlebot_teleop_generate_messages/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/build
-.PHONY : turtlebot_teleop_generate_messages/fast
-
-# Convenience name for target.
 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_gencpp.dir/rule:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_gencpp.dir/rule
 .PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_gencpp.dir/rule
@@ -286,19 +256,34 @@ _turtlebot_teleop_generate_messages_check_deps_twist_hh/fast:
 .PHONY : _turtlebot_teleop_generate_messages_check_deps_twist_hh/fast
 
 # Convenience name for target.
-turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
-.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
+turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
+.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
 
 # Convenience name for target.
-turtlebot_teleop_generate_messages_nodejs: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
+turtlebot_teleop_generate_messages: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/rule
 
-.PHONY : turtlebot_teleop_generate_messages_nodejs
+.PHONY : turtlebot_teleop_generate_messages
 
 # fast build rule for target.
-turtlebot_teleop_generate_messages_nodejs/fast:
-	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/build
-.PHONY : turtlebot_teleop_generate_messages_nodejs/fast
+turtlebot_teleop_generate_messages/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages.dir/build
+.PHONY : turtlebot_teleop_generate_messages/fast
+
+# Convenience name for target.
+turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
+.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+turtlebot_teleop_generate_messages_eus: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/rule
+
+.PHONY : turtlebot_teleop_generate_messages_eus
+
+# fast build rule for target.
+turtlebot_teleop_generate_messages_eus/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_eus.dir/build
+.PHONY : turtlebot_teleop_generate_messages_eus/fast
 
 # Convenience name for target.
 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_py.dir/rule:
@@ -314,6 +299,21 @@ turtlebot_teleop_generate_messages_py: turtlebot/turtlebot_teleop/CMakeFiles/tur
 turtlebot_teleop_generate_messages_py/fast:
 	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_py.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_py.dir/build
 .PHONY : turtlebot_teleop_generate_messages_py/fast
+
+# Convenience name for target.
+turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f CMakeFiles/Makefile2 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
+.PHONY : turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+turtlebot_teleop_generate_messages_nodejs: turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/rule
+
+.PHONY : turtlebot_teleop_generate_messages_nodejs
+
+# fast build rule for target.
+turtlebot_teleop_generate_messages_nodejs/fast:
+	cd /home/andy/xRobot_ws/build && $(MAKE) -f turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/build.make turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_generate_messages_nodejs.dir/build
+.PHONY : turtlebot_teleop_generate_messages_nodejs/fast
 
 # Convenience name for target.
 turtlebot/turtlebot_teleop/CMakeFiles/turtlebot_teleop_geneus.dir/rule:
@@ -437,20 +437,20 @@ help:
 	@echo "... depend"
 	@echo "... install"
 	@echo "... rebuild_cache"
-	@echo "... test"
 	@echo "... edit_cache"
+	@echo "... test"
 	@echo "... list_install_components"
 	@echo "... install/strip"
 	@echo "... logitech_joy"
 	@echo "... turtlebot_teleop_joy"
 	@echo "... turtlebot_teleop_genpy"
-	@echo "... turtlebot_teleop_generate_messages_eus"
-	@echo "... turtlebot_teleop_generate_messages"
 	@echo "... turtlebot_teleop_gencpp"
 	@echo "... turtlebot_teleop_generate_messages_cpp"
 	@echo "... _turtlebot_teleop_generate_messages_check_deps_twist_hh"
-	@echo "... turtlebot_teleop_generate_messages_nodejs"
+	@echo "... turtlebot_teleop_generate_messages"
+	@echo "... turtlebot_teleop_generate_messages_eus"
 	@echo "... turtlebot_teleop_generate_messages_py"
+	@echo "... turtlebot_teleop_generate_messages_nodejs"
 	@echo "... turtlebot_teleop_geneus"
 	@echo "... turtlebot_teleop_genlisp"
 	@echo "... turtlebot_teleop_gennodejs"
