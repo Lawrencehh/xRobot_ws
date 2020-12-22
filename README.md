@@ -32,9 +32,14 @@ roslaunch jyr meizhong_joystick_teleop.launch
 $ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=38400
 ```
 
+GPS信号话题：/fix
+
+
 ## IMU和地磁场模块读取功能包 imu_driver
 参考：https://github.com/GuoLindong/imu_driver
 ```
 #使用方法
 roslaunch imu_driver imu_node.launch
 ```
+地磁信号话题： /mag
+IMU信号话题： /imu
