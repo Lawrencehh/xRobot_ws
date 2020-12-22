@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/xRobot_ws/install
+
+Name: imu_driver
+Description: Description of imu_driver
+Version: 0.1.0
+Cflags: -I${prefix}/include
+Libs: -L${prefix}/lib 
+Requires: serial roscpp sensor_msgs tf message_runtime

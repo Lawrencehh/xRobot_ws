@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveAction.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveAction.h
 string
 -
 vector
@@ -28,7 +28,7 @@ turtlebot_actions/TurtlebotMoveActionResult.h
 turtlebot_actions/TurtlebotMoveActionFeedback.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionFeedback.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionFeedback.h
 string
 -
 vector
@@ -50,7 +50,7 @@ actionlib_msgs/GoalStatus.h
 turtlebot_actions/TurtlebotMoveFeedback.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionGoal.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionGoal.h
 string
 -
 vector
@@ -72,7 +72,7 @@ actionlib_msgs/GoalID.h
 turtlebot_actions/TurtlebotMoveGoal.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionResult.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveActionResult.h
 string
 -
 vector
@@ -94,7 +94,7 @@ actionlib_msgs/GoalStatus.h
 turtlebot_actions/TurtlebotMoveResult.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveFeedback.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveFeedback.h
 string
 -
 vector
@@ -110,7 +110,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveGoal.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveGoal.h
 string
 -
 vector
@@ -126,7 +126,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveResult.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/TurtlebotMoveResult.h
 string
 -
 vector
@@ -142,7 +142,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_move_action_server.cpp
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_move_action_server.cpp
 ros/ros.h
 -
 std_msgs/Float32.h

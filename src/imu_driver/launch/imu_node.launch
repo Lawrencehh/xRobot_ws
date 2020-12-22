@@ -1,0 +1,10 @@
+<!-- imu_node launch file-->
+<launch>
+  <node pkg="imu_driver" type="imu_node" name="imu_node" output="screen" >
+		<!-- <param name="baudrate" type="int" value="115200" /> -->
+		<param name="baudrate" type="int" value="9600" />
+		<!-- <param name="port" type="string" value="/dev/ttyUSB0" /> -->
+		<param name="port" type="string" value="/dev/ttyUSB1" />
+		<param name="looprate" type="int" value="100" />
+	</node>
+</launch>
