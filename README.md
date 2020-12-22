@@ -23,3 +23,18 @@ roslaunch xqserial_server xqserial.launch
 roslaunch jyr meizhong_joystick_teleop.launch
 
 ```
+
+## GPS模块读取功能包 nmea_navsat_driver
+参考：http://wiki.ros.org/nmea_navsat_driver
+
+```
+#使用方法（需要运行roscore）
+$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=38400
+```
+
+## IMU和地磁场模块读取功能包 imu_driver
+参考：https://github.com/GuoLindong/imu_driver
+```
+#使用方法
+roslaunch imu_driver imu_node.launch
+```
