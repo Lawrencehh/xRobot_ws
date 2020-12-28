@@ -2,7 +2,7 @@
 xx机器人项目ROS代码
 
 ## 主从机设置
-https://blog.csdn.net/endianzhijia/article/details/88869271
+https://blog.csdn.net/zhanghm1995/article/details/106781954
 
 ## 关于罗技手柄的键位设置及上下位机文档见：
 - https://shimo.im/docs/B5Wv6rrQyQICc7ft/ 《遥操控手柄指令重构-1203》，可复制链接后用石墨文档 App 或小程序打开
