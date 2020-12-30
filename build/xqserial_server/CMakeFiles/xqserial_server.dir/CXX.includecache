@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,25 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
-string
--
-vector
--
-map
--
-ros/types.h
--
-ros/serialization.h
--
-ros/builtin_message_traits.h
--
-ros/message_operations.h
--
-
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp
 AsyncSerial.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 string
 -
 algorithm
@@ -48,7 +32,7 @@ termios.h
 unistd.h
 -
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 vector
 -
 boost/asio.hpp
@@ -64,33 +48,33 @@ boost/function.hpp
 boost/shared_array.hpp
 -
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.cpp
+/home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.cpp
 DiffDriverController.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
+/home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
 time.h
 -
 turtlebot_teleop/twist_hh.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/turtlebot_teleop/twist_hh.h
+/home/andy/xRobot_ws/src/xqserial_server/src/turtlebot_teleop/twist_hh.h
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
+/home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
 ros/ros.h
 -
 StatusPublisher.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
+/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
 AsyncSerial.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 std_msgs/Bool.h
 -
 turtlebot_teleop/twist_hh.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/turtlebot_teleop/twist_hh.h
+/home/andy/xRobot_ws/src/xqserial_server/src/turtlebot_teleop/twist_hh.h
 geometry_msgs/Twist.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/geometry_msgs/Twist.h
+/home/andy/xRobot_ws/src/xqserial_server/src/geometry_msgs/Twist.h
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.cpp
+/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.cpp
 StatusPublisher.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
+/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
 AsyncSerial.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 memory.h
 -
 math.h
@@ -100,9 +84,9 @@ stdlib.h
 iostream
 -
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
+/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
 ros/ros.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/ros/ros.h
+/home/andy/xRobot_ws/src/xqserial_server/src/ros/ros.h
 boost/thread.hpp
 -
 boost/assign/list_of.hpp
@@ -110,19 +94,19 @@ boost/assign/list_of.hpp
 algorithm
 -
 geometry_msgs/Pose2D.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/geometry_msgs/Pose2D.h
+/home/andy/xRobot_ws/src/xqserial_server/src/geometry_msgs/Pose2D.h
 geometry_msgs/Twist.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/geometry_msgs/Twist.h
+/home/andy/xRobot_ws/src/xqserial_server/src/geometry_msgs/Twist.h
 geometry_msgs/Vector3.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/geometry_msgs/Vector3.h
+/home/andy/xRobot_ws/src/xqserial_server/src/geometry_msgs/Vector3.h
 nav_msgs/Odometry.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/nav_msgs/Odometry.h
+/home/andy/xRobot_ws/src/xqserial_server/src/nav_msgs/Odometry.h
 std_msgs/Int32.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/std_msgs/Int32.h
+/home/andy/xRobot_ws/src/xqserial_server/src/std_msgs/Int32.h
 std_msgs/Float64.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/std_msgs/Float64.h
+/home/andy/xRobot_ws/src/xqserial_server/src/std_msgs/Float64.h
 tf/transform_broadcaster.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/tf/transform_broadcaster.h
+/home/andy/xRobot_ws/src/xqserial_server/src/tf/transform_broadcaster.h
 sensor_msgs/point_cloud2_iterator.h
 -
 sensor_msgs/PointField.h
@@ -130,9 +114,9 @@ sensor_msgs/PointField.h
 sensor_msgs/Imu.h
 -
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/main.cpp
+/home/andy/xRobot_ws/src/xqserial_server/src/main.cpp
 AsyncSerial.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
+/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 iostream
 -
 boost/thread.hpp
@@ -142,9 +126,9 @@ ros/ros.h
 ros/package.h
 -
 DiffDriverController.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
+/home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
 StatusPublisher.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
+/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
 
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string

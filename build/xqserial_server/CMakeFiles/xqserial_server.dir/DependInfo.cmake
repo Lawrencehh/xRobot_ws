@@ -4,10 +4,10 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp" "/home/ubuntu/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/AsyncSerial.cpp.o"
-  "/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.cpp" "/home/ubuntu/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o"
-  "/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.cpp" "/home/ubuntu/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/StatusPublisher.cpp.o"
-  "/home/ubuntu/xRobot_ws/src/xqserial_server/src/main.cpp" "/home/ubuntu/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o"
+  "/home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp" "/home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/AsyncSerial.cpp.o"
+  "/home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.cpp" "/home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o"
+  "/home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.cpp" "/home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/StatusPublisher.cpp.o"
+  "/home/andy/xRobot_ws/src/xqserial_server/src/main.cpp" "/home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -20,8 +20,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/ubuntu/xRobot_ws/src/xqserial_server/include"
-  "/home/ubuntu/xRobot_ws/devel/include"
+  "/home/andy/xRobot_ws/src/xqserial_server/include"
+  "/home/andy/xRobot_ws/devel/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

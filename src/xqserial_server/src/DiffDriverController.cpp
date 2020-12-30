@@ -42,7 +42,7 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
 {
     if(xq_status->get_status()==0) return;//底层还在初始化
 
-    char cmd_str[25]={(char)0xcd,(char)0xeb,(char)0x13,(char)0x0d, (char)0x66, //包头和有效指令数, 0x13表示19个有效字符 最后一个字符是'f'表示控制功能电机
+    char cmd_str[25]={(char)0xcd,(char)0xeb,(char)0xd7,(char)0x13, (char)0x66, //包头和有效指令数, 0x13表示19个有效字符 最后一个字符是'f'表示控制功能电机
      (char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,             //直线模组,大臂推杆,小臂推杆控制
      (char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,             //斜板角度,斜板抽屉,伸缩柜
      (char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,(char)0x00,             //输送带,摄像头旋转，摄像头俯仰

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h"
   "CMakeFiles/turtlebot_teleop_generate_messages_cpp"
+  "/home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h"
 )
 
 # Per-language clean rules from dependency scanning.
