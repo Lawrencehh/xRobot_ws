@@ -32,7 +32,7 @@ roslaunch jyr meizhong_joystick_teleop.launch
 
 ```
 #使用方法（需要运行roscore）
-$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=38400
+$ rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=115200
 ```
 
 - GPS信号话题：/fix
