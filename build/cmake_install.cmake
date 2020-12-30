@@ -143,6 +143,7 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_navigation/cmake_install.cmake")
   include("/home/andy/xRobot_ws/build/turtlebot/turtlebot_teleop/cmake_install.cmake")
   include("/home/andy/xRobot_ws/build/turtlebot/turtlebot_description/cmake_install.cmake")
+  include("/home/andy/xRobot_ws/build/communication_test/cmake_install.cmake")
   include("/home/andy/xRobot_ws/build/xqserial_server/cmake_install.cmake")
 
 endif()

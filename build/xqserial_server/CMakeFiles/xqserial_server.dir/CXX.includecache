@@ -6,6 +6,22 @@
 
 #IncludeRegexTransform: 
 
+/home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
+string
+-
+vector
+-
+map
+-
+ros/types.h
+-
+ros/serialization.h
+-
+ros/builtin_message_traits.h
+-
+ros/message_operations.h
+-
+
 /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp
 AsyncSerial.h
 /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h

@@ -317,6 +317,14 @@
 /home/andy/xRobot_ws/build/turtlebot/turtlebot_description/CMakeFiles/_run_tests_turtlebot_description_gtest.dir
 /home/andy/xRobot_ws/build/turtlebot/turtlebot_description/CMakeFiles/install/strip.dir
 /home/andy/xRobot_ws/build/turtlebot/turtlebot_description/CMakeFiles/install/local.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/install.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/list_install_components.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/rebuild_cache.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/send_data_serialPort.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/install/strip.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/install/local.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/edit_cache.dir
+/home/andy/xRobot_ws/build/communication_test/CMakeFiles/test.dir
 /home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/rebuild_cache.dir
 /home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/install.dir
 /home/andy/xRobot_ws/build/xqserial_server/CMakeFiles/list_install_components.dir

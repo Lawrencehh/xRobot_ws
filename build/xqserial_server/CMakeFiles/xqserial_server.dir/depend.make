@@ -4,6 +4,7 @@
 xqserial_server/CMakeFiles/xqserial_server.dir/src/AsyncSerial.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.cpp
 xqserial_server/CMakeFiles/xqserial_server.dir/src/AsyncSerial.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 
+xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o: /home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.cpp
 xqserial_server/CMakeFiles/xqserial_server.dir/src/DiffDriverController.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
@@ -232,6 +233,7 @@ xqserial_server/CMakeFiles/xqserial_server.dir/src/StatusPublisher.cpp.o: /opt/r
 xqserial_server/CMakeFiles/xqserial_server.dir/src/StatusPublisher.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcDecl.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/StatusPublisher.cpp.o: /opt/ros/kinetic/include/xmlrpcpp/XmlRpcValue.h
 
+xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o: /home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
 xqserial_server/CMakeFiles/xqserial_server.dir/src/main.cpp.o: /home/andy/xRobot_ws/src/xqserial_server/src/StatusPublisher.h

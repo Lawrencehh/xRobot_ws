@@ -2493,6 +2493,19 @@ _run_tests_turtlebot_description_gtest/fast:
 .PHONY : _run_tests_turtlebot_description_gtest/fast
 
 #=============================================================================
+# Target rules for targets named send_data_serialPort
+
+# Build rule for target.
+send_data_serialPort: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 send_data_serialPort
+.PHONY : send_data_serialPort
+
+# fast build rule for target.
+send_data_serialPort/fast:
+	$(MAKE) -f communication_test/CMakeFiles/send_data_serialPort.dir/build.make communication_test/CMakeFiles/send_data_serialPort.dir/build
+.PHONY : send_data_serialPort/fast
+
+#=============================================================================
 # Target rules for targets named xqserial_server
 
 # Build rule for target.
@@ -2697,6 +2710,7 @@ help:
 	@echo "... _run_tests_turtlebot_description_gtest_turtlebot_description_test_urdf"
 	@echo "... clean_test_results_turtlebot_description"
 	@echo "... _run_tests_turtlebot_description_gtest"
+	@echo "... send_data_serialPort"
 	@echo "... xqserial_server"
 .PHONY : help
 

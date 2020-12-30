@@ -13,6 +13,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "catkin/catkin_generated/version/package.cmake"
   "catkin_generated/installspace/_setup_util.py"
   "catkin_generated/order_packages.cmake"
+  "communication_test/catkin_generated/ordered_paths.cmake"
+  "communication_test/catkin_generated/package.cmake"
   "imu_driver/catkin_generated/ordered_paths.cmake"
   "imu_driver/catkin_generated/package.cmake"
   "joystick_drivers/joy/catkin_generated/ordered_paths.cmake"
@@ -61,6 +63,8 @@ set(CMAKE_MAKEFILE_DEPENDS
   "/home/andy/xRobot_ws/devel/share/turtlebot_teleop/cmake/turtlebot_teleopConfig-version.cmake"
   "/home/andy/xRobot_ws/devel/share/turtlebot_teleop/cmake/turtlebot_teleopConfig.cmake"
   "/home/andy/xRobot_ws/src/CMakeLists.txt"
+  "/home/andy/xRobot_ws/src/communication_test/CMakeLists.txt"
+  "/home/andy/xRobot_ws/src/communication_test/package.xml"
   "/home/andy/xRobot_ws/src/imu_driver/CMakeLists.txt"
   "/home/andy/xRobot_ws/src/imu_driver/package.xml"
   "/home/andy/xRobot_ws/src/joystick_drivers/joy/CMakeLists.txt"
@@ -416,6 +420,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
   "turtlebot_apps/turtlebot_navigation/CMakeFiles/CMakeDirectoryInformation.cmake"
   "turtlebot/turtlebot_teleop/CMakeFiles/CMakeDirectoryInformation.cmake"
   "turtlebot/turtlebot_description/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "communication_test/CMakeFiles/CMakeDirectoryInformation.cmake"
   "xqserial_server/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
@@ -600,5 +605,6 @@ set(CMAKE_DEPEND_INFO_FILES
   "turtlebot/turtlebot_description/CMakeFiles/_run_tests_turtlebot_description_gtest_turtlebot_description_test_urdf.dir/DependInfo.cmake"
   "turtlebot/turtlebot_description/CMakeFiles/clean_test_results_turtlebot_description.dir/DependInfo.cmake"
   "turtlebot/turtlebot_description/CMakeFiles/_run_tests_turtlebot_description_gtest.dir/DependInfo.cmake"
+  "communication_test/CMakeFiles/send_data_serialPort.dir/DependInfo.cmake"
   "xqserial_server/CMakeFiles/xqserial_server.dir/DependInfo.cmake"
   )
