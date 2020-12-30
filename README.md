@@ -52,4 +52,6 @@ roslaunch imu_driver imu_node.launch
 #使用方法
 rosrun communication_test send_data_serialPort
 ```
-注意问题：需要查看所接入的串口号为 /dev/ttyUSB1
+- 注意问题：需要查看所接入的串口号为 /dev/ttyUSB1
+- 参考链接：https://blog.csdn.net/weixin_41783322/article/details/108450454
+
