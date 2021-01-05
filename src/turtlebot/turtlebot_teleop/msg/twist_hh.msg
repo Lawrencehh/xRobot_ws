@@ -13,3 +13,5 @@ int8 flat_drawer
 uint8 belt
 int8 camera_angle
 int8 camera_tilt
+
+int8 arm_auto
