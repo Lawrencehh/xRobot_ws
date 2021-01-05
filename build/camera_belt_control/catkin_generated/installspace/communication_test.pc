@@ -1,8 +1,0 @@
-prefix=/home/andy/xRobot_ws/install
-
-Name: communication_test
-Description: Description of communication_test
-Version: 0.0.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: 

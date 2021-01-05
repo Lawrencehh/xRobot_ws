@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/andy/xRobot_ws/src/jyr/src/logitech.cpp
+/home/ubuntu/xRobot_ws/src/jyr/src/logitech.cpp
 ros/ros.h
 -
 geometry_msgs/Twist.h
