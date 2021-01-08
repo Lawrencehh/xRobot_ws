@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/lib/ps3joy/sixpair"
-  "/home/ubuntu/xRobot_ws/devel/lib/ps3joy/sixpair.pdb"
   "CMakeFiles/sixpair.dir/src/sixpair.c.o"
+  "/home/andy/xRobot_ws/devel/lib/ps3joy/sixpair.pdb"
+  "/home/andy/xRobot_ws/devel/lib/ps3joy/sixpair"
 )
 
 # Per-language clean rules from dependency scanning.

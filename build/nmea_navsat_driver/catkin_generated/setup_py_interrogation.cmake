@@ -1,4 +1,3 @@
-set(nmea_navsat_driver_SETUP_PY_SETUP_MODULE "distutils.core")
 set(nmea_navsat_driver_SETUP_PY_VERSION "0.5.1")
 set(nmea_navsat_driver_SETUP_PY_SCRIPTS "")
 set(nmea_navsat_driver_SETUP_PY_PACKAGES "libnmea_navsat_driver")

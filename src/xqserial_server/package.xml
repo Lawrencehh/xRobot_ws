@@ -51,4 +51,6 @@
   </export>
 <build_depend>turtlebot_teleop</build_depend>
 <run_depend>turtlebot_teleop</run_depend>
+<build_depend>communication_test</build_depend>
+<run_depend>communication_test</run_depend>
 </package>

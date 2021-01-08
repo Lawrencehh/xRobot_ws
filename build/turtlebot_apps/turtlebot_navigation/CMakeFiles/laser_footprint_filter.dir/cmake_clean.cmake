@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_navigation/laser_footprint_filter"
-  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_navigation/laser_footprint_filter.pdb"
   "CMakeFiles/laser_footprint_filter.dir/src/laser_footprint_filter.cpp.o"
+  "/home/andy/xRobot_ws/devel/lib/turtlebot_navigation/laser_footprint_filter.pdb"
+  "/home/andy/xRobot_ws/devel/lib/turtlebot_navigation/laser_footprint_filter"
 )
 
 # Per-language clean rules from dependency scanning.

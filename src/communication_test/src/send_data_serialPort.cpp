@@ -28,7 +28,7 @@ void testCallback(const turtlebot_teleop::twist_hh::ConstPtr & msg)
      0x00,0x00,0x01};                                //摄像头停止
 
      unsigned char belt_R[8]={0x03,0x06,0x00,0x00, //
-     0x0f,0xa0,0x8d,0xa0};                                //输送带旋转
+     0x1b,0x58,0x83,0x22};                                //输送带旋转
 
       unsigned char belt_stop[8]={0x03,0x06,0x00,0x00, //
      0x00,0x00,0x88,0x28};                                //输送带停止

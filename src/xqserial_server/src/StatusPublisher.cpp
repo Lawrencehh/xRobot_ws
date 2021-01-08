@@ -46,13 +46,8 @@ StatusPublisher::StatusPublisher()
    mPowerPub = mNH.advertise<std_msgs::Float64>("xqserial_server/Power", 1, true);
 
   //直线模组编码器及六个霍尔传感器数据话题发布
-   mEncorder_linearModulePub= mNH.advertise<std_msgs::Int32>("xqserial_server/Encoder_linearModule",1,true);
-   mHall_putter_1_leftPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_1_left",1,true);
-   mHall_putter_1_rightPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_1_right",1,true);
-   mHall_putter_2_leftPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_2_left",1,true);
-   mHall_putter_2_rightPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_2_right",1,true);
-   mHall_putter_3_leftPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_3_left",1,true);
-   mHall_putter_3_rightPub= mNH.advertise<std_msgs::Int32>("xqserial_server/Hall_putter_3_right",1,true);
+  mFunc_motors_feedbackPub=mNH.advertise<communication_test::func_motors_feedback>("xqserial_server/func_motors_feedback",1,true);
+
   //  mOdomPub = mNH.advertise<nav_msgs::Odometry>("xqserial_server/Odom", 1, true);
    //pub_barpoint_cloud_ = mNH.advertise<PointCloud>("kinect/barpoints", 1, true);
    //pub_clearpoint_cloud_ = mNH.advertise<PointCloud>("kinect/clearpoints", 1, true);
@@ -223,27 +218,20 @@ void StatusPublisher::Refresh()
       CarPower.data=car_status.power;
       mPowerPub.publish(CarPower);
 
+
+      //反馈信号集成
       //直线模组编码器值发布
-      Encorder_linearModule.data=car_status.encoder_linearModule;
-      mEncorder_linearModulePub.publish(Encorder_linearModule);
-
       //大臂推杆霍尔传感器话题发布
-      Hall_putter_1_left.data=car_status.hall_l_1;
-      Hall_putter_1_right.data=car_status.hall_r_1;
-      mHall_putter_1_leftPub.publish(Hall_putter_1_left);
-      mHall_putter_1_rightPub.publish(Hall_putter_1_right);
-
       //小臂推杆霍尔传感器话题发布
-      Hall_putter_2_left.data=car_status.hall_l_2;
-      Hall_putter_2_right.data=car_status.hall_r_2;
-      mHall_putter_2_leftPub.publish(Hall_putter_2_left);
-      mHall_putter_2_rightPub.publish(Hall_putter_2_right);    
-
-      //斜板推杆霍尔传感器话题发布  
-      Hall_putter_3_left.data=car_status.hall_l_3;
-      Hall_putter_3_right.data=car_status.hall_r_3;
-      mHall_putter_3_leftPub.publish(Hall_putter_3_left);
-      mHall_putter_3_rightPub.publish(Hall_putter_3_right);
+      //斜板推杆霍尔传感器话题发布 
+      func_motors_feedback.Encorder_linearModule=car_status.encoder_linearModule;
+      func_motors_feedback.Hall_putter_1_left=car_status.hall_l_1;
+      func_motors_feedback.Hall_putter_1_right=car_status.hall_r_1;
+      func_motors_feedback.Hall_putter_2_left=car_status.hall_l_2;
+      func_motors_feedback.Hall_putter_2_right=car_status.hall_r_2;
+      func_motors_feedback.Hall_putter_3_left=car_status.hall_l_3;
+      func_motors_feedback.Hall_putter_3_right=car_status.hall_r_3;
+      mFunc_motors_feedbackPub.publish(func_motors_feedback);
 
 
         //flag

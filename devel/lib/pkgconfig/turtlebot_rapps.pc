@@ -1,4 +1,4 @@
-prefix=/home/ubuntu/xRobot_ws/devel
+prefix=/home/andy/xRobot_ws/devel
 
 Name: turtlebot_rapps
 Description: Description of turtlebot_rapps

@@ -7,7 +7,8 @@ project(communication_test)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS roscpp rospy serial std_msgs turtlebot_teleop)
+find_package(catkin REQUIRED COMPONENTS
+  message_generation roscpp rospy serial std_msgs turtlebot_teleop)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -43,11 +44,9 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy serial std_msgs turtlebot_t
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(FILES
+  func_motors_feedback.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -64,10 +63,9 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy serial std_msgs turtlebot_t
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(DEPENDENCIES
+  std_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -99,6 +97,8 @@ find_package(catkin REQUIRED COMPONENTS roscpp rospy serial std_msgs turtlebot_t
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
+  CATKIN_DEPENDS
+  message_runtime
 #  INCLUDE_DIRS include
 #  LIBRARIES communication_test
 #  CATKIN_DEPENDS other_catkin_pkg
@@ -216,5 +216,13 @@ add_executable(send_data_serialPort
 )
 add_dependencies(send_data_serialPort  ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(send_data_serialPort 
+  ${catkin_LIBRARIES}
+)
+
+add_executable(arm_auto
+  src/arm_auto.cpp
+)
+add_dependencies(arm_auto ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(arm_auto
   ${catkin_LIBRARIES}
 )

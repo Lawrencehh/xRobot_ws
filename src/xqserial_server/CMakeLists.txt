@@ -4,7 +4,7 @@ project(xqserial_server)
 ## Find catkin macros and libraries
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS nav_msgs roscpp rospy sensor_msgs std_msgs geometry_msgs tf turtlebot_teleop)
+find_package(catkin REQUIRED COMPONENTS nav_msgs roscpp rospy sensor_msgs std_msgs geometry_msgs tf turtlebot_teleop communication_test)
 
 
 ## System dependencies are found with CMake's conventions

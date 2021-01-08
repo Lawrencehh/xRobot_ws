@@ -56,4 +56,7 @@
 <build_depend>turtlebot_teleop</build_depend>
 <build_export_depend>turtlebot_teleop</build_export_depend>
 <exec_depend>turtlebot_teleop</exec_depend>
+<build_depend>message_generation</build_depend>
+<build_export_depend>message_generation</build_export_depend>
+<exec_depend>message_runtime</exec_depend>
 </package>

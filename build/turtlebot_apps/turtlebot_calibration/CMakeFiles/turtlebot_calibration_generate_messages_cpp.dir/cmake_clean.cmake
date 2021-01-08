@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/include/turtlebot_calibration/ScanAngle.h"
   "CMakeFiles/turtlebot_calibration_generate_messages_cpp"
+  "/home/andy/xRobot_ws/devel/include/turtlebot_calibration/ScanAngle.h"
 )
 
 # Per-language clean rules from dependency scanning.

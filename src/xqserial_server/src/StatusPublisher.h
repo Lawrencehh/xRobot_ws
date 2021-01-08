@@ -16,6 +16,9 @@
 #include <sensor_msgs/PointField.h>
 #include <sensor_msgs/Imu.h>
 
+#include "communication_test/func_motors_feedback.h"
+
+
 #define PI 3.14159265
 
 namespace xqserial_server
@@ -70,13 +73,9 @@ private:
     std_msgs::Float64 CarPower;// 小车电池信息
     nav_msgs::Odometry CarOdom;// 小车位置和速度信息
 
-    std_msgs::Int32 Encorder_linearModule;//直线模组编码器
-    std_msgs::Int32 Hall_putter_1_left;     //左侧大臂推杆霍尔传感器
-    std_msgs::Int32 Hall_putter_1_right;    //右侧大臂推杆霍尔传感器
-    std_msgs::Int32 Hall_putter_2_left;     //左侧小臂推杆霍尔传感器
-    std_msgs::Int32 Hall_putter_2_right;    //右侧小臂推杆霍尔传感器
-    std_msgs::Int32 Hall_putter_3_left;     //左侧斜板推杆霍尔传感器
-    std_msgs::Int32 Hall_putter_3_right;    //右侧斜板推杆霍尔传感器
+
+
+    communication_test::func_motors_feedback func_motors_feedback; //反馈信号集成
 
     ros::NodeHandle mNH;
     ros::Publisher mPose2DPub;
@@ -87,14 +86,8 @@ private:
     ros::Publisher pub_barpoint_cloud_;
     ros::Publisher pub_clearpoint_cloud_;
 
-    ros::Publisher mEncorder_linearModulePub;   //直线模组编码器话题发布
-    ros::Publisher mHall_putter_1_leftPub;      //左侧大臂推杆霍尔传感器话题发布
-    ros::Publisher mHall_putter_1_rightPub;     //右侧大臂推杆霍尔传感器话题发布
-    ros::Publisher mHall_putter_2_leftPub;      //左侧小臂推杆霍尔传感器话题发布
-    ros::Publisher mHall_putter_2_rightPub;     //右侧小臂推杆霍尔传感器话题发布
-    ros::Publisher mHall_putter_3_leftPub;      //左侧斜板推杆霍尔传感器话题发布
-    ros::Publisher mHall_putter_3_rightPub;     //右侧斜板推杆霍尔传感器话题发布
-
+    ros::Publisher mFunc_motors_feedbackPub;    //反馈信号集成
+    
 
 
     bool mbUpdated;

@@ -91,6 +91,7 @@ private:
   bool deadman_func_pressed_;
   bool zero_twist_published_;
   bool zero_func_published_;
+  bool arm_auto_enabled_;
   ros::Timer timer_;
 
 };
@@ -198,6 +199,14 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   func_motors.arm_auto =joy->buttons[arm_auto_axis_]; //自动轨迹的使能
 
 
+  //给bool量自动轨迹规划赋值
+  if(joy->buttons[arm_auto_axis_] == 1)
+  arm_auto_enabled_ = true;
+
+  if(joy->buttons[arm_auto_axis_] == 0)
+  arm_auto_enabled_ = false;
+
+
 
   
 
@@ -214,26 +223,27 @@ void TurtlebotTeleop::publish()
 
   if (deadman_pressed_)
   {
+    if(arm_auto_enabled_ ==false)
     vel_pub_.publish(last_published_);
-    // func_motors_pub_.publish(last_pubulished_add);    //发布功能电机控制话题
+    
     zero_twist_published_=false;
   }
   else if(!deadman_pressed_ && !zero_twist_published_)
   {
     vel_pub_.publish(*new geometry_msgs::Twist());
-    // func_motors_pub_.publish(*new turtlebot_teleop::twist_hh());    //第一次时发布空话题
+    
     zero_twist_published_=true;
   }
 
     if (deadman_func_pressed_)
   {
-    // vel_pub_.publish(last_published_);
+    if(arm_auto_enabled_ ==false)
     func_motors_pub_.publish(last_pubulished_add);    //发布功能电机控制话题
     zero_func_published_=false;
   }
   else if(!deadman_func_pressed_ && !zero_func_published_)
   {
-    // vel_pub_.publish(*new geometry_msgs::Twist());
+    
     func_motors_pub_.publish(*new turtlebot_teleop::twist_hh());    //第一次时发布空话题
     zero_func_published_=true;
   }
