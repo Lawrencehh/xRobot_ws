@@ -90,22 +90,6 @@ sensor_msgs/PointField.h
 sensor_msgs/Imu.h
 -
 
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/main.cpp
-AsyncSerial.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/AsyncSerial.h
-iostream
--
-boost/thread.hpp
--
-ros/ros.h
--
-ros/package.h
--
-DiffDriverController.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/DiffDriverController.h
-StatusPublisher.h
-/home/ubuntu/xRobot_ws/src/xqserial_server/src/StatusPublisher.h
-
 /opt/ros/kinetic/include/geometry_msgs/Point.h
 string
 -
@@ -680,16 +664,6 @@ common.h
 boost/bind.hpp
 -
 xmlrpcpp/XmlRpcValue.h
--
-
-/opt/ros/kinetic/include/ros/package.h
-string
--
-utility
--
-vector
--
-map
 -
 
 /opt/ros/kinetic/include/ros/param.h
