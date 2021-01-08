@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
+  "/home/ubuntu/xRobot_ws/devel/share/gennodejs/ros/turtlebot_teleop/msg/twist_hh.js"
   "CMakeFiles/turtlebot_teleop_generate_messages_nodejs"
-  "/home/andy/xRobot_ws/devel/share/gennodejs/ros/turtlebot_teleop/msg/twist_hh.js"
 )
 
 # Per-language clean rules from dependency scanning.

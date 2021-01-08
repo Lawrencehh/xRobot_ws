@@ -51,6 +51,8 @@ private:
   int linear_x, angular_, deadman_axis_; //履带底盘的按键设置
   int deadman_func_axis_;      //功能电机的使能
 
+  int arm_auto_axis_;    //自动轨迹规划使能
+
  
 
   int linear_module;  //线性模组电机前进后退的按键设置
@@ -95,10 +97,13 @@ private:
 
 TurtlebotTeleop::TurtlebotTeleop():
   ph_("~"),
-  linear_x(1),
+  linear_x(1),    //将罗技左摇杆的前后设置为前行变量
   angular_(0),    //将罗技左摇杆的左右设置为旋转变量
   deadman_axis_(10), //履带电机使能键,这里设置的罗技的左摇杆按键
   deadman_func_axis_(6), //功能电机使能键,这里设置的罗技的LB键
+
+  arm_auto_axis_(11), //机械臂轨迹自动执行指令，这里设置罗技的右侧摇杆的按键
+
 
   
 
@@ -128,6 +133,8 @@ TurtlebotTeleop::TurtlebotTeleop():
   ph_.param("axis_angular", angular_, angular_);
   ph_.param("axis_deadman", deadman_axis_, deadman_axis_);
   ph_.param("axis_func_deadman", deadman_func_axis_, deadman_func_axis_);
+
+  ph_.param("axis_auto_deadman", arm_auto_axis_, arm_auto_axis_);
 
   ph_.param("scale_angular", a_scale_, a_scale_);
   ph_.param("scale_linear_x", l_scale_x, l_scale_x);
@@ -188,6 +195,7 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   func_motors.belt = joy->buttons[belt]; //输送带动作控制
   func_motors.camera_angle = joy->axes[camera_angle];  //摄像头的旋转
   func_motors.camera_tilt = joy->buttons[camera_tilt1] - joy->buttons[camera_tilt2]; //摄像头俯仰角控制
+  func_motors.arm_auto =joy->buttons[arm_auto_axis_]; //自动轨迹的使能
 
 
 

@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialAction.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialAction.h
 string
 -
 vector
@@ -28,7 +28,7 @@ turtlebot_actions/FindFiducialActionResult.h
 turtlebot_actions/FindFiducialActionFeedback.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionFeedback.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionFeedback.h
 string
 -
 vector
@@ -50,7 +50,7 @@ actionlib_msgs/GoalStatus.h
 turtlebot_actions/FindFiducialFeedback.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionGoal.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionGoal.h
 string
 -
 vector
@@ -72,7 +72,7 @@ actionlib_msgs/GoalID.h
 turtlebot_actions/FindFiducialGoal.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionResult.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialActionResult.h
 string
 -
 vector
@@ -94,7 +94,7 @@ actionlib_msgs/GoalStatus.h
 turtlebot_actions/FindFiducialResult.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialFeedback.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialFeedback.h
 string
 -
 vector
@@ -110,7 +110,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialGoal.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialGoal.h
 string
 -
 vector
@@ -126,7 +126,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_actions/FindFiducialResult.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions/FindFiducialResult.h
 string
 -
 vector
@@ -144,7 +144,7 @@ ros/message_operations.h
 geometry_msgs/PoseStamped.h
 -
 
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include/turtlebot_actions/detect_calibration_pattern.h
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include/turtlebot_actions/detect_calibration_pattern.h
 opencv2/core/core.hpp
 -
 opencv2/calib3d/calib3d.hpp
@@ -166,11 +166,11 @@ iostream
 stdexcept
 -
 
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/detect_calibration_pattern.cpp
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/detect_calibration_pattern.cpp
 turtlebot_actions/detect_calibration_pattern.h
 -
 
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/find_fiducial_pose.cpp
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/find_fiducial_pose.cpp
 ros/ros.h
 -
 actionlib/server/simple_action_server.h
@@ -196,9 +196,9 @@ tf/tf.h
 tf/transform_broadcaster.h
 -
 turtlebot_actions/FindFiducialAction.h
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_actions/FindFiducialAction.h
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_actions/FindFiducialAction.h
 turtlebot_actions/detect_calibration_pattern.h
-/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_actions/detect_calibration_pattern.h
+/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_actions/detect_calibration_pattern.h
 
 /opt/ros/kinetic/include/actionlib/action_definition.h
 
@@ -303,6 +303,8 @@ list
 -
 string
 -
+ros/ros.h
+-
 
 /opt/ros/kinetic/include/actionlib/server/handle_tracker_deleter.h
 actionlib/action_definition.h
@@ -347,6 +349,8 @@ list
 -
 string
 -
+ros/console.h
+/opt/ros/kinetic/include/actionlib/server/ros/console.h
 
 /opt/ros/kinetic/include/actionlib/server/simple_action_server.h
 boost/thread/condition.hpp
@@ -363,6 +367,8 @@ actionlib/server/simple_action_server_imp.h
 -
 
 /opt/ros/kinetic/include/actionlib/server/simple_action_server_imp.h
+ros/ros.h
+-
 string
 -
 
@@ -4144,27 +4150,13 @@ math_constants.h
 
 /usr/include/eigen3/Eigen/src/Core/util/XprHelper.h
 
-/usr/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h
-./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/././HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h
-./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/././HessenbergDecomposition.h
-
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
-
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexEigenSolver.h
 ./ComplexSchur.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./ComplexSchur.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur.h
 ./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/ComplexSchur_MKL.h
 Eigen/src/Core/util/MKL_support.h
@@ -4172,15 +4164,15 @@ Eigen/src/Core/util/MKL_support.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/EigenSolver.h
 ./RealSchur.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealSchur.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedEigenSolver.h
 ./RealQZ.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./RealQZ.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/RealQZ.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/GeneralizedSelfAdjointEigenSolver.h
 ./Tridiagonalization.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
@@ -4190,7 +4182,7 @@ Eigen/src/Core/util/MKL_support.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur.h
 ./HessenbergDecomposition.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./HessenbergDecomposition.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/HessenbergDecomposition.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/RealSchur_MKL.h
 Eigen/src/Core/util/MKL_support.h
@@ -4198,7 +4190,7 @@ Eigen/src/Core/util/MKL_support.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver.h
 ./Tridiagonalization.h
-/usr/include/eigen3/Eigen/src/Eigenvalues/./Tridiagonalization.h
+/usr/include/eigen3/Eigen/src/Eigenvalues/Tridiagonalization.h
 
 /usr/include/eigen3/Eigen/src/Eigenvalues/SelfAdjointEigenSolver_MKL.h
 Eigen/src/Core/util/MKL_support.h

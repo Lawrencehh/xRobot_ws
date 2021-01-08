@@ -14,7 +14,7 @@
 
 (defclass turtlebot_teleop::twist_hh
   :super ros::object
-  :slots (_linear_module _putter_1 _putter_2 _oblique_angle _oblique_drawer _flat_drawer _belt _camera_angle _camera_tilt ))
+  :slots (_linear_module _putter_1 _putter_2 _oblique_angle _oblique_drawer _flat_drawer _belt _camera_angle _camera_tilt _arm_auto ))
 
 (defmethod turtlebot_teleop::twist_hh
   (:init
@@ -28,6 +28,7 @@
     ((:belt __belt) 0)
     ((:camera_angle __camera_angle) 0)
     ((:camera_tilt __camera_tilt) 0)
+    ((:arm_auto __arm_auto) 0)
     )
    (send-super :init)
    (setq _linear_module (float __linear_module))
@@ -39,6 +40,7 @@
    (setq _belt (round __belt))
    (setq _camera_angle (round __camera_angle))
    (setq _camera_tilt (round __camera_tilt))
+   (setq _arm_auto (round __arm_auto))
    self)
   (:linear_module
    (&optional __linear_module)
@@ -67,6 +69,9 @@
   (:camera_tilt
    (&optional __camera_tilt)
    (if __camera_tilt (setq _camera_tilt __camera_tilt)) _camera_tilt)
+  (:arm_auto
+   (&optional __arm_auto)
+   (if __arm_auto (setq _arm_auto __arm_auto)) _arm_auto)
   (:serialization-length
    ()
    (+
@@ -87,6 +92,8 @@
     ;; int8 _camera_angle
     1
     ;; int8 _camera_tilt
+    1
+    ;; int8 _arm_auto
     1
     ))
   (:serialize
@@ -111,6 +118,8 @@
        (write-byte _camera_angle s)
      ;; int8 _camera_tilt
        (write-byte _camera_tilt s)
+     ;; int8 _arm_auto
+       (write-byte _arm_auto s)
      ;;
      (if (null strm) (get-output-stream-string s))))
   (:deserialize
@@ -138,11 +147,14 @@
    ;; int8 _camera_tilt
      (setq _camera_tilt (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _camera_tilt 127) (setq _camera_tilt (- _camera_tilt 256)))
+   ;; int8 _arm_auto
+     (setq _arm_auto (sys::peek buf ptr- :char)) (incf ptr- 1)
+     (if (> _arm_auto 127) (setq _arm_auto (- _arm_auto 256)))
    ;;
    self)
   )
 
-(setf (get turtlebot_teleop::twist_hh :md5sum-) "18a62653abd37f23cf97caba6719e246")
+(setf (get turtlebot_teleop::twist_hh :md5sum-) "2ef51c1b7227604fe91ab71f953c0661")
 (setf (get turtlebot_teleop::twist_hh :datatype-) "turtlebot_teleop/twist_hh")
 (setf (get turtlebot_teleop::twist_hh :definition-)
       "# This expresses velocity in free space broken into its linear and angular parts.
@@ -160,10 +172,12 @@ int8 flat_drawer
 uint8 belt
 int8 camera_angle
 int8 camera_tilt
+
+int8 arm_auto
 ")
 
 
 
-(provide :turtlebot_teleop/twist_hh "18a62653abd37f23cf97caba6719e246")
+(provide :turtlebot_teleop/twist_hh "2ef51c1b7227604fe91ab71f953c0661")
 
 

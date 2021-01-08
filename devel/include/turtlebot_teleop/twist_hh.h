@@ -32,7 +32,8 @@ struct twist_hh_
     , flat_drawer(0)
     , belt(0)
     , camera_angle(0)
-    , camera_tilt(0)  {
+    , camera_tilt(0)
+    , arm_auto(0)  {
     }
   twist_hh_(const ContainerAllocator& _alloc)
     : linear_module(0.0)
@@ -43,7 +44,8 @@ struct twist_hh_
     , flat_drawer(0)
     , belt(0)
     , camera_angle(0)
-    , camera_tilt(0)  {
+    , camera_tilt(0)
+    , arm_auto(0)  {
   (void)_alloc;
     }
 
@@ -75,6 +77,9 @@ struct twist_hh_
 
    typedef int8_t _camera_tilt_type;
   _camera_tilt_type camera_tilt;
+
+   typedef int8_t _arm_auto_type;
+  _arm_auto_type arm_auto;
 
 
 
@@ -111,7 +116,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -154,12 +159,12 @@ struct MD5Sum< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "18a62653abd37f23cf97caba6719e246";
+    return "2ef51c1b7227604fe91ab71f953c0661";
   }
 
   static const char* value(const ::turtlebot_teleop::twist_hh_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x18a62653abd37f23ULL;
-  static const uint64_t static_value2 = 0xcf97caba6719e246ULL;
+  static const uint64_t static_value1 = 0x2ef51c1b7227604fULL;
+  static const uint64_t static_value2 = 0xe91ab71f953c0661ULL;
 };
 
 template<class ContainerAllocator>
@@ -193,6 +198,8 @@ int8 flat_drawer\n\
 uint8 belt\n\
 int8 camera_angle\n\
 int8 camera_tilt\n\
+\n\
+int8 arm_auto\n\
 ";
   }
 
@@ -220,6 +227,7 @@ namespace serialization
       stream.next(m.belt);
       stream.next(m.camera_angle);
       stream.next(m.camera_tilt);
+      stream.next(m.arm_auto);
     }
 
     ROS_DECLARE_ALLINONE_SERIALIZER
@@ -256,6 +264,8 @@ struct Printer< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
     Printer<int8_t>::stream(s, indent + "  ", v.camera_angle);
     s << indent << "camera_tilt: ";
     Printer<int8_t>::stream(s, indent + "  ", v.camera_tilt);
+    s << indent << "arm_auto: ";
+    Printer<int8_t>::stream(s, indent + "  ", v.arm_auto);
   }
 };
 

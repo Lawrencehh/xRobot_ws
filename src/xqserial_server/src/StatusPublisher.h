@@ -23,20 +23,17 @@ namespace xqserial_server
 typedef struct {
     int status;//小车状态，0表示未初始化，1表示正常，-1表示error
     float power;//电源电压【9 13】v
-    float theta;//方位角，【0 360）°
-    int encoder_ppr;//车轮1转对应的编码器个数
     int encoder_delta_r;//右轮编码器增量， 个为单位
     int encoder_delta_l;//左轮编码器增量， 个为单位
-    int encoder_delta_car;//两车轮中心位移，个为单位
     int omga_r;//右轮转速 个每秒
     int omga_l;//左轮转速 个每秒
-    int omga_1;//第一个超声模块距离值 单位cm
-    int omga_2;//第二个超声模块距离值 单位cm
-    int omga_3;//第三个超声模块距离值 单位cm
-    int omga_4;//第四个超声模块距离值 单位cm
-    float IMU[9];//mpu9250 9轴数据
-    float distance[8];
-    unsigned int time_stamp;//时间戳
+    int encoder_linearModule;//直线模组编码器读数
+    int hall_l_1;//左侧大臂推杆霍尔传感器读数
+    int hall_r_1;//右侧大臂推杆霍尔传感器读数
+    int hall_l_2;//左侧小臂推杆霍尔传感器读数
+    int hall_r_2;//右侧小臂推杆霍尔传感器读数
+    int hall_l_3;//左侧斜板推杆霍尔传感器读数
+    int hall_r_3;//右侧斜板推杆霍尔传感器读数
 }UPLOAD_STATUS;
 
 class StatusPublisher
@@ -72,6 +69,15 @@ private:
     geometry_msgs::Twist  CarTwist;//小车自身坐标系
     std_msgs::Float64 CarPower;// 小车电池信息
     nav_msgs::Odometry CarOdom;// 小车位置和速度信息
+
+    std_msgs::Int32 Encorder_linearModule;//直线模组编码器
+    std_msgs::Int32 Hall_putter_1_left;     //左侧大臂推杆霍尔传感器
+    std_msgs::Int32 Hall_putter_1_right;    //右侧大臂推杆霍尔传感器
+    std_msgs::Int32 Hall_putter_2_left;     //左侧小臂推杆霍尔传感器
+    std_msgs::Int32 Hall_putter_2_right;    //右侧小臂推杆霍尔传感器
+    std_msgs::Int32 Hall_putter_3_left;     //左侧斜板推杆霍尔传感器
+    std_msgs::Int32 Hall_putter_3_right;    //右侧斜板推杆霍尔传感器
+
     ros::NodeHandle mNH;
     ros::Publisher mPose2DPub;
     ros::Publisher mTwistPub;
@@ -80,6 +86,16 @@ private:
     ros::Publisher mOdomPub;
     ros::Publisher pub_barpoint_cloud_;
     ros::Publisher pub_clearpoint_cloud_;
+
+    ros::Publisher mEncorder_linearModulePub;   //直线模组编码器话题发布
+    ros::Publisher mHall_putter_1_leftPub;      //左侧大臂推杆霍尔传感器话题发布
+    ros::Publisher mHall_putter_1_rightPub;     //右侧大臂推杆霍尔传感器话题发布
+    ros::Publisher mHall_putter_2_leftPub;      //左侧小臂推杆霍尔传感器话题发布
+    ros::Publisher mHall_putter_2_rightPub;     //右侧小臂推杆霍尔传感器话题发布
+    ros::Publisher mHall_putter_3_leftPub;      //左侧斜板推杆霍尔传感器话题发布
+    ros::Publisher mHall_putter_3_rightPub;     //右侧斜板推杆霍尔传感器话题发布
+
+
 
     bool mbUpdated;
 

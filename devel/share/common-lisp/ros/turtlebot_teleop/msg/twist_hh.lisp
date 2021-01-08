@@ -51,6 +51,11 @@
     :reader camera_tilt
     :initarg :camera_tilt
     :type cl:fixnum
+    :initform 0)
+   (arm_auto
+    :reader arm_auto
+    :initarg :arm_auto
+    :type cl:fixnum
     :initform 0))
 )
 
@@ -106,6 +111,11 @@
 (cl:defmethod camera_tilt-val ((m <twist_hh>))
   (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader turtlebot_teleop-msg:camera_tilt-val is deprecated.  Use turtlebot_teleop-msg:camera_tilt instead.")
   (camera_tilt m))
+
+(cl:ensure-generic-function 'arm_auto-val :lambda-list '(m))
+(cl:defmethod arm_auto-val ((m <twist_hh>))
+  (roslisp-msg-protocol:msg-deprecation-warning "Using old-style slot reader turtlebot_teleop-msg:arm_auto-val is deprecated.  Use turtlebot_teleop-msg:arm_auto instead.")
+  (arm_auto m))
 (cl:defmethod roslisp-msg-protocol:serialize ((msg <twist_hh>) ostream)
   "Serializes a message object of type '<twist_hh>"
   (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'linear_module))))
@@ -137,6 +147,9 @@
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     )
   (cl:let* ((signed (cl:slot-value msg 'camera_tilt)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
+    )
+  (cl:let* ((signed (cl:slot-value msg 'arm_auto)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     )
 )
@@ -176,6 +189,9 @@
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'camera_tilt) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+    (cl:let ((unsigned 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
+      (cl:setf (cl:slot-value msg 'arm_auto) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
   msg
 )
 (cl:defmethod roslisp-msg-protocol:ros-datatype ((msg (cl:eql '<twist_hh>)))
@@ -186,21 +202,22 @@
   "turtlebot_teleop/twist_hh")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<twist_hh>)))
   "Returns md5sum for a message object of type '<twist_hh>"
-  "18a62653abd37f23cf97caba6719e246")
+  "2ef51c1b7227604fe91ab71f953c0661")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'twist_hh)))
   "Returns md5sum for a message object of type 'twist_hh"
-  "18a62653abd37f23cf97caba6719e246")
+  "2ef51c1b7227604fe91ab71f953c0661")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<twist_hh>)))
   "Returns full string definition for message of type '<twist_hh>"
-  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%"))
+  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'twist_hh)))
   "Returns full string definition for message of type 'twist_hh"
-  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%"))
+  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <twist_hh>))
   (cl:+ 0
      4
      4
      4
+     1
      1
      1
      1
@@ -220,4 +237,5 @@
     (cl:cons ':belt (belt msg))
     (cl:cons ':camera_angle (camera_angle msg))
     (cl:cons ':camera_tilt (camera_tilt msg))
+    (cl:cons ':arm_auto (arm_auto msg))
 ))

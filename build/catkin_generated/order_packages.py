@@ -1,5 +1,5 @@
 # generated from catkin/cmake/template/order_packages.context.py.in
-source_root_dir = "/home/andy/xRobot_ws/src"
-whitelisted_packages = "".split(';') if "" != "" else []
-blacklisted_packages = "".split(';') if "" != "" else []
-underlay_workspaces = "/home/andy/xRobot_ws/devel;/home/andy/catkin_ws/devel;/opt/ros/kinetic".split(';') if "/home/andy/xRobot_ws/devel;/home/andy/catkin_ws/devel;/opt/ros/kinetic" != "" else []
+source_root_dir = '/home/ubuntu/xRobot_ws/src'
+whitelisted_packages = ''.split(';') if '' != '' else []
+blacklisted_packages = ''.split(';') if '' != '' else []
+underlay_workspaces = '/home/ubuntu/catkin_ws/devel;/opt/ros/kinetic'.split(';') if '/home/ubuntu/catkin_ws/devel;/opt/ros/kinetic' != '' else []

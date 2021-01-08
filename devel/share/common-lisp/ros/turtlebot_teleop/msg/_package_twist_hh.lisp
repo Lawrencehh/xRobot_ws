@@ -17,4 +17,6 @@
           CAMERA_ANGLE
           CAMERA_TILT-VAL
           CAMERA_TILT
+          ARM_AUTO-VAL
+          ARM_AUTO
 ))

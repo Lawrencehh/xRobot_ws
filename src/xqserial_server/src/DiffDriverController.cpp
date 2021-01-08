@@ -61,8 +61,10 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
     double camera_angle=0;      //摄像头旋转
     double camera_tilt=0;       //摄像头俯仰
 
-    
+    int arm_auto=0;         //自动轨迹规划使能
 
+    
+/***************所有电机速度赋值**********************/
     linear_module=command.linear_module;    //直线模组
     putter_1=command.putter_1;         //大臂推杆
     putter_2=command.putter_2;         //小臂推杆
@@ -74,6 +76,10 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
     belt=command.belt;                      //输送带
     camera_angle=command.camera_angle;           //摄像头的旋转
     camera_tilt=command.camera_tilt;        //摄像头俯仰
+
+    arm_auto=command.arm_auto;  //自动轨迹规划使能
+
+
 
 
 
@@ -251,7 +257,7 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
       cmd_str[6]=(char)0x53;
     }
     */
-    if(NULL!=cmd_serial)
+    if(NULL!=cmd_serial && arm_auto!=1)
     {
         cmd_serial->write(cmd_str,25);
     }

@@ -1,8 +1,8 @@
-prefix=/home/andy/xRobot_ws/devel
+prefix=/home/ubuntu/xRobot_ws/devel
 
 Name: imu_driver
 Description: Description of imu_driver
 Version: 0.1.0
-Cflags: -I/home/andy/xRobot_ws/src/imu_driver/src
+Cflags: -I/home/ubuntu/xRobot_ws/src/imu_driver/src
 Libs: -L${prefix}/lib 
 Requires: serial roscpp sensor_msgs tf message_runtime

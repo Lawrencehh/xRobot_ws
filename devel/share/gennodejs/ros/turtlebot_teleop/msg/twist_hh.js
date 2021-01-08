@@ -27,6 +27,7 @@ class twist_hh {
       this.belt = null;
       this.camera_angle = null;
       this.camera_tilt = null;
+      this.arm_auto = null;
     }
     else {
       if (initObj.hasOwnProperty('linear_module')) {
@@ -83,6 +84,12 @@ class twist_hh {
       else {
         this.camera_tilt = 0;
       }
+      if (initObj.hasOwnProperty('arm_auto')) {
+        this.arm_auto = initObj.arm_auto
+      }
+      else {
+        this.arm_auto = 0;
+      }
     }
   }
 
@@ -106,6 +113,8 @@ class twist_hh {
     bufferOffset = _serializer.int8(obj.camera_angle, buffer, bufferOffset);
     // Serialize message field [camera_tilt]
     bufferOffset = _serializer.int8(obj.camera_tilt, buffer, bufferOffset);
+    // Serialize message field [arm_auto]
+    bufferOffset = _serializer.int8(obj.arm_auto, buffer, bufferOffset);
     return bufferOffset;
   }
 
@@ -131,11 +140,13 @@ class twist_hh {
     data.camera_angle = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [camera_tilt]
     data.camera_tilt = _deserializer.int8(buffer, bufferOffset);
+    // Deserialize message field [arm_auto]
+    data.arm_auto = _deserializer.int8(buffer, bufferOffset);
     return data;
   }
 
   static getMessageSize(object) {
-    return 18;
+    return 19;
   }
 
   static datatype() {
@@ -145,7 +156,7 @@ class twist_hh {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '18a62653abd37f23cf97caba6719e246';
+    return '2ef51c1b7227604fe91ab71f953c0661';
   }
 
   static messageDefinition() {
@@ -166,6 +177,8 @@ class twist_hh {
     uint8 belt
     int8 camera_angle
     int8 camera_tilt
+    
+    int8 arm_auto
     `;
   }
 
@@ -236,6 +249,13 @@ class twist_hh {
     }
     else {
       resolved.camera_tilt = 0
+    }
+
+    if (msg.arm_auto !== undefined) {
+      resolved.arm_auto = msg.arm_auto;
+    }
+    else {
+      resolved.arm_auto = 0
     }
 
     return resolved;
