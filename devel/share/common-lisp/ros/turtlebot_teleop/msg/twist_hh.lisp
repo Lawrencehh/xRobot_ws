@@ -25,8 +25,8 @@
    (oblique_angle
     :reader oblique_angle
     :initarg :oblique_angle
-    :type cl:fixnum
-    :initform 0)
+    :type cl:float
+    :initform 0.0)
    (oblique_drawer
     :reader oblique_drawer
     :initarg :oblique_drawer
@@ -133,9 +133,11 @@
     (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
     (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
-  (cl:let* ((signed (cl:slot-value msg 'oblique_angle)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
-    (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
-    )
+  (cl:let ((bits (roslisp-utils:encode-single-float-bits (cl:slot-value msg 'oblique_angle))))
+    (cl:write-byte (cl:ldb (cl:byte 8 0) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 8) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 16) bits) ostream)
+    (cl:write-byte (cl:ldb (cl:byte 8 24) bits) ostream))
   (cl:let* ((signed (cl:slot-value msg 'oblique_drawer)) (unsigned (cl:if (cl:< signed 0) (cl:+ signed 256) signed)))
     (cl:write-byte (cl:ldb (cl:byte 8 0) unsigned) ostream)
     )
@@ -173,9 +175,12 @@
       (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
       (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
     (cl:setf (cl:slot-value msg 'putter_2) (roslisp-utils:decode-single-float-bits bits)))
-    (cl:let ((unsigned 0))
-      (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
-      (cl:setf (cl:slot-value msg 'oblique_angle) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
+    (cl:let ((bits 0))
+      (cl:setf (cl:ldb (cl:byte 8 0) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 8) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 16) bits) (cl:read-byte istream))
+      (cl:setf (cl:ldb (cl:byte 8 24) bits) (cl:read-byte istream))
+    (cl:setf (cl:slot-value msg 'oblique_angle) (roslisp-utils:decode-single-float-bits bits)))
     (cl:let ((unsigned 0))
       (cl:setf (cl:ldb (cl:byte 8 0) unsigned) (cl:read-byte istream))
       (cl:setf (cl:slot-value msg 'oblique_drawer) (cl:if (cl:< unsigned 128) unsigned (cl:- unsigned 256))))
@@ -202,22 +207,22 @@
   "turtlebot_teleop/twist_hh")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql '<twist_hh>)))
   "Returns md5sum for a message object of type '<twist_hh>"
-  "2ef51c1b7227604fe91ab71f953c0661")
+  "5e6950298e015b052c3449e8eabb1ac3")
 (cl:defmethod roslisp-msg-protocol:md5sum ((type (cl:eql 'twist_hh)))
   "Returns md5sum for a message object of type 'twist_hh"
-  "2ef51c1b7227604fe91ab71f953c0661")
+  "5e6950298e015b052c3449e8eabb1ac3")
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql '<twist_hh>)))
   "Returns full string definition for message of type '<twist_hh>"
-  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
+  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%float32 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
 (cl:defmethod roslisp-msg-protocol:message-definition ((type (cl:eql 'twist_hh)))
   "Returns full string definition for message of type 'twist_hh"
-  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%int8 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
+  (cl:format cl:nil "# This expresses velocity in free space broken into its linear and angular parts.~%~%~%~%float32 linear_module~%float32 putter_1~%float32 putter_2~%~%float32 oblique_angle~%int8 oblique_drawer~%int8 flat_drawer~%~%uint8 belt~%int8 camera_angle~%int8 camera_tilt~%~%int8 arm_auto~%~%"))
 (cl:defmethod roslisp-msg-protocol:serialization-length ((msg <twist_hh>))
   (cl:+ 0
      4
      4
      4
-     1
+     4
      1
      1
      1

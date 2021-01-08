@@ -7,4 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export PWD="/home/andy/xRobot_ws/build"
+export PWD='/home/ubuntu/xRobot_ws/build'

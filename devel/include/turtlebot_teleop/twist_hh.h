@@ -27,7 +27,7 @@ struct twist_hh_
     : linear_module(0.0)
     , putter_1(0.0)
     , putter_2(0.0)
-    , oblique_angle(0)
+    , oblique_angle(0.0)
     , oblique_drawer(0)
     , flat_drawer(0)
     , belt(0)
@@ -39,7 +39,7 @@ struct twist_hh_
     : linear_module(0.0)
     , putter_1(0.0)
     , putter_2(0.0)
-    , oblique_angle(0)
+    , oblique_angle(0.0)
     , oblique_drawer(0)
     , flat_drawer(0)
     , belt(0)
@@ -60,7 +60,7 @@ struct twist_hh_
    typedef float _putter_2_type;
   _putter_2_type putter_2;
 
-   typedef int8_t _oblique_angle_type;
+   typedef float _oblique_angle_type;
   _oblique_angle_type oblique_angle;
 
    typedef int8_t _oblique_drawer_type;
@@ -116,7 +116,7 @@ namespace message_traits
 
 
 // BOOLTRAITS {'IsFixedSize': True, 'IsMessage': True, 'HasHeader': False}
-// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
+// {'std_msgs': ['/opt/ros/kinetic/share/std_msgs/cmake/../msg'], 'turtlebot_teleop': ['/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/msg'], 'geometry_msgs': ['/opt/ros/kinetic/share/geometry_msgs/cmake/../msg']}
 
 // !!!!!!!!!!! ['__class__', '__delattr__', '__dict__', '__doc__', '__eq__', '__format__', '__getattribute__', '__hash__', '__init__', '__module__', '__ne__', '__new__', '__reduce__', '__reduce_ex__', '__repr__', '__setattr__', '__sizeof__', '__str__', '__subclasshook__', '__weakref__', '_parsed_fields', 'constants', 'fields', 'full_name', 'has_header', 'header_present', 'names', 'package', 'parsed_fields', 'short_name', 'text', 'types']
 
@@ -159,12 +159,12 @@ struct MD5Sum< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
 {
   static const char* value()
   {
-    return "2ef51c1b7227604fe91ab71f953c0661";
+    return "5e6950298e015b052c3449e8eabb1ac3";
   }
 
   static const char* value(const ::turtlebot_teleop::twist_hh_<ContainerAllocator>&) { return value(); }
-  static const uint64_t static_value1 = 0x2ef51c1b7227604fULL;
-  static const uint64_t static_value2 = 0xe91ab71f953c0661ULL;
+  static const uint64_t static_value1 = 0x5e6950298e015b05ULL;
+  static const uint64_t static_value2 = 0x2c3449e8eabb1ac3ULL;
 };
 
 template<class ContainerAllocator>
@@ -191,7 +191,7 @@ float32 linear_module\n\
 float32 putter_1\n\
 float32 putter_2\n\
 \n\
-int8 oblique_angle\n\
+float32 oblique_angle\n\
 int8 oblique_drawer\n\
 int8 flat_drawer\n\
 \n\
@@ -253,7 +253,7 @@ struct Printer< ::turtlebot_teleop::twist_hh_<ContainerAllocator> >
     s << indent << "putter_2: ";
     Printer<float>::stream(s, indent + "  ", v.putter_2);
     s << indent << "oblique_angle: ";
-    Printer<int8_t>::stream(s, indent + "  ", v.oblique_angle);
+    Printer<float>::stream(s, indent + "  ", v.oblique_angle);
     s << indent << "oblique_drawer: ";
     Printer<int8_t>::stream(s, indent + "  ", v.oblique_drawer);
     s << indent << "flat_drawer: ";

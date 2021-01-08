@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,9 +6,9 @@
 
 #IncludeRegexTransform: 
 
-/home/andy/xRobot_ws/src/imu_driver/src/JY901.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/JY901.h
 
-/home/andy/xRobot_ws/src/imu_driver/src/imu_decoder.cpp
+/home/ubuntu/xRobot_ws/src/imu_driver/src/imu_decoder.cpp
 ros/ros.h
 -
 serial/serial.h
@@ -18,23 +18,23 @@ std_msgs/String.h
 std_msgs/Empty.h
 -
 std_msgs/Float64.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Float64.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Float64.h
 std_msgs/Int8.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Int8.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Int8.h
 std_msgs/Int32.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Int32.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Int32.h
 std_msgs/Int8MultiArray.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Int8MultiArray.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Int8MultiArray.h
 std_msgs/Int32MultiArray.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Int32MultiArray.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Int32MultiArray.h
 std_msgs/Float64MultiArray.h
-/home/andy/xRobot_ws/src/imu_driver/src/std_msgs/Float64MultiArray.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/std_msgs/Float64MultiArray.h
 sensor_msgs/Imu.h
-/home/andy/xRobot_ws/src/imu_driver/src/sensor_msgs/Imu.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/sensor_msgs/Imu.h
 sensor_msgs/MagneticField.h
-/home/andy/xRobot_ws/src/imu_driver/src/sensor_msgs/MagneticField.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/sensor_msgs/MagneticField.h
 JY901.h
-/home/andy/xRobot_ws/src/imu_driver/src/JY901.h
+/home/ubuntu/xRobot_ws/src/imu_driver/src/JY901.h
 
 /opt/ros/kinetic/include/geometry_msgs/Quaternion.h
 string

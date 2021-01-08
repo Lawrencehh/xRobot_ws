@@ -5,56 +5,170 @@
 
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
-
-using namespace sensor_msgs;
-using namespace message_filters;
+#include "turtlebot_teleop/twist_hh.h"  //引用自定义消息类型
 
 bool auto_flag = false; //自动轨迹规划运行flag，为true时执行，为false时退出自动轨迹规划
+
 int epoch = 0;       //轨迹规划阶段值，初始值为0
 
+//每个阶段的目标值
+int goal_Encorder_linearModule[] = {2000,6000};
+int goal_Hall_putter_1_left[] = {3000,8000};
+int goal_Hall_putter_2_left[] = {1000,2000};
+int goal_Hall_putter_3_left[] = {5000,1500};
+
+//P参数，需要在现场调参数
+const double p_Encorder_linearModule = 0.2;
+const double p_putter_1 = 0.2;
+const double p_putter_2 = 0.2;
+const double p_putter_3 = 0.2;
+
+//误差阈值参数error，需要在现场调参数
+const double error_Encorder_linearModule = 20;
+const double error_putter_1 = 20;
+const double error_putter_2 = 20;
+const double error_putter_3 = 20;
+
+//最小启动速度，需要在现场调参数，当速度值小于该值时候，速度值为零
+const double lowest_Encorder_linearModule = p_Encorder_linearModule*error_Encorder_linearModule;
+const double lowest_putter_1 = p_putter_1*error_putter_1;
+const double lowest_putter_2 = p_putter_2*error_putter_2;
+const double lowest_putter_3 = p_putter_3*error_putter_3;
 
 
-//反馈信号回调函数
-//手柄驱动回调函数
-void arm_autoCallback(const sensor_msgs::Joy::ConstPtr& joy,const communication_test::func_motors_feedback::ConstPtr & msg)
+class multiReceiver
 {
-    
+public:
+	multiReceiver()
+	{	
+		sub = nh.subscribe("xqserial_server/func_motors_feedback", 1, &multiReceiver::arm_autoCallback,this);
+		sub2 = nh.subscribe("joy", 1, &multiReceiver::joyCallback,this);
+        func_motors_pub_ = nh.advertise<turtlebot_teleop::twist_hh>("func_motors",1,true); //所有电机的控制状态发布
+	}
+	void arm_autoCallback(const communication_test::func_motors_feedback::ConstPtr & msg);
+	void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
+ 
+private:
+	ros::NodeHandle nh;
+	ros::Subscriber sub;
+	ros::Subscriber sub2;
 
+    ros::Publisher func_motors_pub_;  //所有功能电机状态发布
+  
+};
+ 
+ 
+void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedback::ConstPtr & msg)
+{
+    turtlebot_teleop::twist_hh func_motors;
+
+    if(auto_flag){
+
+        
+            
+
+            switch (epoch)
+            {
+            case 0:
+                ROS_INFO_STREAM("OUTPUT>>>"<<epoch);
+                //第一阶段判断是否完成
+                if(abs(msg->Encorder_linearModule - goal_Encorder_linearModule[epoch]) <error_Encorder_linearModule && \
+                abs(msg->Hall_putter_1_left - goal_Hall_putter_1_left[epoch]) <error_putter_1 && \
+                abs(msg->Hall_putter_2_left - goal_Hall_putter_2_left[epoch]) <error_putter_2 && \
+                abs(msg->Hall_putter_3_left - goal_Hall_putter_3_left[epoch]) <error_putter_3  \
+                ) epoch++;
+
+                //给各个电机赋值
+                //直线模组
+                func_motors.linear_module = p_Encorder_linearModule*(goal_Encorder_linearModule[epoch] - msg->Encorder_linearModule); //线性模组的前进后退
+                if(func_motors.linear_module > 100) func_motors.linear_module = 100;
+                if(func_motors.linear_module < -100) func_motors.linear_module = -100;
+                if(func_motors.linear_module > -lowest_Encorder_linearModule && func_motors.linear_module < lowest_Encorder_linearModule) func_motors.linear_module = 0;
+                //大臂
+                func_motors.putter_1 = p_putter_1*(goal_Hall_putter_1_left[epoch] - msg->Hall_putter_1_left); //大臂
+                if(func_motors.putter_1 > 100) func_motors.putter_1 = 100;
+                if(func_motors.putter_1 < -100) func_motors.putter_1 = -100;
+                if(func_motors.putter_1 > -lowest_putter_1 && func_motors.putter_1 < lowest_putter_1) func_motors.putter_1 = 0;
+                
+                //小臂
+                func_motors.putter_2 = p_putter_2*(goal_Hall_putter_2_left[epoch] - msg->Hall_putter_2_left); 
+                if(func_motors.putter_2 > 100)  func_motors.putter_2 = 100;
+                if(func_motors.putter_2 < -100) func_motors.putter_2 = -100;
+                if(func_motors.putter_2 > -lowest_putter_2 &&  func_motors.putter_2 < lowest_putter_2) func_motors.putter_2 = 0;
+
+                //斜板角度推杆控制
+                func_motors.oblique_angle = p_putter_3*(goal_Hall_putter_3_left[epoch] - msg->Hall_putter_3_left);
+                if(func_motors.oblique_angle > 100)  func_motors.oblique_angle = 100;
+                if(func_motors.oblique_angle < -100) func_motors.oblique_angle = -100;
+                if(func_motors.oblique_angle > -lowest_putter_3 &&  func_motors.oblique_angle < lowest_putter_3) func_motors.oblique_angle = 0;
+
+
+                func_motors.oblique_drawer = 1; //斜板抽屉推杆控制
+                func_motors.flat_drawer = 1; //伸缩柜伸展控制
+
+                func_motors.belt = 1; //输送带动作控制
+                func_motors.camera_angle = 0;  //摄像头的旋转
+                func_motors.camera_tilt = 0; //摄像头俯仰角控制
+                func_motors.arm_auto =1; //自动轨迹的使能
+                func_motors_pub_.publish(func_motors);    //发布功能电机控制话题                
+                break;
+            
+            case 1:
+                ROS_INFO_STREAM("OUTPUT>>>"<<epoch);
+                //第二阶段判断是否完成
+                if(abs(msg->Encorder_linearModule - goal_Encorder_linearModule[epoch]) <error_Encorder_linearModule && \
+                abs(msg->Hall_putter_1_left - goal_Hall_putter_1_left[epoch]) <error_putter_1 && \
+                abs(msg->Hall_putter_2_left - goal_Hall_putter_2_left[epoch]) <error_putter_2 && \
+                abs(msg->Hall_putter_3_left - goal_Hall_putter_3_left[epoch]) <error_putter_3  \
+                ) epoch++;
+
+                //给各个电机赋值
+                func_motors.linear_module = 1; //线性模组的前进后退
+                func_motors.putter_1 = 1; //大臂
+                func_motors.putter_2 = 1; //小臂
+                
+                func_motors.oblique_angle = 1; //斜板角度推杆控制
+                func_motors.oblique_drawer = 1; //斜板抽屉推杆控制
+                func_motors.flat_drawer = 1; //伸缩柜伸展控制
+
+                func_motors.belt = 1; //输送带动作控制
+                func_motors.camera_angle = 0;  //摄像头的旋转
+                func_motors.camera_tilt = 0; //摄像头俯仰角控制
+                func_motors.arm_auto =1; //自动轨迹的使能
+                func_motors_pub_.publish(func_motors);    //发布功能电机控制话题
+                break;
+            
+            case 2:
+                ROS_INFO_STREAM("ALL DONE");
+                break;
+            }
+            
+        
+
+        
+
+    }
+    
+}
+ 
+void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
+{
     if(joy->buttons[6]==1 && joy->buttons[11]==1)
     auto_flag = true;
-    else auto_flag = false;
+    else auto_flag = false, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;
     ROS_INFO_STREAM("auto_flag:"<<auto_flag);
-
-    
-
-
-
 }
-
-int main(int argc, char *argv[])
+  
+ 
+int main(int argc, char **argv)
 {
-    ros::init(argc, argv, "arm_auto");
-    
-    ros::NodeHandle nh;
-    
-    // ros::Subscriber joy_sub_;
-    // ros::Subscriber feedback_sub_;
-    // joy_sub_ = nh.subscribe<sensor_msgs::Joy>(nh,"joy", 1);
-    // feedback_sub_ = nh.subscribe<communication_test::func_motors_feedback>(nh,"func_motors", 1);
+ 
+  ros::init(argc, argv, "arm_auto");
+ 
+  
 
-    message_filters::Subscriber<sensor_msgs::Joy> joy_sub_(nh, "joy", 1);
-    message_filters::Subscriber<communication_test::func_motors_feedback> feedback_sub_(nh, "func_motors", 1);
-
-
-
-    // TimeSynchronizer<sensor_msgs::Joy, communication_test::func_motors_feedback> sync(joy_sub_, feedback_sub_, 10);
-
-    // sync.registerCallback(boost::bind(&arm_autoCallback, _1, _2));
-
-    
-    ros::spin();
-
-
-
-    return 0;
+  multiReceiver test_hh;
+  ros::spin();
+ 
+  return 0;
 }

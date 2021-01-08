@@ -1,8 +1,8 @@
-# Install script for directory: /home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration
+# Install script for directory: /home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/andy/xRobot_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/xRobot_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,65 +32,75 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/msg" TYPE FILE FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/msg/ScanAngle.msg")
+# Is this installation the result of a crosscompile?
+if(NOT DEFINED CMAKE_CROSSCOMPILING)
+  set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/cmake" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration-msg-paths.cmake")
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/include/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/msg" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/msg/ScanAngle.msg")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/cmake" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration-msg-paths.cmake")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/common-lisp/ros/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/include/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/gennodejs/ros/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/common-lisp/ros/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/gennodejs/ros/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration.pc")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/cmake" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration-msg-extras.cmake")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration.pc")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/cmake" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibration-msg-extras.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration/cmake" TYPE FILE FILES
-    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibrationConfig.cmake"
-    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibrationConfig-version.cmake"
+    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibrationConfig.cmake"
+    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_calibration/catkin_generated/installspace/turtlebot_calibrationConfig-version.cmake"
     )
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration" TYPE FILE FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/package.xml")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/package.xml")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_calibration" TYPE PROGRAM FILES
-    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/src/turtlebot_calibration/calibrate.py"
-    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/src/turtlebot_calibration/scan_to_angle.py"
+    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/src/turtlebot_calibration/calibrate.py"
+    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/src/turtlebot_calibration/scan_to_angle.py"
     )
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/launch")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_calibration" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_calibration/launch")
 endif()
 

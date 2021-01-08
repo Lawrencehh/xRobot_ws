@@ -1,4 +1,4 @@
-prefix=/home/andy/xRobot_ws/install
+prefix=/home/ubuntu/xRobot_ws/install
 
 Name: imu_driver
 Description: Description of imu_driver

@@ -52,7 +52,7 @@ class twist_hh {
         this.oblique_angle = initObj.oblique_angle
       }
       else {
-        this.oblique_angle = 0;
+        this.oblique_angle = 0.0;
       }
       if (initObj.hasOwnProperty('oblique_drawer')) {
         this.oblique_drawer = initObj.oblique_drawer
@@ -102,7 +102,7 @@ class twist_hh {
     // Serialize message field [putter_2]
     bufferOffset = _serializer.float32(obj.putter_2, buffer, bufferOffset);
     // Serialize message field [oblique_angle]
-    bufferOffset = _serializer.int8(obj.oblique_angle, buffer, bufferOffset);
+    bufferOffset = _serializer.float32(obj.oblique_angle, buffer, bufferOffset);
     // Serialize message field [oblique_drawer]
     bufferOffset = _serializer.int8(obj.oblique_drawer, buffer, bufferOffset);
     // Serialize message field [flat_drawer]
@@ -129,7 +129,7 @@ class twist_hh {
     // Deserialize message field [putter_2]
     data.putter_2 = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [oblique_angle]
-    data.oblique_angle = _deserializer.int8(buffer, bufferOffset);
+    data.oblique_angle = _deserializer.float32(buffer, bufferOffset);
     // Deserialize message field [oblique_drawer]
     data.oblique_drawer = _deserializer.int8(buffer, bufferOffset);
     // Deserialize message field [flat_drawer]
@@ -146,7 +146,7 @@ class twist_hh {
   }
 
   static getMessageSize(object) {
-    return 19;
+    return 22;
   }
 
   static datatype() {
@@ -156,7 +156,7 @@ class twist_hh {
 
   static md5sum() {
     //Returns md5sum for a message object
-    return '2ef51c1b7227604fe91ab71f953c0661';
+    return '5e6950298e015b052c3449e8eabb1ac3';
   }
 
   static messageDefinition() {
@@ -170,7 +170,7 @@ class twist_hh {
     float32 putter_1
     float32 putter_2
     
-    int8 oblique_angle
+    float32 oblique_angle
     int8 oblique_drawer
     int8 flat_drawer
     
@@ -213,7 +213,7 @@ class twist_hh {
       resolved.oblique_angle = msg.oblique_angle;
     }
     else {
-      resolved.oblique_angle = 0
+      resolved.oblique_angle = 0.0
     }
 
     if (msg.oblique_drawer !== undefined) {

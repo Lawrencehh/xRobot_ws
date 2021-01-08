@@ -22,7 +22,7 @@
     ((:linear_module __linear_module) 0.0)
     ((:putter_1 __putter_1) 0.0)
     ((:putter_2 __putter_2) 0.0)
-    ((:oblique_angle __oblique_angle) 0)
+    ((:oblique_angle __oblique_angle) 0.0)
     ((:oblique_drawer __oblique_drawer) 0)
     ((:flat_drawer __flat_drawer) 0)
     ((:belt __belt) 0)
@@ -34,7 +34,7 @@
    (setq _linear_module (float __linear_module))
    (setq _putter_1 (float __putter_1))
    (setq _putter_2 (float __putter_2))
-   (setq _oblique_angle (round __oblique_angle))
+   (setq _oblique_angle (float __oblique_angle))
    (setq _oblique_drawer (round __oblique_drawer))
    (setq _flat_drawer (round __flat_drawer))
    (setq _belt (round __belt))
@@ -81,8 +81,8 @@
     4
     ;; float32 _putter_2
     4
-    ;; int8 _oblique_angle
-    1
+    ;; float32 _oblique_angle
+    4
     ;; int8 _oblique_drawer
     1
     ;; int8 _flat_drawer
@@ -106,8 +106,8 @@
        (sys::poke _putter_1 (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; float32 _putter_2
        (sys::poke _putter_2 (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
-     ;; int8 _oblique_angle
-       (write-byte _oblique_angle s)
+     ;; float32 _oblique_angle
+       (sys::poke _oblique_angle (send s :buffer) (send s :count) :float) (incf (stream-count s) 4)
      ;; int8 _oblique_drawer
        (write-byte _oblique_drawer s)
      ;; int8 _flat_drawer
@@ -130,9 +130,8 @@
      (setq _putter_1 (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; float32 _putter_2
      (setq _putter_2 (sys::peek buf ptr- :float)) (incf ptr- 4)
-   ;; int8 _oblique_angle
-     (setq _oblique_angle (sys::peek buf ptr- :char)) (incf ptr- 1)
-     (if (> _oblique_angle 127) (setq _oblique_angle (- _oblique_angle 256)))
+   ;; float32 _oblique_angle
+     (setq _oblique_angle (sys::peek buf ptr- :float)) (incf ptr- 4)
    ;; int8 _oblique_drawer
      (setq _oblique_drawer (sys::peek buf ptr- :char)) (incf ptr- 1)
      (if (> _oblique_drawer 127) (setq _oblique_drawer (- _oblique_drawer 256)))
@@ -154,7 +153,7 @@
    self)
   )
 
-(setf (get turtlebot_teleop::twist_hh :md5sum-) "2ef51c1b7227604fe91ab71f953c0661")
+(setf (get turtlebot_teleop::twist_hh :md5sum-) "5e6950298e015b052c3449e8eabb1ac3")
 (setf (get turtlebot_teleop::twist_hh :datatype-) "turtlebot_teleop/twist_hh")
 (setf (get turtlebot_teleop::twist_hh :definition-)
       "# This expresses velocity in free space broken into its linear and angular parts.
@@ -165,7 +164,7 @@ float32 linear_module
 float32 putter_1
 float32 putter_2
 
-int8 oblique_angle
+float32 oblique_angle
 int8 oblique_drawer
 int8 flat_drawer
 
@@ -178,6 +177,6 @@ int8 arm_auto
 
 
 
-(provide :turtlebot_teleop/twist_hh "2ef51c1b7227604fe91ab71f953c0661")
+(provide :turtlebot_teleop/twist_hh "5e6950298e015b052c3449e8eabb1ac3")
 
 

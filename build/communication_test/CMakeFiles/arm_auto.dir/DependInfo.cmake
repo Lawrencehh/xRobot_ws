@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andy/xRobot_ws/src/communication_test/src/arm_auto.cpp" "/home/andy/xRobot_ws/build/communication_test/CMakeFiles/arm_auto.dir/src/arm_auto.cpp.o"
+  "/home/ubuntu/xRobot_ws/src/communication_test/src/arm_auto.cpp" "/home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/arm_auto.dir/src/arm_auto.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/andy/xRobot_ws/devel/include"
-  "/home/andy/xRobot_ws/src/communication_test/include"
+  "/home/ubuntu/xRobot_ws/devel/include"
+  "/home/ubuntu/xRobot_ws/src/communication_test/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   )

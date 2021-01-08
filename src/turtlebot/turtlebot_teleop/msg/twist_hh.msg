@@ -6,7 +6,7 @@ float32 linear_module
 float32 putter_1
 float32 putter_2
 
-int8 oblique_angle
+float32 oblique_angle
 int8 oblique_drawer
 int8 flat_drawer
 

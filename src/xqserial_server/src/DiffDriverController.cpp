@@ -257,7 +257,7 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
       cmd_str[6]=(char)0x53;
     }
     */
-    if(NULL!=cmd_serial && arm_auto!=1)
+    if(NULL!=cmd_serial)
     {
         cmd_serial->write(cmd_str,25);
     }

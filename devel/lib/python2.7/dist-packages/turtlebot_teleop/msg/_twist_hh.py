@@ -8,7 +8,7 @@ import struct
 
 
 class twist_hh(genpy.Message):
-  _md5sum = "2ef51c1b7227604fe91ab71f953c0661"
+  _md5sum = "5e6950298e015b052c3449e8eabb1ac3"
   _type = "turtlebot_teleop/twist_hh"
   _has_header = False  # flag to mark the presence of a Header object
   _full_text = """# This expresses velocity in free space broken into its linear and angular parts.
@@ -19,7 +19,7 @@ float32 linear_module
 float32 putter_1
 float32 putter_2
 
-int8 oblique_angle
+float32 oblique_angle
 int8 oblique_drawer
 int8 flat_drawer
 
@@ -29,7 +29,7 @@ int8 camera_tilt
 
 int8 arm_auto"""
   __slots__ = ['linear_module','putter_1','putter_2','oblique_angle','oblique_drawer','flat_drawer','belt','camera_angle','camera_tilt','arm_auto']
-  _slot_types = ['float32','float32','float32','int8','int8','int8','uint8','int8','int8','int8']
+  _slot_types = ['float32','float32','float32','float32','int8','int8','uint8','int8','int8','int8']
 
   def __init__(self, *args, **kwds):
     """
@@ -55,7 +55,7 @@ int8 arm_auto"""
       if self.putter_2 is None:
         self.putter_2 = 0.
       if self.oblique_angle is None:
-        self.oblique_angle = 0
+        self.oblique_angle = 0.
       if self.oblique_drawer is None:
         self.oblique_drawer = 0
       if self.flat_drawer is None:
@@ -72,7 +72,7 @@ int8 arm_auto"""
       self.linear_module = 0.
       self.putter_1 = 0.
       self.putter_2 = 0.
-      self.oblique_angle = 0
+      self.oblique_angle = 0.
       self.oblique_drawer = 0
       self.flat_drawer = 0
       self.belt = 0
@@ -93,7 +93,7 @@ int8 arm_auto"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3f3bB3b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto))
+      buff.write(_get_struct_4f2bB3b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -107,8 +107,8 @@ int8 arm_auto"""
       end = 0
       _x = self
       start = end
-      end += 19
-      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto,) = _get_struct_3f3bB3b().unpack(str[start:end])
+      end += 22
+      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto,) = _get_struct_4f2bB3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -122,7 +122,7 @@ int8 arm_auto"""
     """
     try:
       _x = self
-      buff.write(_get_struct_3f3bB3b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto))
+      buff.write(_get_struct_4f2bB3b().pack(_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto))
     except struct.error as se: self._check_types(struct.error("%s: '%s' when writing '%s'" % (type(se), str(se), str(locals().get('_x', self)))))
     except TypeError as te: self._check_types(ValueError("%s: '%s' when writing '%s'" % (type(te), str(te), str(locals().get('_x', self)))))
 
@@ -137,8 +137,8 @@ int8 arm_auto"""
       end = 0
       _x = self
       start = end
-      end += 19
-      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto,) = _get_struct_3f3bB3b().unpack(str[start:end])
+      end += 22
+      (_x.linear_module, _x.putter_1, _x.putter_2, _x.oblique_angle, _x.oblique_drawer, _x.flat_drawer, _x.belt, _x.camera_angle, _x.camera_tilt, _x.arm_auto,) = _get_struct_4f2bB3b().unpack(str[start:end])
       return self
     except struct.error as e:
       raise genpy.DeserializationError(e)  # most likely buffer underfill
@@ -147,9 +147,9 @@ _struct_I = genpy.struct_I
 def _get_struct_I():
     global _struct_I
     return _struct_I
-_struct_3f3bB3b = None
-def _get_struct_3f3bB3b():
-    global _struct_3f3bB3b
-    if _struct_3f3bB3b is None:
-        _struct_3f3bB3b = struct.Struct("<3f3bB3b")
-    return _struct_3f3bB3b
+_struct_4f2bB3b = None
+def _get_struct_4f2bB3b():
+    global _struct_4f2bB3b
+    if _struct_4f2bB3b is None:
+        _struct_4f2bB3b = struct.Struct("<4f2bB3b")
+    return _struct_4f2bB3b
