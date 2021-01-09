@@ -193,61 +193,74 @@ void DiffDriverController::sendcmd_funcControl(const turtlebot_teleop::twist_hh&
 
 /*****************伸缩柜伸展********************/
 
-
-/*****************输送带********************/
-    if(belt<0)
+/*****************反馈信号清零********************/
+    if(belt == 1 && camera_angle == 1 && camera_tilt==1)
          {
-             cmd_str[17]=(char)0x42;//B
-             cmd_str[18]=-belt;
-         }
-         else if(belt>0)
-         {
-             cmd_str[17]=(char)0x46;//F
-             cmd_str[18]=belt;
+             cmd_str[17]=(char)0x52;//反馈信号清零
+             cmd_str[18]=(char)0x11;
          }
          else
          {
-             cmd_str[17]=(char)0x53;//S
+             cmd_str[17]=(char)0x00;//不清零
              cmd_str[18]=(char)0x00;
          }
 
 /*****************输送带********************/
 
-/***************摄像头**********************/
-    if(camera_angle<0)
-         {
-             cmd_str[19]=(char)0x42;//B 顺时针
-             cmd_str[20]=-camera_angle;
-         }
-         else if(camera_angle>0)
-         {
-             cmd_str[19]=(char)0x46;//F  逆时针
-             cmd_str[20]=camera_angle;
-         }
-         else
-         {
-             cmd_str[19]=(char)0x53;//S
-             cmd_str[20]=(char)0x00;
-         }
-/***************摄像头**********************/
+// /*****************输送带********************/
+//     if(belt<0)
+//          {
+//              cmd_str[17]=(char)0x42;//B
+//              cmd_str[18]=-belt;
+//          }
+//          else if(belt>0)
+//          {
+//              cmd_str[17]=(char)0x46;//F
+//              cmd_str[18]=belt;
+//          }
+//          else
+//          {
+//              cmd_str[17]=(char)0x53;//S
+//              cmd_str[18]=(char)0x00;
+//          }
 
-/*****************摄像头俯仰********************/
-    if(camera_tilt<0)
-         {
-             cmd_str[21]=(char)0x42;//B
-             cmd_str[22]=-camera_tilt;
-         }
-         else if(camera_tilt>0)
-         {
-             cmd_str[21]=(char)0x46;//F
-             cmd_str[22]=camera_tilt;
-         }
-         else
-         {
-             cmd_str[21]=(char)0x53;//S
-             cmd_str[22]=(char)0x00;
-         }
-/*****************摄像头俯仰********************/
+// /*****************输送带********************/
+
+// /***************摄像头**********************/
+//     if(camera_angle<0)
+//          {
+//              cmd_str[19]=(char)0x42;//B 顺时针
+//              cmd_str[20]=-camera_angle;
+//          }
+//          else if(camera_angle>0)
+//          {
+//              cmd_str[19]=(char)0x46;//F  逆时针
+//              cmd_str[20]=camera_angle;
+//          }
+//          else
+//          {
+//              cmd_str[19]=(char)0x53;//S
+//              cmd_str[20]=(char)0x00;
+//          }
+// /***************摄像头**********************/
+
+// /*****************摄像头俯仰********************/
+//     if(camera_tilt<0)
+//          {
+//              cmd_str[21]=(char)0x42;//B
+//              cmd_str[22]=-camera_tilt;
+//          }
+//          else if(camera_tilt>0)
+//          {
+//              cmd_str[21]=(char)0x46;//F
+//              cmd_str[22]=camera_tilt;
+//          }
+//          else
+//          {
+//              cmd_str[21]=(char)0x53;//S
+//              cmd_str[22]=(char)0x00;
+//          }
+// /*****************摄像头俯仰********************/
 
 
 //   boost::mutex::scoped_lock lock(mMutex);//???????这个需要查一下什么意思
