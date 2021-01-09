@@ -47,10 +47,13 @@ roslaunch imu_driver imu_node.launch
 - 地磁信号话题： /mag
 - IMU信号话题： /imu
 
-## 摄像头与输送带控制功能包 communication_test
+## 摄像头与输送带控制功能包，以及一键收回机械臂 communication_test
 ```
 #使用方法
+#摄像头与输送带控制
 rosrun communication_test send_data_serialPort
+#一键收回机械臂控制
+rosrun communication_test arm_auto
 ```
 - 注意问题：需要查看所接入的串口号为 /dev/ttyUSB1
 - 参考链接：https://blog.csdn.net/weixin_41783322/article/details/108450454
