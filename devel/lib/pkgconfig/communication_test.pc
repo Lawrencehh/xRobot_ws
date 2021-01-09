@@ -1,8 +1,8 @@
-prefix=/home/ubuntu/xRobot_ws/devel
+prefix=/home/andy/xRobot_ws/devel
 
 Name: communication_test
 Description: Description of communication_test
 Version: 0.0.0
-Cflags: -I/home/ubuntu/xRobot_ws/devel/include
+Cflags: -I/home/andy/xRobot_ws/devel/include
 Libs: -L${prefix}/lib 
 Requires: message_runtime

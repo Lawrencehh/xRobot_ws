@@ -185,11 +185,11 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 
 
 
-  func_motors.linear_module = joy->axes[linear_module]; //线性模组的前进后退
-  func_motors.putter_1 = joy->axes[putter_1]; //大臂
-  func_motors.putter_2 = joy->axes[putter_2]; //小臂
+  func_motors.linear_module = 100*joy->axes[linear_module]; //线性模组的前进后退
+  func_motors.putter_1 = 100*joy->axes[putter_1]; //大臂
+  func_motors.putter_2 = 100*joy->axes[putter_2]; //小臂
   
-  func_motors.oblique_angle = joy->buttons[oblique_angle1] - joy->buttons[oblique_angle2]; //斜板角度推杆控制
+  func_motors.oblique_angle = 100*(joy->buttons[oblique_angle1] - joy->buttons[oblique_angle2]); //斜板角度推杆控制
   func_motors.oblique_drawer = joy->buttons[oblique_drawer1] - joy->buttons[oblique_drawer2]; //斜板抽屉推杆控制
   func_motors.flat_drawer = joy->buttons[flat_drawer1] - joy->buttons[flat_drawer2]; //伸缩柜伸展控制
 

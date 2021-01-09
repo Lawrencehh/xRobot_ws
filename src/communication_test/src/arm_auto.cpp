@@ -11,24 +11,42 @@ bool auto_flag = false; //自动轨迹规划运行flag，为true时执行，为f
 
 int epoch = 0;       //轨迹规划阶段值，初始值为0
 
-//每个阶段的目标值
-int goal_Encorder_linearModule[] = {2000,6000};
-int goal_Hall_putter_1_left[] = {3000,8000};
-int goal_Hall_putter_2_left[] = {1000,2000};
-int goal_Hall_putter_3_left[] = {5000,1500};
-#define epoch_length 2              //定义总步数，需要与goal的数组长度一致
 
-//P参数，需要在现场调参数
-const double p_Encorder_linearModule = 0.2;
-const double p_putter_1 = 0.2;
-const double p_putter_2 = 0.2;
-const double p_putter_3 = 0.2;
+//每个阶段的目标值
+int goal_Encorder_linearModule[] = \   
+{0,0,0,609000,325000,315000,215000};               //总行程615000脉冲×××××     直线模组
+
+int goal_Hall_putter_1_left[] = \       
+{0,0,0,8100,8100,6400,5164};                     //总行程8000脉冲×××××××     大臂
+
+int goal_Hall_putter_2_left[] = \       
+{480000,240000,0,0,0,200000,340000};               //总行程636000脉冲×××××     小臂
+
+int goal_Hall_putter_3_left[] = \       
+{0,0,100000,100000,100000,100000,102000};          //总行程105000脉冲××××××    斜板
+   
+
+int epoch_init = 6;
+//可以debug
+#define epoch_length 7              //定义总步数，需要与goal的数组长度一致
+
+double ratio =1;
+const double ratio_config=0.4;
+
+
 
 //误差阈值参数error，需要在现场调参数
-const double error_Encorder_linearModule = 20;
-const double error_putter_1 = 20;
-const double error_putter_2 = 20;
-const double error_putter_3 = 20;
+const double error_Encorder_linearModule = 1000; //1mm
+const double error_putter_1 = 100;  //1mm
+const double error_putter_2 = 2000; //1mm
+const double error_putter_3 = 1000; //5mm  斜板
+
+//P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
+const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
+const double p_putter_1 = 30/error_putter_1;
+const double p_putter_2 = 30/error_putter_2;
+const double p_putter_3 = 15/error_putter_3; 
+//斜板
 
 //最小启动速度，需要在现场调参数，当速度值小于该值时候，速度值为零
 const double lowest_Encorder_linearModule = p_Encorder_linearModule*error_Encorder_linearModule;
@@ -73,34 +91,48 @@ private:
         ) epoch_switch++;
 
         //给各个电机赋值
+        if(epoch_switch == 5) {
+            ratio = ratio_config;
+        }
+        else ratio =1;
+        ROS_INFO_STREAM("epoch_switch:>>>"<<epoch_switch);
+        ROS_INFO_STREAM("ratio:>>>"<<ratio);
         //直线模组
         func_motors.linear_module = p_Encorder_linearModule*(goal_Encorder_linearModule[epoch_switch] - msg->Encorder_linearModule); //线性模组的前进后退
         if(func_motors.linear_module > 100) func_motors.linear_module = 100;
         if(func_motors.linear_module < -100) func_motors.linear_module = -100;
-        if(func_motors.linear_module > -lowest_Encorder_linearModule && func_motors.linear_module < lowest_Encorder_linearModule) func_motors.linear_module = 0;
+        func_motors.linear_module=ratio*func_motors.linear_module;
+
+        // if(func_motors.linear_module > -lowest_Encorder_linearModule && func_motors.linear_module < lowest_Encorder_linearModule) func_motors.linear_module = 0;
+
         //大臂
-        func_motors.putter_1 = p_putter_1*(goal_Hall_putter_1_left[epoch_switch] - msg->Hall_putter_1_left); //大臂
+        func_motors.putter_1 = -p_putter_1*(goal_Hall_putter_1_left[epoch_switch] - msg->Hall_putter_1_left); //大臂
         if(func_motors.putter_1 > 100) func_motors.putter_1 = 100;
         if(func_motors.putter_1 < -100) func_motors.putter_1 = -100;
-        if(func_motors.putter_1 > -lowest_putter_1 && func_motors.putter_1 < lowest_putter_1) func_motors.putter_1 = 0;
+
+        func_motors.putter_1 = ratio*func_motors.putter_1;
+        // if(func_motors.putter_1 > -lowest_putter_1 && func_motors.putter_1 < lowest_putter_1) func_motors.putter_1 = 0;
         
         //小臂
-        func_motors.putter_2 = p_putter_2*(goal_Hall_putter_2_left[epoch_switch] - msg->Hall_putter_2_left); 
+        func_motors.putter_2 = -p_putter_2*(goal_Hall_putter_2_left[epoch_switch] - msg->Hall_putter_2_left); 
         if(func_motors.putter_2 > 100)  func_motors.putter_2 = 100;
         if(func_motors.putter_2 < -100) func_motors.putter_2 = -100;
-        if(func_motors.putter_2 > -lowest_putter_2 &&  func_motors.putter_2 < lowest_putter_2) func_motors.putter_2 = 0;
+        // if(func_motors.putter_2 > -lowest_putter_2 &&  func_motors.putter_2 < lowest_putter_2) func_motors.putter_2 = 0;
 
         //斜板角度推杆控制
         func_motors.oblique_angle = p_putter_3*(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left);
         if(func_motors.oblique_angle > 100)  func_motors.oblique_angle = 100;
         if(func_motors.oblique_angle < -100) func_motors.oblique_angle = -100;
-        if(func_motors.oblique_angle > -lowest_putter_3 &&  func_motors.oblique_angle < lowest_putter_3) func_motors.oblique_angle = 0;
+        if(abs(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left)<error_putter_3)
+        func_motors.oblique_angle = 0;
+        // if(func_motors.oblique_angle > -lowest_putter_3 &&  func_motors.oblique_angle < lowest_putter_3) func_motors.oblique_angle = 0;
 
 
         func_motors.oblique_drawer = 1; //斜板抽屉推杆控制
         func_motors.flat_drawer = 0; //伸缩柜伸展控制 ×××××××××××××××××××在加装限位开关后可以改为1
 
-        func_motors.belt = 1; //输送带动作控制
+        if(epoch_switch>=4)        func_motors.belt = 1; //输送带动作控制
+        else                        func_motors.belt = 0;
         func_motors.camera_angle = 0;  //摄像头的旋转
         func_motors.camera_tilt = 0; //摄像头俯仰角控制
         func_motors.arm_auto =1; //自动轨迹的使能
@@ -149,7 +181,7 @@ void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
     if(joy->buttons[6]==1 && joy->buttons[11]==1)
     auto_flag = true;
-    else auto_flag = false, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;
+    else auto_flag = false, epoch = epoch_init;      //断开自动轨迹规划模式时，将epoch置为epoch_init;
     ROS_INFO_STREAM("auto_flag:"<<auto_flag);
 }
   

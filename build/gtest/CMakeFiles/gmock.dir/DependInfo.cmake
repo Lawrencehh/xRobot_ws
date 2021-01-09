@@ -4,15 +4,14 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/usr/src/gmock/src/gmock-all.cc" "/home/ubuntu/xRobot_ws/build/gtest/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
-  "/usr/src/gtest/src/gtest-all.cc" "/home/ubuntu/xRobot_ws/build/gtest/CMakeFiles/gmock.dir/usr/src/gtest/src/gtest-all.cc.o"
+  "/usr/src/gmock/src/gmock-all.cc" "/home/andy/xRobot_ws/build/gtest/CMakeFiles/gmock.dir/src/gmock-all.cc.o"
+  "/usr/src/gtest/src/gtest-all.cc" "/home/andy/xRobot_ws/build/gtest/CMakeFiles/gmock.dir/usr/src/gtest/src/gtest-all.cc.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
   "GTEST_CREATE_SHARED_LIBRARY=1"
-  "gmock_EXPORTS"
   )
 
 # The include file search paths:

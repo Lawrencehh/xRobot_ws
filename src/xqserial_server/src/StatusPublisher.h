@@ -15,8 +15,10 @@
 #include <sensor_msgs/point_cloud2_iterator.h>
 #include <sensor_msgs/PointField.h>
 #include <sensor_msgs/Imu.h>
+#include <sensor_msgs/Joy.h>
 
 #include "communication_test/func_motors_feedback.h"
+// #include "turtlebot_teleop/twist_hh.h"
 
 
 #define PI 3.14159265
@@ -58,6 +60,9 @@ public:
     nav_msgs::Odometry get_odom();
     UPLOAD_STATUS car_status;
 
+
+    void resetCallback(const sensor_msgs::Joy::ConstPtr& joy);
+
 private:
 
 
@@ -76,6 +81,7 @@ private:
 
 
     communication_test::func_motors_feedback func_motors_feedback; //反馈信号集成
+    sensor_msgs::Joy joy; //手柄
 
     ros::NodeHandle mNH;
     ros::Publisher mPose2DPub;
@@ -87,6 +93,8 @@ private:
     ros::Publisher pub_clearpoint_cloud_;
 
     ros::Publisher mFunc_motors_feedbackPub;    //反馈信号集成
+
+    ros::Subscriber mJoy;//电机控制话题订阅
     
 
 
@@ -97,6 +105,22 @@ private:
 
     ros::Publisher mIMUPub;
     sensor_msgs::Imu  CarIMU;
+
+    int raw_Encorder_linearModule;
+    int raw_Hall_putter_1_left;
+    int raw_Hall_putter_1_right;
+    int raw_Hall_putter_2_left;
+    int raw_Hall_putter_2_right;
+    int raw_Hall_putter_3_left;
+    int raw_Hall_putter_3_right;
+
+    int pre_raw_Encorder_linearModule;
+    int pre_raw_Hall_putter_1_left;
+    int pre_raw_Hall_putter_1_right;
+    int pre_raw_Hall_putter_2_left;
+    int pre_raw_Hall_putter_2_right;
+    int pre_raw_Hall_putter_3_left;
+    int pre_raw_Hall_putter_3_right;
 };
 
 } //namespace xqserial_server

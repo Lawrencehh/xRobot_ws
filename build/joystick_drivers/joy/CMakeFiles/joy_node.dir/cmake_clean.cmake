@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/lib/joy/joy_node"
-  "/home/ubuntu/xRobot_ws/devel/lib/joy/joy_node.pdb"
   "CMakeFiles/joy_node.dir/src/joy_node.cpp.o"
+  "/home/andy/xRobot_ws/devel/lib/joy/joy_node.pdb"
+  "/home/andy/xRobot_ws/devel/lib/joy/joy_node"
 )
 
 # Per-language clean rules from dependency scanning.

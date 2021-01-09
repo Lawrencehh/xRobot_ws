@@ -13,6 +13,30 @@ typedef sensor_msgs::PointCloud2 PointCloud;
 
 StatusPublisher::StatusPublisher()
 {
+    raw_Encorder_linearModule=0;
+    raw_Hall_putter_1_left=0;
+    raw_Hall_putter_1_right=0;
+    raw_Hall_putter_2_left=0;
+    raw_Hall_putter_2_right=0;
+    raw_Hall_putter_3_left=0;
+    raw_Hall_putter_3_right=0;
+
+    pre_raw_Encorder_linearModule=0;
+    pre_raw_Hall_putter_1_left=0;
+    pre_raw_Hall_putter_1_right=0;
+    pre_raw_Hall_putter_2_left=0;
+    pre_raw_Hall_putter_2_right=0;
+    pre_raw_Hall_putter_3_left=0;
+    pre_raw_Hall_putter_3_right=0;
+
+    func_motors_feedback.Encorder_linearModule=0;
+    func_motors_feedback.Hall_putter_1_left=0;
+    func_motors_feedback.Hall_putter_1_right=0;
+    func_motors_feedback.Hall_putter_2_left=0;
+    func_motors_feedback.Hall_putter_2_right=0;
+    func_motors_feedback.Hall_putter_3_left=0;
+    func_motors_feedback.Hall_putter_3_right=0;
+
     mbUpdated=false;
    // mbUpdated=true;
     // wheel_separation=0.4;
@@ -48,19 +72,9 @@ StatusPublisher::StatusPublisher()
   //直线模组编码器及六个霍尔传感器数据话题发布
   mFunc_motors_feedbackPub=mNH.advertise<communication_test::func_motors_feedback>("xqserial_server/func_motors_feedback",1,true);
 
-  //  mOdomPub = mNH.advertise<nav_msgs::Odometry>("xqserial_server/Odom", 1, true);
-   //pub_barpoint_cloud_ = mNH.advertise<PointCloud>("kinect/barpoints", 1, true);
-   //pub_clearpoint_cloud_ = mNH.advertise<PointCloud>("kinect/clearpoints", 1, true);
-  //  mIMUPub = mNH.advertise<sensor_msgs::Imu>("xqserial_server/IMU", 1, true);
-//TestPub = mNH.advertise<sensor_msgs::Imu>("/test", 1, true);
-  /* static tf::TransformBroadcaster br;
-   tf::Quaternion q;
-   tf::Transform transform;
-   transform.setOrigin( tf::Vector3(0.0, 0.0, 0.13) );//摄像头距离地面高度13cm
-   q.setRPY(0, 0, 0);
-   transform.setRotation(q);
-   br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "base_footprint", "base_link"));
-   */
+  //手柄话题的订阅
+  mJoy = mNH.subscribe("joy", 1, &StatusPublisher::resetCallback,this);
+
    base_time_ = ros::Time::now().toSec();
 }
 
@@ -71,6 +85,36 @@ StatusPublisher::StatusPublisher(double separation,double radius)
     wheel_radius=radius;
 }
 
+//清零回调函数
+void StatusPublisher::resetCallback(const sensor_msgs::Joy::ConstPtr& joy){
+  if(joy->buttons[4]==1 && joy->buttons[5]==1 && joy->buttons[6]==1 && joy->axes[4]==1 ){
+    raw_Encorder_linearModule=0;
+    raw_Hall_putter_1_left=0;
+    raw_Hall_putter_1_right=0;
+    raw_Hall_putter_2_left=0;
+    raw_Hall_putter_2_right=0;
+    raw_Hall_putter_3_left=0;
+    raw_Hall_putter_3_right=0;
+
+    pre_raw_Encorder_linearModule=0;
+    pre_raw_Hall_putter_1_left=0;
+    pre_raw_Hall_putter_1_right=0;
+    pre_raw_Hall_putter_2_left=0;
+    pre_raw_Hall_putter_2_right=0;
+    pre_raw_Hall_putter_3_left=0;
+    pre_raw_Hall_putter_3_right=0;
+
+    func_motors_feedback.Encorder_linearModule=0;
+    func_motors_feedback.Hall_putter_1_left=0;
+    func_motors_feedback.Hall_putter_1_right=0;
+    func_motors_feedback.Hall_putter_2_left=0;
+    func_motors_feedback.Hall_putter_2_right=0;
+    func_motors_feedback.Hall_putter_3_left=0;
+    func_motors_feedback.Hall_putter_3_right=0;
+    mFunc_motors_feedbackPub.publish(func_motors_feedback); //发布处理后的传感信号
+  }
+
+}
 
 //***********************上位机解析下位机数据函数**************************//
 void StatusPublisher::Update(const char data[], unsigned int len)
@@ -188,6 +232,22 @@ void StatusPublisher::Update(const char data[], unsigned int len)
     //   data2[len2-1]=data[j];
     // }
 
+      //取得上一个时刻的传感数据
+      pre_raw_Encorder_linearModule=raw_Encorder_linearModule;
+      pre_raw_Hall_putter_1_left=raw_Hall_putter_1_left;
+      pre_raw_Hall_putter_1_right=raw_Hall_putter_1_right;
+      pre_raw_Hall_putter_2_left=raw_Hall_putter_2_left;
+      pre_raw_Hall_putter_2_right=raw_Hall_putter_2_right;
+      pre_raw_Hall_putter_3_left=raw_Hall_putter_3_left;
+      pre_raw_Hall_putter_3_right=raw_Hall_putter_3_right;
+      //取得该时刻的传感数据
+      raw_Encorder_linearModule=car_status.encoder_linearModule=car_status.encoder_linearModule;
+      raw_Hall_putter_1_left=car_status.hall_l_1=car_status.hall_l_1;
+      raw_Hall_putter_1_right=car_status.hall_r_1=car_status.hall_r_1;
+      raw_Hall_putter_2_left=car_status.hall_l_2=car_status.hall_l_2;
+      raw_Hall_putter_2_right=car_status.hall_r_2=car_status.hall_r_2;
+      raw_Hall_putter_3_left=car_status.hall_l_3=car_status.hall_l_3;
+      raw_Hall_putter_3_right=car_status.hall_r_3=car_status.hall_r_3;
     return;
 }
 
@@ -199,6 +259,7 @@ void StatusPublisher::Refresh()
      static bool theta_updateflag = false;
 
      static int flag=0;
+
 
     if(mbUpdated)
     {
@@ -223,15 +284,49 @@ void StatusPublisher::Refresh()
       //直线模组编码器值发布
       //大臂推杆霍尔传感器话题发布
       //小臂推杆霍尔传感器话题发布
-      //斜板推杆霍尔传感器话题发布 
-      func_motors_feedback.Encorder_linearModule=car_status.encoder_linearModule;
-      func_motors_feedback.Hall_putter_1_left=car_status.hall_l_1;
-      func_motors_feedback.Hall_putter_1_right=car_status.hall_r_1;
-      func_motors_feedback.Hall_putter_2_left=car_status.hall_l_2;
-      func_motors_feedback.Hall_putter_2_right=car_status.hall_r_2;
-      func_motors_feedback.Hall_putter_3_left=car_status.hall_l_3;
-      func_motors_feedback.Hall_putter_3_right=car_status.hall_r_3;
-      mFunc_motors_feedbackPub.publish(func_motors_feedback);
+      //斜板推杆霍尔传感器话题发布
+
+      //直线模组编码器值发布
+      // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)>30000) func_motors_feedback.Encorder_linearModule +=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule)-65536;
+      // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)<-30000) func_motors_feedback.Encorder_linearModule +=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule)+65536;
+      // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)>-30000 && (raw_Encorder_linearModule-pre_raw_Encorder_linearModule)<30000 )
+      func_motors_feedback.Encorder_linearModule -=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule);
+      // func_motors_feedback.Encorder_linearModule = raw_Encorder_linearModule;
+
+      //大臂推杆霍尔传感器话题发布
+      if((raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)>30000) func_motors_feedback.Hall_putter_1_left +=(raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)-65535;
+      if((raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)<-30000) func_motors_feedback.Hall_putter_1_left +=(raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)+65535;
+      if((raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)>-30000 && (raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left)<30000 )
+      func_motors_feedback.Hall_putter_1_left +=(raw_Hall_putter_1_left-pre_raw_Hall_putter_1_left);
+
+      if((raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)>30000) func_motors_feedback.Hall_putter_1_right +=(raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)-65535;
+      if((raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)<-30000) func_motors_feedback.Hall_putter_1_right +=(raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)+65535;
+      if((raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)>-30000 && (raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right)<30000 )
+      func_motors_feedback.Hall_putter_1_right +=(raw_Hall_putter_1_right-pre_raw_Hall_putter_1_right);      
+
+      //小臂推杆霍尔传感器话题发布
+      if((raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)>30000) func_motors_feedback.Hall_putter_2_left +=(raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)-65535;
+      if((raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)<-30000) func_motors_feedback.Hall_putter_2_left +=(raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)+65535;
+      if((raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)>-30000 && (raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left)<30000 )
+      func_motors_feedback.Hall_putter_2_left +=(raw_Hall_putter_2_left-pre_raw_Hall_putter_2_left);
+
+      if((raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)>30000) func_motors_feedback.Hall_putter_2_right +=(raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)-65535;
+      if((raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)<-30000) func_motors_feedback.Hall_putter_2_right +=(raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)+65535;
+      if((raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)>-30000 && (raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right)<30000 )
+      func_motors_feedback.Hall_putter_2_right +=(raw_Hall_putter_2_right-pre_raw_Hall_putter_2_right);
+
+      //斜板推杆霍尔传感器话题发布
+      if((raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)>30000) func_motors_feedback.Hall_putter_3_left +=(raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)-65535;
+      if((raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)<-30000) func_motors_feedback.Hall_putter_3_left +=(raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)+65535;
+      if((raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)>-30000 && (raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left)<30000 )
+      func_motors_feedback.Hall_putter_3_left +=(raw_Hall_putter_3_left-pre_raw_Hall_putter_3_left);
+
+      if((raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)>30000) func_motors_feedback.Hall_putter_3_right +=(raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)-65535;
+      if((raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)<-30000) func_motors_feedback.Hall_putter_3_right +=(raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)+65535;
+      if((raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)>-30000 && (raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)<30000 )
+      func_motors_feedback.Hall_putter_3_right +=(raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right);
+
+      mFunc_motors_feedbackPub.publish(func_motors_feedback); //发布处理后的传感信号
 
 
         //flag
