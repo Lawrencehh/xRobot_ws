@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andy/xRobot_ws/src/jyr/src/logitech.cpp" "/home/andy/xRobot_ws/build/jyr/CMakeFiles/logitech.dir/src/logitech.cpp.o"
+  "/home/ubuntu/xRobot_ws/src/jyr/src/logitech.cpp" "/home/ubuntu/xRobot_ws/build/jyr/CMakeFiles/logitech.dir/src/logitech.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

@@ -7,7 +7,7 @@
 #include <message_filters/time_synchronizer.h>
 #include "turtlebot_teleop/twist_hh.h"  //引用自定义消息类型
 
-bool auto_flag = false; //自动轨迹规划运行flag，为true时执行，为false时退出自动轨迹规划
+int auto_flag = 0; //自动轨迹规划运行flag，为1时执行第一段，为2时执行第二段，为0时退出自动轨迹规划
 
 int epoch = 0;       //轨迹规划阶段值，初始值为0
 
@@ -26,20 +26,22 @@ int goal_Hall_putter_3_left[] = \
 {0,0,100000,100000,100000,100000,102000};          //总行程105000脉冲××××××    斜板
    
 
-int epoch_init = 6;
-//可以debug
+/******************************可以debug**************************************/
+int epoch_init_1 = 0; //第一段起始步数
+int epoch_init_2 = 6; //第二段起始步数
+#define epoch_division 3            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
 #define epoch_length 7              //定义总步数，需要与goal的数组长度一致
 
 double ratio =1;
 const double ratio_config=0.4;
-
+/******************************可以debug**************************************/
 
 
 //误差阈值参数error，需要在现场调参数
-const double error_Encorder_linearModule = 1000; //1mm
-const double error_putter_1 = 100;  //1mm
-const double error_putter_2 = 2000; //1mm
-const double error_putter_3 = 1000; //5mm  斜板
+const double error_Encorder_linearModule = 1000; //1mm 1000个脉冲   ###直线模组
+const double error_putter_1 = 100;  //1mm 100个脉冲                 ###大臂
+const double error_putter_2 = 2000; //1mm 2000个脉冲                ###小臂
+const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 
 //P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
 const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
@@ -67,6 +69,7 @@ public:
 	void arm_autoCallback(const communication_test::func_motors_feedback::ConstPtr & msg);
 	void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
     void auto_switch(int &epoch_switch,const communication_test::func_motors_feedback::ConstPtr & msg);
+
     void motors_stop();
  
 private:
@@ -103,30 +106,25 @@ private:
         if(func_motors.linear_module < -100) func_motors.linear_module = -100;
         func_motors.linear_module=ratio*func_motors.linear_module;
 
-        // if(func_motors.linear_module > -lowest_Encorder_linearModule && func_motors.linear_module < lowest_Encorder_linearModule) func_motors.linear_module = 0;
-
+        
         //大臂
         func_motors.putter_1 = -p_putter_1*(goal_Hall_putter_1_left[epoch_switch] - msg->Hall_putter_1_left); //大臂
         if(func_motors.putter_1 > 100) func_motors.putter_1 = 100;
         if(func_motors.putter_1 < -100) func_motors.putter_1 = -100;
-
         func_motors.putter_1 = ratio*func_motors.putter_1;
-        // if(func_motors.putter_1 > -lowest_putter_1 && func_motors.putter_1 < lowest_putter_1) func_motors.putter_1 = 0;
         
         //小臂
         func_motors.putter_2 = -p_putter_2*(goal_Hall_putter_2_left[epoch_switch] - msg->Hall_putter_2_left); 
         if(func_motors.putter_2 > 100)  func_motors.putter_2 = 100;
         if(func_motors.putter_2 < -100) func_motors.putter_2 = -100;
-        // if(func_motors.putter_2 > -lowest_putter_2 &&  func_motors.putter_2 < lowest_putter_2) func_motors.putter_2 = 0;
-
+       
         //斜板角度推杆控制
         func_motors.oblique_angle = p_putter_3*(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left);
         if(func_motors.oblique_angle > 100)  func_motors.oblique_angle = 100;
         if(func_motors.oblique_angle < -100) func_motors.oblique_angle = -100;
         if(abs(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left)<error_putter_3)
         func_motors.oblique_angle = 0;
-        // if(func_motors.oblique_angle > -lowest_putter_3 &&  func_motors.oblique_angle < lowest_putter_3) func_motors.oblique_angle = 0;
-
+       
 
         func_motors.oblique_drawer = 1; //斜板抽屉推杆控制
         func_motors.flat_drawer = 0; //伸缩柜伸展控制 ×××××××××××××××××××在加装限位开关后可以改为1
@@ -159,7 +157,7 @@ void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedb
 {
 
 
-    if(auto_flag){
+    if(auto_flag > 0){
 
             switch (epoch)
             {
@@ -167,10 +165,21 @@ void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedb
                 this->auto_switch(epoch,msg);
                 break;
             
-            case epoch_length:
-                ROS_INFO_STREAM("ALL DONE");
+            //当flag为1时候执行第一段自动代码
+            if(auto_flag == 1){
+                case epoch_division:
+                ROS_INFO_STREAM("EPOCH 1 ALL DONE！！");
                 this->motors_stop();
                 break;
+            }
+            //当flag为2时候执行第二段自动代码
+            if(auto_flag == 2){
+                case epoch_length:
+                ROS_INFO_STREAM("EPOCH 2 ALL DONE！！");
+                this->motors_stop();
+                break;
+            }
+            
             }
         
         }
@@ -179,9 +188,12 @@ void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedb
  
 void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
-    if(joy->buttons[6]==1 && joy->buttons[11]==1)
-    auto_flag = true;
-    else auto_flag = false, epoch = epoch_init;      //断开自动轨迹规划模式时，将epoch置为epoch_init;
+    
+    if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[5]==1)
+    auto_flag = 1,epoch = epoch_init_1;                    
+    else if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[7]==1)
+    auto_flag = 2,epoch = epoch_init_2;
+    else auto_flag = 0, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;
     ROS_INFO_STREAM("auto_flag:"<<auto_flag);
 }
   

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/find_fiducial_pose.dir/src/find_fiducial_pose.cpp.o"
+  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose"
+  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose.pdb"
   "CMakeFiles/find_fiducial_pose.dir/src/detect_calibration_pattern.cpp.o"
-  "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose.pdb"
-  "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose"
+  "CMakeFiles/find_fiducial_pose.dir/src/find_fiducial_pose.cpp.o"
 )
 
 # Per-language clean rules from dependency scanning.

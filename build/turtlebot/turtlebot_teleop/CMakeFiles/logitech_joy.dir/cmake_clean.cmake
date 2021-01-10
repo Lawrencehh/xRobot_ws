@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_teleop/logitech_joy"
+  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_teleop/logitech_joy.pdb"
   "CMakeFiles/logitech_joy.dir/src/logitech_joy.cpp.o"
-  "/home/andy/xRobot_ws/devel/lib/turtlebot_teleop/logitech_joy.pdb"
-  "/home/andy/xRobot_ws/devel/lib/turtlebot_teleop/logitech_joy"
 )
 
 # Per-language clean rules from dependency scanning.

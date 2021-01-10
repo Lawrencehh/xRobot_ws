@@ -1,4 +1,4 @@
-prefix=/home/andy/xRobot_ws/install
+prefix=/home/ubuntu/xRobot_ws/install
 
 Name: ps3joy
 Description: Description of ps3joy

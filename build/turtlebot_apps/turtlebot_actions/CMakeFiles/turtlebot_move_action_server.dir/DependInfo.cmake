@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_move_action_server.cpp" "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_move_action_server.dir/src/turtlebot_move_action_server.cpp.o"
+  "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/src/turtlebot_move_action_server.cpp" "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/CMakeFiles/turtlebot_move_action_server.dir/src/turtlebot_move_action_server.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -17,8 +17,8 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
 
 # The include file search paths:
 set(CMAKE_CXX_TARGET_INCLUDE_PATH
-  "/home/andy/xRobot_ws/devel/include"
-  "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include"
+  "/home/ubuntu/xRobot_ws/devel/include"
+  "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include"
   "/opt/ros/kinetic/include"
   "/opt/ros/kinetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp"
   "/opt/ros/kinetic/include/opencv-3.3.1-dev"

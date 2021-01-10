@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration/msg/_ScanAngle.py"
+  "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration/msg/__init__.py"
   "CMakeFiles/turtlebot_calibration_generate_messages_py"
-  "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration/msg/_ScanAngle.py"
-  "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_calibration/msg/__init__.py"
 )
 
 # Per-language clean rules from dependency scanning.
