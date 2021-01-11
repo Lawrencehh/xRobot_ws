@@ -14,10 +14,10 @@ int epoch = 0;       //轨迹规划阶段值，初始值为0
 
 //每个阶段的目标值
 int goal_Encorder_linearModule[] = \   
-{0,0,0,609000,325000,315000,215000};               //总行程615000脉冲×××××     直线模组
+{0,0,0,605000,325000,315000,215000};               //总行程615000脉冲×××××     直线模组
 
 int goal_Hall_putter_1_left[] = \       
-{0,0,0,8100,8100,6400,5164};                     //总行程8000脉冲×××××××     大臂
+{0,0,0,8100,8100,6400,4950};                     //总行程8000脉冲×××××××     大臂
 
 int goal_Hall_putter_2_left[] = \       
 {480000,240000,0,0,0,200000,340000};               //总行程636000脉冲×××××     小臂
@@ -28,12 +28,12 @@ int goal_Hall_putter_3_left[] = \
 
 /******************************可以debug**************************************/
 int epoch_init_1 = 0; //第一段起始步数
-int epoch_init_2 = 6; //第二段起始步数
+int epoch_init_2 = 3; //第二段起始步数
 #define epoch_division 3            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
 #define epoch_length 7              //定义总步数，需要与goal的数组长度一致
 
 double ratio =1;
-const double ratio_config=0.4;
+const double ratio_config=0.45;
 /******************************可以debug**************************************/
 
 
@@ -45,7 +45,7 @@ const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 
 //P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
 const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
-const double p_putter_1 = 30/error_putter_1;
+const double p_putter_1 = 40/error_putter_1;
 const double p_putter_2 = 30/error_putter_2;
 const double p_putter_3 = 15/error_putter_3; 
 //斜板
@@ -159,40 +159,50 @@ void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedb
 
     if(auto_flag > 0){
 
+        //当flag为1时候执行第一段自动代码
+        if(auto_flag == 1){
             switch (epoch)
             {
             default:
                 this->auto_switch(epoch,msg);
                 break;
+
             
-            //当flag为1时候执行第一段自动代码
-            if(auto_flag == 1){
-                case epoch_division:
+            case epoch_division:
                 ROS_INFO_STREAM("EPOCH 1 ALL DONE！！");
                 this->motors_stop();
                 break;
+        
             }
+        }
+
+            
             //当flag为2时候执行第二段自动代码
-            if(auto_flag == 2){
-                case epoch_length:
+        if(auto_flag == 2){
+            switch (epoch)
+            {
+            default:
+                this->auto_switch(epoch,msg);
+                break;            
+            
+            case epoch_length:
                 ROS_INFO_STREAM("EPOCH 2 ALL DONE！！");
                 this->motors_stop();
-                break;
+            break;            
             }
-            
-            }
-        
-        }
-    
+        }    
+    }   
 }
  
 void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
     
     if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[5]==1)
-    auto_flag = 1,epoch = epoch_init_1;                    
+    auto_flag = 1,epoch = epoch_init_1;  
+
     else if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[7]==1)
     auto_flag = 2,epoch = epoch_init_2;
+
     else auto_flag = 0, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;
     ROS_INFO_STREAM("auto_flag:"<<auto_flag);
 }

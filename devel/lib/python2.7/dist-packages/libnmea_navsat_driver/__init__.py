@@ -3,10 +3,11 @@
 # keep symbol table as clean as possible by deleting all unnecessary symbols
 
 from os import path as os_path
-from pkgutil import extend_path
 from sys import path as sys_path
 
-__extended_path = '/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/src'.split(';')
+from pkgutil import extend_path
+
+__extended_path = "/home/andy/xRobot_ws/src/nmea_navsat_driver/src".split(";")
 for p in reversed(__extended_path):
     sys_path.insert(0, p)
     del p

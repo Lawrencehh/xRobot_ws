@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/src/logitech_joy.cpp
+/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/logitech_joy.cpp
 ros/ros.h
 -
 geometry_msgs/Twist.h
@@ -14,13 +14,13 @@ geometry_msgs/Twist.h
 sensor_msgs/Joy.h
 -
 boost/thread/mutex.hpp
-/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/src/boost/thread/mutex.hpp
+/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/boost/thread/mutex.hpp
 boost/thread/thread.hpp
-/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/src/boost/thread/thread.hpp
+/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/boost/thread/thread.hpp
 ros/console.h
-/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/src/ros/console.h
+/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/ros/console.h
 turtlebot_teleop/twist_hh.h
-/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_teleop/src/turtlebot_teleop/twist_hh.h
+/home/andy/xRobot_ws/src/turtlebot/turtlebot_teleop/src/turtlebot_teleop/twist_hh.h
 
 /opt/ros/kinetic/include/geometry_msgs/Twist.h
 string

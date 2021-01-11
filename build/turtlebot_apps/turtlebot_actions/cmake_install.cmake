@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions
+# Install script for directory: /home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/xRobot_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/andy/xRobot_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,107 +32,97 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
-endif()
-
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/action" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/action/FindFiducial.action"
-    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/action/TurtlebotMove.action"
+    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/action/FindFiducial.action"
+    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/action/TurtlebotMove.action"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/msg" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialAction.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionGoal.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionResult.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionFeedback.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialGoal.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialResult.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialFeedback.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialAction.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionGoal.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionResult.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialActionFeedback.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialGoal.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialResult.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/FindFiducialFeedback.msg"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/msg" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveAction.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionGoal.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionResult.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionFeedback.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveGoal.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveResult.msg"
-    "/home/ubuntu/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveFeedback.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveAction.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionGoal.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionResult.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveActionFeedback.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveGoal.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveResult.msg"
+    "/home/andy/xRobot_ws/devel/share/turtlebot_actions/msg/TurtlebotMoveFeedback.msg"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/cmake" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions-msg-paths.cmake")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/cmake" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions-msg-paths.cmake")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/include/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/include/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/roseus/ros/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/roseus/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/roseus/ros/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/common-lisp/ros/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/common-lisp/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/common-lisp/ros/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/share/gennodejs/ros/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/gennodejs/ros" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/share/gennodejs/ros/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_actions")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_actions")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions.pc")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions.pc")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/cmake" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions-msg-extras.cmake")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/cmake" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actions-msg-extras.cmake")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions/cmake" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actionsConfig.cmake"
-    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actionsConfig-version.cmake"
+    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actionsConfig.cmake"
+    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_actions/catkin_generated/installspace/turtlebot_actionsConfig-version.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/package.xml")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions" TYPE FILE FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions" TYPE EXECUTABLE FILES "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions" TYPE EXECUTABLE FILES "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server")
     file(RPATH_CHANGE
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server"
-         OLD_RPATH "/opt/ros/kinetic/lib:/opt/ros/kinetic/lib/x86_64-linux-gnu:"
+         OLD_RPATH "/opt/ros/kinetic/lib:"
          NEW_RPATH "")
     if(CMAKE_INSTALL_DO_STRIP)
       execute_process(COMMAND "/usr/bin/strip" "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/turtlebot_move_action_server")
@@ -140,14 +130,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/find_fiducial_pose" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/find_fiducial_pose")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/find_fiducial_pose"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions" TYPE EXECUTABLE FILES "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions" TYPE EXECUTABLE FILES "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/find_fiducial_pose")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/find_fiducial_pose" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions/find_fiducial_pose")
     file(RPATH_CHANGE
@@ -160,18 +150,18 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/turtlebot_actions" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/turtlebot_actions" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/include")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_actions" TYPE PROGRAM FILES
-    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/scripts/test_fiducial.py"
-    "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/scripts/test_move.py"
+    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/scripts/test_fiducial.py"
+    "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/scripts/test_move.py"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_actions/launch")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_actions" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_actions/launch")
 endif()
 

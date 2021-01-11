@@ -2,7 +2,7 @@
 DEVELSPACE = False
 INSTALLSPACE = True
 
-CATKIN_DEVEL_PREFIX = '/home/ubuntu/xRobot_ws/devel'
+CATKIN_DEVEL_PREFIX = '/home/andy/xRobot_ws/devel'
 
 CATKIN_GLOBAL_BIN_DESTINATION = 'bin'
 CATKIN_GLOBAL_ETC_DESTINATION = 'etc'
@@ -16,18 +16,18 @@ CATKIN_PACKAGE_BIN_DESTINATION = 'lib/turtlebot_bringup'
 CATKIN_PACKAGE_ETC_DESTINATION = 'etc/turtlebot_bringup'
 CATKIN_PACKAGE_INCLUDE_DESTINATION = 'include/turtlebot_bringup'
 CATKIN_PACKAGE_LIB_DESTINATION = 'lib'
-CATKIN_PACKAGE_LIBEXEC_DESTINATION = 'lib/turtlebot_bringup'
+CATKIN_PACKAGE_LIBEXEC_DESTINATION = ''
 CATKIN_PACKAGE_PYTHON_DESTINATION = 'lib/python2.7/dist-packages/turtlebot_bringup'
 CATKIN_PACKAGE_SHARE_DESTINATION = 'share/turtlebot_bringup'
 
-CMAKE_BINARY_DIR = '/home/ubuntu/xRobot_ws/build'
-CMAKE_CURRENT_BINARY_DIR = '/home/ubuntu/xRobot_ws/build/turtlebot/turtlebot_bringup'
-CMAKE_CURRENT_SOURCE_DIR = '/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_bringup'
-CMAKE_INSTALL_PREFIX = '/home/ubuntu/xRobot_ws/install'
-CMAKE_SOURCE_DIR = '/home/ubuntu/xRobot_ws/src'
+CMAKE_BINARY_DIR = '/home/andy/xRobot_ws/build'
+CMAKE_CURRENT_BINARY_DIR = '/home/andy/xRobot_ws/build/turtlebot/turtlebot_bringup'
+CMAKE_CURRENT_SOURCE_DIR = '/home/andy/xRobot_ws/src/turtlebot/turtlebot_bringup'
+CMAKE_INSTALL_PREFIX = '/home/andy/xRobot_ws/install'
+CMAKE_SOURCE_DIR = '/home/andy/xRobot_ws/src'
 
 PROJECT_NAME = 'turtlebot_bringup'
-PROJECT_BINARY_DIR = '/home/ubuntu/xRobot_ws/build/turtlebot/turtlebot_bringup'
-PROJECT_SOURCE_DIR = '/home/ubuntu/xRobot_ws/src/turtlebot/turtlebot_bringup'
+PROJECT_BINARY_DIR = '/home/andy/xRobot_ws/build/turtlebot/turtlebot_bringup'
+PROJECT_SOURCE_DIR = '/home/andy/xRobot_ws/src/turtlebot/turtlebot_bringup'
 
 PYTHON_EXECUTABLE = '/usr/bin/python2'

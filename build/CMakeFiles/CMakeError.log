@@ -1,65 +1,55 @@
-Performing C SOURCE FILE Test CMAKE_HAVE_LIBC_PTHREAD failed with the following output:
-Change Dir: /home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_e9764/fast && /usr/bin/make  -f CMakeFiles/cmTC_e9764.dir/build.make CMakeFiles/cmTC_e9764.dir/build
-make[1]: Entering directory '/home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e9764.dir/src.c.o
-/usr/bin/cc -DCMAKE_HAVE_LIBC_PTHREAD   -o CMakeFiles/cmTC_e9764.dir/src.c.o -c /home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp/src.c
-Linking C executable cmTC_e9764
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e9764.dir/link.txt --verbose=1
-/usr/bin/cc -rdynamic CMakeFiles/cmTC_e9764.dir/src.c.o -o cmTC_e9764 
-CMakeFiles/cmTC_e9764.dir/src.c.o：在函数‘main’中：
-src.c:(.text+0x3c)：对‘pthread_create’未定义的引用
-src.c:(.text+0x48)：对‘pthread_detach’未定义的引用
-src.c:(.text+0x54)：对‘pthread_cancel’未定义的引用
-src.c:(.text+0x65)：对‘pthread_join’未定义的引用
-src.c:(.text+0x79)：对‘pthread_atfork’未定义的引用
+Run Build Command:"/usr/bin/make" "cmTC_97c50/fast"
+/usr/bin/make -f CMakeFiles/cmTC_97c50.dir/build.make CMakeFiles/cmTC_97c50.dir/build
+make[1]: Entering directory '/home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_97c50.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_97c50.dir/CheckSymbolExists.c.o   -c /home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_97c50
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_97c50.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_97c50.dir/CheckSymbolExists.c.o  -o cmTC_97c50 -rdynamic 
+CMakeFiles/cmTC_97c50.dir/CheckSymbolExists.c.o：在函数‘main’中：
+CheckSymbolExists.c:(.text+0x16)：对‘pthread_create’未定义的引用
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_e9764.dir/build.make:105: recipe for target 'cmTC_e9764' failed
-make[1]: *** [cmTC_e9764] Error 1
-make[1]: Leaving directory '/home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp'
-Makefile:140: recipe for target 'cmTC_e9764/fast' failed
-make: *** [cmTC_e9764/fast] Error 2
+CMakeFiles/cmTC_97c50.dir/build.make:97: recipe for target 'cmTC_97c50' failed
+make[1]: *** [cmTC_97c50] Error 1
+make[1]: Leaving directory '/home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_97c50/fast' failed
+make: *** [cmTC_97c50/fast] Error 2
 
-
-Source file was:
+File /home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
 #include <pthread.h>
 
-static void* test_func(void* data)
+int main(int argc, char** argv)
 {
-  return data;
-}
-
-int main(void)
-{
-  pthread_t thread;
-  pthread_create(&thread, NULL, test_func, NULL);
-  pthread_detach(thread);
-  pthread_cancel(thread);
-  pthread_join(thread, NULL);
-  pthread_atfork(NULL, NULL, NULL);
-  pthread_exit(NULL);
-
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
   return 0;
+#endif
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp
+Change Dir: /home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp
 
-Run Build Command(s):/usr/bin/make cmTC_8a5e7/fast && /usr/bin/make  -f CMakeFiles/cmTC_8a5e7.dir/build.make CMakeFiles/cmTC_8a5e7.dir/build
-make[1]: Entering directory '/home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_8a5e7.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create -o CMakeFiles/cmTC_8a5e7.dir/CheckFunctionExists.c.o -c /usr/local/share/cmake-3.19/Modules/CheckFunctionExists.c
-Linking C executable cmTC_8a5e7
-/usr/local/bin/cmake -E cmake_link_script CMakeFiles/cmTC_8a5e7.dir/link.txt --verbose=1
-/usr/bin/cc  -DCHECK_FUNCTION_EXISTS=pthread_create -rdynamic CMakeFiles/cmTC_8a5e7.dir/CheckFunctionExists.c.o -o cmTC_8a5e7  -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_13445/fast"
+/usr/bin/make -f CMakeFiles/cmTC_13445.dir/build.make CMakeFiles/cmTC_13445.dir/build
+make[1]: Entering directory '/home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_13445.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_13445.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_13445
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_13445.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_13445.dir/CheckFunctionExists.c.o  -o cmTC_13445 -rdynamic -lpthreads 
 /usr/bin/ld: 找不到 -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_8a5e7.dir/build.make:105: recipe for target 'cmTC_8a5e7' failed
-make[1]: *** [cmTC_8a5e7] Error 1
-make[1]: Leaving directory '/home/ubuntu/xRobot_ws/build/CMakeFiles/CMakeTmp'
-Makefile:140: recipe for target 'cmTC_8a5e7/fast' failed
-make: *** [cmTC_8a5e7/fast] Error 2
-
+CMakeFiles/cmTC_13445.dir/build.make:97: recipe for target 'cmTC_13445' failed
+make[1]: *** [cmTC_13445] Error 1
+make[1]: Leaving directory '/home/andy/xRobot_ws/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_13445/fast' failed
+make: *** [cmTC_13445/fast] Error 2
 
 

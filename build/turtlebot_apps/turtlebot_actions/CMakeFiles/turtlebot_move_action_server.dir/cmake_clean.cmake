@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server"
-  "/home/ubuntu/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server.pdb"
   "CMakeFiles/turtlebot_move_action_server.dir/src/turtlebot_move_action_server.cpp.o"
+  "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server.pdb"
+  "/home/andy/xRobot_ws/devel/lib/turtlebot_actions/turtlebot_move_action_server"
 )
 
 # Per-language clean rules from dependency scanning.
