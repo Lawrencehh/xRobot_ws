@@ -14,26 +14,26 @@ int epoch = 0;       //轨迹规划阶段值，初始值为0
 
 //每个阶段的目标值
 int goal_Encorder_linearModule[] = \   
-{0,0,0,605000,325000,315000,215000};               //总行程615000脉冲×××××     直线模组
+{0,0,0,0,605000,325000,315000,215000,65000,0,0,0};               //总行程615000脉冲×××××     直线模组
 
 int goal_Hall_putter_1_left[] = \       
-{0,0,0,8100,8100,6400,4950};                     //总行程8000脉冲×××××××     大臂
+{0,0,0,0,8100,8100,6300,4600,2800,0,0,0};                     //总行程8000脉冲×××××××     大臂
 
 int goal_Hall_putter_2_left[] = \       
-{480000,240000,0,0,0,200000,340000};               //总行程636000脉冲×××××     小臂
+{480000,240000,240000,0,0,0,200000,340000,380000,636000,240000,480000};               //总行程636000脉冲×××××     小臂
 
 int goal_Hall_putter_3_left[] = \       
-{0,0,100000,100000,100000,100000,102000};          //总行程105000脉冲××××××    斜板
+{0,0,100000,100000,100000,100000,100000,102000,102000,102000,102000,0};          //总行程105000脉冲××××××    斜板
    
 
 /******************************可以debug**************************************/
-int epoch_init_1 = 0; //第一段起始步数
-int epoch_init_2 = 3; //第二段起始步数
-#define epoch_division 3            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
-#define epoch_length 7              //定义总步数，需要与goal的数组长度一致
+int epoch_init_1 = 1; //第一段起始步数
+int epoch_init_2 = 4; //第二段起始步数
+#define epoch_division 4            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
+#define epoch_length 12              //定义总步数，需要与goal的数组长度一致
 
 double ratio =1;
-const double ratio_config=0.45;
+const double ratio_config=0.5;
 /******************************可以debug**************************************/
 
 
@@ -45,7 +45,7 @@ const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 
 //P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
 const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
-const double p_putter_1 = 40/error_putter_1;
+const double p_putter_1 = 60/error_putter_1;
 const double p_putter_2 = 30/error_putter_2;
 const double p_putter_3 = 15/error_putter_3; 
 //斜板
@@ -94,9 +94,13 @@ private:
         ) epoch_switch++;
 
         //给各个电机赋值
-        if(epoch_switch == 5) {
+
+        if(epoch_switch == 6) {
             ratio = ratio_config;
         }
+
+
+
         else ratio =1;
         ROS_INFO_STREAM("epoch_switch:>>>"<<epoch_switch);
         ROS_INFO_STREAM("ratio:>>>"<<ratio);
@@ -117,6 +121,9 @@ private:
         func_motors.putter_2 = -p_putter_2*(goal_Hall_putter_2_left[epoch_switch] - msg->Hall_putter_2_left); 
         if(func_motors.putter_2 > 100)  func_motors.putter_2 = 100;
         if(func_motors.putter_2 < -100) func_motors.putter_2 = -100;
+        if(epoch_switch == 3) {
+            func_motors.putter_2 = 0.5*func_motors.putter_2;
+        }
        
         //斜板角度推杆控制
         func_motors.oblique_angle = p_putter_3*(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left);
@@ -125,12 +132,16 @@ private:
         if(abs(goal_Hall_putter_3_left[epoch_switch] - msg->Hall_putter_3_left)<error_putter_3)
         func_motors.oblique_angle = 0;
        
-
+        if(epoch_switch>=3)
         func_motors.oblique_drawer = 1; //斜板抽屉推杆控制
-        func_motors.flat_drawer = 0; //伸缩柜伸展控制 ×××××××××××××××××××在加装限位开关后可以改为1
 
-        if(epoch_switch>=4)        func_motors.belt = 1; //输送带动作控制
+        if(epoch_switch>=3)
+        func_motors.flat_drawer = 1; //伸缩柜伸展控制 ×××××××××××××××××××在加装限位开关后可以改为1
+        else func_motors.flat_drawer = 0;
+
+        if(epoch_switch>=4 && epoch_switch <=8)        func_motors.belt = 1; //输送带动作控制
         else                        func_motors.belt = 0;
+        
         func_motors.camera_angle = 0;  //摄像头的旋转
         func_motors.camera_tilt = 0; //摄像头俯仰角控制
         func_motors.arm_auto =1; //自动轨迹的使能
@@ -197,10 +208,10 @@ void multiReceiver::arm_autoCallback(const communication_test::func_motors_feedb
 void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
     
-    if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[5]==1)
+    if(joy->buttons[6]==1 && joy->buttons[1]==1 && joy->buttons[5]==1)
     auto_flag = 1,epoch = epoch_init_1;  
 
-    else if(joy->buttons[6]==1 && joy->buttons[11]==1 && joy->buttons[7]==1)
+    else if(joy->buttons[6]==1 && joy->buttons[1]==1 && joy->buttons[7]==1)
     auto_flag = 2,epoch = epoch_init_2;
 
     else auto_flag = 0, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;

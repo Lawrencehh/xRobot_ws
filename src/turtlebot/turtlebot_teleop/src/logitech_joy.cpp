@@ -103,13 +103,13 @@ TurtlebotTeleop::TurtlebotTeleop():
   deadman_axis_(10), //履带电机使能键,这里设置的罗技的左摇杆按键
   deadman_func_axis_(6), //功能电机使能键,这里设置的罗技的LB键
 
-  arm_auto_axis_(11), //机械臂轨迹自动执行指令，这里设置罗技的右侧摇杆的按键
+  arm_auto_axis_(1), //机械臂轨迹自动执行指令，这里设置罗技的右侧摇杆的按键
 
 
   
 
   oblique_angle1(3),  //斜板角度
-  oblique_angle2(1),  //斜板角度
+  oblique_angle2(11),  //斜板角度
   oblique_drawer1(2), //斜板抽屉
   oblique_drawer2(0), //斜板抽屉
   flat_drawer1(9),    //伸缩柜控制
