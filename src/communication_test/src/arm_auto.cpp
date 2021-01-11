@@ -16,16 +16,16 @@ int epoch = 0;       //轨迹规划阶段值，初始值为0
 
 //每个阶段的目标值
 int goal_Encorder_linearModule[] = \   
-{0,0,0,0,605000,605000,0,0,0};               //总行程615000脉冲×××××     直线模组
+{0,0,0,0,605000,605000,605000,0,0,0};               //总行程615000脉冲×××××     直线模组
 
 int goal_Hall_putter_1_left[] = \       
-{0,0,0,0,8100,59000,0,0,0};                     //总行程8000脉冲×××××××     大臂
+{0,0,0,0,8150,5550,5000,0,0,0};                     //总行程8000脉冲×××××××     大臂
 
 int goal_Hall_putter_2_left[] = \       
-{480000,240000,240000,0,0,636000,636000,240000,480000};               //总行程636000脉冲×××××     小臂
+{480000,240000,240000,0,0,430000,636000,636000,240000,480000};               //总行程636000脉冲×××××     小臂
 
 int goal_Hall_putter_3_left[] = \       
-{0,0,100000,100000,100000,100000,102000,102000,0};          //总行程105000脉冲××××××    斜板
+{0,0,100000,100000,100000,100000,102000,104000,104000,0};          //总行程105000脉冲××××××    斜板
    
 
 /******************************可以debug**************************************/
@@ -35,7 +35,9 @@ int epoch_init_2 = 4; //第二段起始步数
 #define epoch_length 9              //定义总步数，需要与goal的数组长度一致
 
 double ratio =1;
-const double ratio_config=0.5;
+const double ratio_config_1=0.37;
+const double ratio_config_2=0.5;
+const double ratio_config_3=0.8;
 /******************************可以debug**************************************/
 
 
@@ -47,7 +49,7 @@ const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 
 //P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
 const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
-const double p_putter_1 = 60/error_putter_1;
+const double p_putter_1 = 80/error_putter_1;
 const double p_putter_2 = 30/error_putter_2;
 const double p_putter_3 = 15/error_putter_3; 
 //斜板
@@ -98,11 +100,14 @@ private:
         //给各个电机赋值
 
         if(epoch_switch == 5) {
-            ratio = ratio_config;
+            ratio = ratio_config_1;
         }
-
-
-
+        else if(epoch_switch == 6 ) {
+            ratio = ratio_config_2;
+        }
+        else if(epoch_switch == 7 ) {
+            ratio = ratio_config_3;
+        }
         else ratio =1;
         ROS_INFO_STREAM("epoch_switch:>>>"<<epoch_switch);
         ROS_INFO_STREAM("ratio:>>>"<<ratio);
@@ -110,6 +115,7 @@ private:
         func_motors.linear_module = p_Encorder_linearModule*(goal_Encorder_linearModule[epoch_switch] - msg->Encorder_linearModule); //线性模组的前进后退
         if(func_motors.linear_module > 100) func_motors.linear_module = 100;
         if(func_motors.linear_module < -100) func_motors.linear_module = -100;
+        if(epoch_switch ==7)
         func_motors.linear_module=ratio*func_motors.linear_module;
 
         
@@ -117,6 +123,7 @@ private:
         func_motors.putter_1 = -p_putter_1*(goal_Hall_putter_1_left[epoch_switch] - msg->Hall_putter_1_left); //大臂
         if(func_motors.putter_1 > 100) func_motors.putter_1 = 100;
         if(func_motors.putter_1 < -100) func_motors.putter_1 = -100;
+        if(epoch_switch ==5 || epoch_switch ==6)
         func_motors.putter_1 = ratio*func_motors.putter_1;
         
         //小臂
