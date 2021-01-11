@@ -7,6 +7,8 @@
 #include <message_filters/time_synchronizer.h>
 #include "turtlebot_teleop/twist_hh.h"  //引用自定义消息类型
 
+//分支lazy
+
 int auto_flag = 0; //自动轨迹规划运行flag，为1时执行第一段，为2时执行第二段，为0时退出自动轨迹规划
 
 int epoch = 0;       //轨迹规划阶段值，初始值为0
