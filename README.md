@@ -1,6 +1,9 @@
 # xRobot_ws
 xx机器人项目ROS代码
 
+## 分支说明
+该分支为远程控制箱版本的远程操控程序
+
 ## 主从机设置
 https://blog.csdn.net/zhanghm1995/article/details/106781954
 
@@ -9,7 +12,7 @@ https://blog.csdn.net/zhanghm1995/article/details/106781954
 
 ## 程序架构
 1. 输入遥控指令模块
-    - 遥控手柄驱动
+    - 远程控制箱遥控手柄驱动
     - 手柄信息提取解析，发布到话题之上
 2. 小车底盘控制模块
     - 解析下层工控机上传数据
@@ -24,6 +27,19 @@ roslaunch xqserial_server xqserial.launch
 
 #启动遥控节点
 roslaunch jyr meizhong_joystick_teleop.launch
+
+#启动摄像头及输送带遥控节点
+rosrun communication_test send_data_serialPort
+
+#启动机械臂自动轨迹规划节点
+rosrun communication_test arm_auto
+
+#启动GPS定位模块数据获取节点
+rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=115200
+
+#启动机器人数据上传节点
+rosrun communication_test robot_data_serialPort
+
 
 ```
 

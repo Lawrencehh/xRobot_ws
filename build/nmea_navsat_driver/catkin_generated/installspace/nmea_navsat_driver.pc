@@ -1,4 +1,4 @@
-prefix=/home/andy/xRobot_ws/install
+prefix=/home/ubuntu/xRobot_ws/install
 
 Name: nmea_navsat_driver
 Description: Description of nmea_navsat_driver

@@ -226,3 +226,11 @@ add_dependencies(arm_auto ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_
 target_link_libraries(arm_auto
   ${catkin_LIBRARIES}
 )
+
+add_executable(robot_data_serialPort
+  src/robot_data_serialPort.cpp
+)
+add_dependencies(robot_data_serialPort ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(robot_data_serialPort
+  ${catkin_LIBRARIES}
+)

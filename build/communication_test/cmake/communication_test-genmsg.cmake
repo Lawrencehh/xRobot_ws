@@ -2,7 +2,7 @@
 
 message(STATUS "communication_test: 1 messages, 0 services")
 
-set(MSG_I_FLAGS "-Icommunication_test:/home/andy/xRobot_ws/src/communication_test/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
+set(MSG_I_FLAGS "-Icommunication_test:/home/ubuntu/xRobot_ws/src/communication_test/msg;-Istd_msgs:/opt/ros/kinetic/share/std_msgs/cmake/../msg")
 
 # Find all generators
 find_package(gencpp REQUIRED)
@@ -17,9 +17,9 @@ add_custom_target(communication_test_generate_messages ALL)
 
 
 
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_custom_target(_communication_test_generate_messages_check_deps_${_filename}
-  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "communication_test" "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" ""
+  COMMAND ${CATKIN_ENV} ${PYTHON_EXECUTABLE} ${GENMSG_CHECK_DEPS_SCRIPT} "communication_test" "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" ""
 )
 
 #
@@ -29,7 +29,7 @@ add_custom_target(_communication_test_generate_messages_check_deps_${_filename}
 ### Section generating for lang: gencpp
 ### Generating Messages
 _generate_msg_cpp(communication_test
-  "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
+  "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gencpp_INSTALL_DIR}/communication_test
@@ -49,7 +49,7 @@ add_custom_target(communication_test_generate_messages_cpp
 add_dependencies(communication_test_generate_messages communication_test_generate_messages_cpp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_dependencies(communication_test_generate_messages_cpp _communication_test_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -62,7 +62,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS communication_test_generate_message
 ### Section generating for lang: geneus
 ### Generating Messages
 _generate_msg_eus(communication_test
-  "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
+  "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${geneus_INSTALL_DIR}/communication_test
@@ -82,7 +82,7 @@ add_custom_target(communication_test_generate_messages_eus
 add_dependencies(communication_test_generate_messages communication_test_generate_messages_eus)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_dependencies(communication_test_generate_messages_eus _communication_test_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -95,7 +95,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS communication_test_generate_message
 ### Section generating for lang: genlisp
 ### Generating Messages
 _generate_msg_lisp(communication_test
-  "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
+  "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genlisp_INSTALL_DIR}/communication_test
@@ -115,7 +115,7 @@ add_custom_target(communication_test_generate_messages_lisp
 add_dependencies(communication_test_generate_messages communication_test_generate_messages_lisp)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_dependencies(communication_test_generate_messages_lisp _communication_test_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -128,7 +128,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS communication_test_generate_message
 ### Section generating for lang: gennodejs
 ### Generating Messages
 _generate_msg_nodejs(communication_test
-  "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
+  "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${gennodejs_INSTALL_DIR}/communication_test
@@ -148,7 +148,7 @@ add_custom_target(communication_test_generate_messages_nodejs
 add_dependencies(communication_test_generate_messages communication_test_generate_messages_nodejs)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_dependencies(communication_test_generate_messages_nodejs _communication_test_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility
@@ -161,7 +161,7 @@ list(APPEND ${PROJECT_NAME}_EXPORTED_TARGETS communication_test_generate_message
 ### Section generating for lang: genpy
 ### Generating Messages
 _generate_msg_py(communication_test
-  "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
+  "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg"
   "${MSG_I_FLAGS}"
   ""
   ${CATKIN_DEVEL_PREFIX}/${genpy_INSTALL_DIR}/communication_test
@@ -181,7 +181,7 @@ add_custom_target(communication_test_generate_messages_py
 add_dependencies(communication_test_generate_messages communication_test_generate_messages_py)
 
 # add dependencies to all check dependencies targets
-get_filename_component(_filename "/home/andy/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
+get_filename_component(_filename "/home/ubuntu/xRobot_ws/src/communication_test/msg/func_motors_feedback.msg" NAME_WE)
 add_dependencies(communication_test_generate_messages_py _communication_test_generate_messages_check_deps_${_filename})
 
 # target for backward compatibility

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
+  "/home/ubuntu/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration/manifest.l"
+  "/home/ubuntu/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration/msg/ScanAngle.l"
   "CMakeFiles/turtlebot_calibration_generate_messages_eus"
-  "/home/andy/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration/msg/ScanAngle.l"
-  "/home/andy/xRobot_ws/devel/share/roseus/ros/turtlebot_calibration/manifest.l"
 )
 
 # Per-language clean rules from dependency scanning.
