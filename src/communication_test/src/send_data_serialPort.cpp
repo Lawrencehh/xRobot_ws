@@ -1,3 +1,5 @@
+
+/*该节点负责输送带和摄像头云台的控制命令下发*/
 #include <ros/ros.h> 
 #include <string>
 #include <serial/serial.h>  //ROS已经内置了的串口包 
