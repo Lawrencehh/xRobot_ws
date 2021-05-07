@@ -234,3 +234,11 @@ add_dependencies(robot_data_serialPort ${${PROJECT_NAME}_EXPORTED_TARGETS} ${cat
 target_link_libraries(robot_data_serialPort
   ${catkin_LIBRARIES}
 )
+
+add_executable(tele_data_serialPort
+  src/tele_data_serialPort.cpp
+)
+add_dependencies(tele_data_serialPort ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
+target_link_libraries(tele_data_serialPort
+  ${catkin_LIBRARIES}
+)
