@@ -23,12 +23,13 @@ int goal_Hall_putter_2_left[] = \
 {480000,240000,240000,0,0,0,200000,340000,380000,550000,636000,240000,480000};               //总行程636000脉冲×××××     小臂
 
 int goal_Hall_putter_3_left[] = \       
-{0,0,100000,100000,100000,100000,100000,102000,102000,104000,104000,104000,0};          //总行程105000脉冲××××××    斜板
+{0,0,100000,100000,100000,100000,100000,102000,102000,102000,104000,104000,0};          //总行程105000脉冲××××××    斜板
    
 
 /******************************可以debug**************************************/
 int epoch_init_1 = 1; //第一段起始步数
-int epoch_init_2 = 4; //第二段起始步数
+int epoch_init_2 = 7; //第二段起始步数
+
 #define epoch_division 4            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
 #define epoch_length 13              //定义总步数，需要与goal的数组长度一致
 
@@ -47,7 +48,7 @@ const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
 const double p_putter_1 = 60/error_putter_1;
 const double p_putter_2 = 30/error_putter_2;
-const double p_putter_3 = 15/error_putter_3; 
+const double p_putter_3 = 30/error_putter_3; 
 //斜板
 
 //最小启动速度，需要在现场调参数，当速度值小于该值时候，速度值为零
