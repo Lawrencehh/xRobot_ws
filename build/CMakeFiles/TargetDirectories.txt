@@ -326,7 +326,6 @@
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_generate_messages_eus.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_generate_messages.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_genlisp.dir
-/home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/gps_data_serialPort.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_generate_messages_cpp.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/rebuild_cache.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_gencpp.dir
@@ -335,6 +334,7 @@
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/send_data_serialPort.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/arm_auto.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/robot_data_serialPort.dir
+/home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/tele_data_serialPort.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/test.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/edit_cache.dir
 /home/ubuntu/xRobot_ws/build/communication_test/CMakeFiles/communication_test_genpy.dir

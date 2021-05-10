@@ -307,21 +307,6 @@ communication_test_genlisp/fast:
 .PHONY : communication_test_genlisp/fast
 
 # Convenience name for target.
-communication_test/CMakeFiles/gps_data_serialPort.dir/rule:
-	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 communication_test/CMakeFiles/gps_data_serialPort.dir/rule
-.PHONY : communication_test/CMakeFiles/gps_data_serialPort.dir/rule
-
-# Convenience name for target.
-gps_data_serialPort: communication_test/CMakeFiles/gps_data_serialPort.dir/rule
-
-.PHONY : gps_data_serialPort
-
-# fast build rule for target.
-gps_data_serialPort/fast:
-	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/gps_data_serialPort.dir/build.make communication_test/CMakeFiles/gps_data_serialPort.dir/build
-.PHONY : gps_data_serialPort/fast
-
-# Convenience name for target.
 communication_test/CMakeFiles/communication_test_generate_messages_cpp.dir/rule:
 	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 communication_test/CMakeFiles/communication_test_generate_messages_cpp.dir/rule
 .PHONY : communication_test/CMakeFiles/communication_test_generate_messages_cpp.dir/rule
@@ -410,6 +395,21 @@ robot_data_serialPort: communication_test/CMakeFiles/robot_data_serialPort.dir/r
 robot_data_serialPort/fast:
 	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/robot_data_serialPort.dir/build.make communication_test/CMakeFiles/robot_data_serialPort.dir/build
 .PHONY : robot_data_serialPort/fast
+
+# Convenience name for target.
+communication_test/CMakeFiles/tele_data_serialPort.dir/rule:
+	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 communication_test/CMakeFiles/tele_data_serialPort.dir/rule
+.PHONY : communication_test/CMakeFiles/tele_data_serialPort.dir/rule
+
+# Convenience name for target.
+tele_data_serialPort: communication_test/CMakeFiles/tele_data_serialPort.dir/rule
+
+.PHONY : tele_data_serialPort
+
+# fast build rule for target.
+tele_data_serialPort/fast:
+	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/tele_data_serialPort.dir/build.make communication_test/CMakeFiles/tele_data_serialPort.dir/build
+.PHONY : tele_data_serialPort/fast
 
 # Convenience name for target.
 communication_test/CMakeFiles/communication_test_genpy.dir/rule:
@@ -507,32 +507,32 @@ src/send_data_serialPort.cpp.s:
 	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/send_data_serialPort.dir/build.make communication_test/CMakeFiles/send_data_serialPort.dir/src/send_data_serialPort.cpp.s
 .PHONY : src/send_data_serialPort.cpp.s
 
-src/~robot_data_serialPort.o: src/~robot_data_serialPort.cpp.o
+src/tele_data_serialPort.o: src/tele_data_serialPort.cpp.o
 
-.PHONY : src/~robot_data_serialPort.o
+.PHONY : src/tele_data_serialPort.o
 
 # target to build an object file
-src/~robot_data_serialPort.cpp.o:
-	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/gps_data_serialPort.dir/build.make "communication_test/CMakeFiles/gps_data_serialPort.dir/src/~robot_data_serialPort.cpp.o"
-.PHONY : src/~robot_data_serialPort.cpp.o
+src/tele_data_serialPort.cpp.o:
+	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/tele_data_serialPort.dir/build.make communication_test/CMakeFiles/tele_data_serialPort.dir/src/tele_data_serialPort.cpp.o
+.PHONY : src/tele_data_serialPort.cpp.o
 
-src/~robot_data_serialPort.i: src/~robot_data_serialPort.cpp.i
+src/tele_data_serialPort.i: src/tele_data_serialPort.cpp.i
 
-.PHONY : src/~robot_data_serialPort.i
+.PHONY : src/tele_data_serialPort.i
 
 # target to preprocess a source file
-src/~robot_data_serialPort.cpp.i:
-	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/gps_data_serialPort.dir/build.make "communication_test/CMakeFiles/gps_data_serialPort.dir/src/~robot_data_serialPort.cpp.i"
-.PHONY : src/~robot_data_serialPort.cpp.i
+src/tele_data_serialPort.cpp.i:
+	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/tele_data_serialPort.dir/build.make communication_test/CMakeFiles/tele_data_serialPort.dir/src/tele_data_serialPort.cpp.i
+.PHONY : src/tele_data_serialPort.cpp.i
 
-src/~robot_data_serialPort.s: src/~robot_data_serialPort.cpp.s
+src/tele_data_serialPort.s: src/tele_data_serialPort.cpp.s
 
-.PHONY : src/~robot_data_serialPort.s
+.PHONY : src/tele_data_serialPort.s
 
 # target to generate assembly for a file
-src/~robot_data_serialPort.cpp.s:
-	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/gps_data_serialPort.dir/build.make "communication_test/CMakeFiles/gps_data_serialPort.dir/src/~robot_data_serialPort.cpp.s"
-.PHONY : src/~robot_data_serialPort.cpp.s
+src/tele_data_serialPort.cpp.s:
+	cd /home/ubuntu/xRobot_ws/build && $(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/tele_data_serialPort.dir/build.make communication_test/CMakeFiles/tele_data_serialPort.dir/src/tele_data_serialPort.cpp.s
+.PHONY : src/tele_data_serialPort.cpp.s
 
 # Help Target
 help:
@@ -560,9 +560,9 @@ help:
 	@echo "... communication_test_gennodejs"
 	@echo "... communication_test_genpy"
 	@echo "... arm_auto"
-	@echo "... gps_data_serialPort"
 	@echo "... robot_data_serialPort"
 	@echo "... send_data_serialPort"
+	@echo "... tele_data_serialPort"
 	@echo "... src/arm_auto.o"
 	@echo "... src/arm_auto.i"
 	@echo "... src/arm_auto.s"
@@ -572,9 +572,9 @@ help:
 	@echo "... src/send_data_serialPort.o"
 	@echo "... src/send_data_serialPort.i"
 	@echo "... src/send_data_serialPort.s"
-	@echo "... src/~robot_data_serialPort.o"
-	@echo "... src/~robot_data_serialPort.i"
-	@echo "... src/~robot_data_serialPort.s"
+	@echo "... src/tele_data_serialPort.o"
+	@echo "... src/tele_data_serialPort.i"
+	@echo "... src/tele_data_serialPort.s"
 .PHONY : help
 
 

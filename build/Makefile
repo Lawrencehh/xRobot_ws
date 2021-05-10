@@ -2618,19 +2618,6 @@ communication_test_genlisp/fast:
 .PHONY : communication_test_genlisp/fast
 
 #=============================================================================
-# Target rules for targets named gps_data_serialPort
-
-# Build rule for target.
-gps_data_serialPort: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 gps_data_serialPort
-.PHONY : gps_data_serialPort
-
-# fast build rule for target.
-gps_data_serialPort/fast:
-	$(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/gps_data_serialPort.dir/build.make communication_test/CMakeFiles/gps_data_serialPort.dir/build
-.PHONY : gps_data_serialPort/fast
-
-#=============================================================================
 # Target rules for targets named communication_test_generate_messages_cpp
 
 # Build rule for target.
@@ -2707,6 +2694,19 @@ robot_data_serialPort: cmake_check_build_system
 robot_data_serialPort/fast:
 	$(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/robot_data_serialPort.dir/build.make communication_test/CMakeFiles/robot_data_serialPort.dir/build
 .PHONY : robot_data_serialPort/fast
+
+#=============================================================================
+# Target rules for targets named tele_data_serialPort
+
+# Build rule for target.
+tele_data_serialPort: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tele_data_serialPort
+.PHONY : tele_data_serialPort
+
+# fast build rule for target.
+tele_data_serialPort/fast:
+	$(MAKE) $(MAKESILENT) -f communication_test/CMakeFiles/tele_data_serialPort.dir/build.make communication_test/CMakeFiles/tele_data_serialPort.dir/build
+.PHONY : tele_data_serialPort/fast
 
 #=============================================================================
 # Target rules for targets named communication_test_genpy
@@ -2927,7 +2927,6 @@ help:
 	@echo "... find_fiducial_pose"
 	@echo "... gmock"
 	@echo "... gmock_main"
-	@echo "... gps_data_serialPort"
 	@echo "... gtest"
 	@echo "... gtest_main"
 	@echo "... imu_node"
@@ -2938,6 +2937,7 @@ help:
 	@echo "... robot_data_serialPort"
 	@echo "... send_data_serialPort"
 	@echo "... sixpair"
+	@echo "... tele_data_serialPort"
 	@echo "... turtlebot_description_test_urdf"
 	@echo "... turtlebot_follower"
 	@echo "... turtlebot_move_action_server"
