@@ -93,7 +93,7 @@ void multiRobotData::func_motorsCallback(const communication_test::func_motors_f
 
     unsigned char data[7] = {};
     data[0]=(char)0x8F; //帧头
-    data[1]=(char)0x02; //功能码，代表传输底盘速度信息
+    data[1]=(char)0x04; //功能码，代表传输直线模组位置信息、大臂推杆位置信息、小臂推杆位置信息、斜板推杆位置信息
     data[6]=(char)0xF8;//帧尾
 
     data[2]=(unsigned char)(Encorder_linearModule);//直线模组位置
