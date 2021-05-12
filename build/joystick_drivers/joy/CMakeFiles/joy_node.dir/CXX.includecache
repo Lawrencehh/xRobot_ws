@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/xRobot_ws/src/joystick_drivers/joy/src/joy_node.cpp
+/home/andy/xRobot_ws/src/joystick_drivers/joy/src/joy_node.cpp
 unistd.h
 -
 math.h
@@ -18,7 +18,7 @@ fcntl.h
 diagnostic_updater/diagnostic_updater.h
 -
 ros/ros.h
-/home/ubuntu/xRobot_ws/src/joystick_drivers/joy/src/ros/ros.h
+/home/andy/xRobot_ws/src/joystick_drivers/joy/src/ros/ros.h
 sensor_msgs/Joy.h
 -
 

@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/xRobot_ws/src/nmea_navsat_driver
+# Install script for directory: /home/andy/xRobot_ws/src/nmea_navsat_driver
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/xRobot_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/andy/xRobot_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,41 +32,31 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  include("/home/andy/xRobot_ws/build/nmea_navsat_driver/catkin_generated/safe_execute_install.cmake")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/andy/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driver.pc")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  include("/home/ubuntu/xRobot_ws/build/nmea_navsat_driver/catkin_generated/safe_execute_install.cmake")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driver.pc")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver/cmake" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig.cmake"
-    "/home/ubuntu/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig-version.cmake"
+    "/home/andy/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig.cmake"
+    "/home/andy/xRobot_ws/build/nmea_navsat_driver/catkin_generated/installspace/nmea_navsat_driverConfig-version.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/package.xml")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/nmea_navsat_driver" TYPE FILE FILES "/home/andy/xRobot_ws/src/nmea_navsat_driver/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/nmea_navsat_driver" TYPE PROGRAM FILES
-    "/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_serial_driver"
-    "/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_socket_driver"
-    "/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_topic_driver"
-    "/home/ubuntu/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_topic_serial_reader"
+    "/home/andy/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_serial_driver"
+    "/home/andy/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_socket_driver"
+    "/home/andy/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_topic_driver"
+    "/home/andy/xRobot_ws/src/nmea_navsat_driver/scripts/nmea_topic_serial_reader"
     )
 endif()
 

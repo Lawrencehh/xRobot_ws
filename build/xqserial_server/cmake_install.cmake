@@ -1,8 +1,8 @@
-# Install script for directory: /home/ubuntu/xRobot_ws/src/xqserial_server
+# Install script for directory: /home/andy/xRobot_ws/src/xqserial_server
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/xRobot_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/andy/xRobot_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,39 +32,29 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-# Is this installation the result of a crosscompile?
-if(NOT DEFINED CMAKE_CROSSCOMPILING)
-  set(CMAKE_CROSSCOMPILING "FALSE")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/andy/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_server.pc")
 endif()
 
-# Set default install directory permissions.
-if(NOT DEFINED CMAKE_OBJDUMP)
-  set(CMAKE_OBJDUMP "/usr/bin/objdump")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_server.pc")
-endif()
-
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/xqserial_server/cmake" TYPE FILE FILES
-    "/home/ubuntu/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_serverConfig.cmake"
-    "/home/ubuntu/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_serverConfig-version.cmake"
+    "/home/andy/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_serverConfig.cmake"
+    "/home/andy/xRobot_ws/build/xqserial_server/catkin_generated/installspace/xqserial_serverConfig-version.cmake"
     )
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/xqserial_server" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/xqserial_server/package.xml")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/xqserial_server" TYPE FILE FILES "/home/andy/xRobot_ws/src/xqserial_server/package.xml")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xqserial_server" TYPE EXECUTABLE FILES "/home/ubuntu/xRobot_ws/devel/lib/xqserial_server/xqserial_server")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xqserial_server" TYPE EXECUTABLE FILES "/home/andy/xRobot_ws/devel/lib/xqserial_server/xqserial_server")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server")
     file(RPATH_CHANGE
@@ -77,14 +67,14 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xqserial_server" TYPE EXECUTABLE FILES "/home/ubuntu/xRobot_ws/devel/lib/xqserial_server/xqserial_server")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/xqserial_server" TYPE EXECUTABLE FILES "/home/andy/xRobot_ws/devel/lib/xqserial_server/xqserial_server")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/xqserial_server/xqserial_server")
     file(RPATH_CHANGE
@@ -97,11 +87,11 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   endif()
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/xqserial_server" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/xqserial_server/launch")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/xqserial_server" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/xqserial_server/launch")
 endif()
 
-if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/xqserial_server" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/xqserial_server/include/xqserial_server/")
+if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/xqserial_server" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/xqserial_server/include/xqserial_server/")
 endif()
 

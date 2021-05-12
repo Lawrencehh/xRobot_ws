@@ -28,8 +28,9 @@ serial::Serial ser; //声明串口对象
 void CopeSerialData(std::string str_in)
 {
     unsigned int str_length = str_in.size();
-    static unsigned char chrTemp[2000];
+    static unsigned char chrTemp[20000];
     static unsigned int usRxLength = 0;
+    int valid_length;  //有效代码长度
 
     memcpy(chrTemp,str_in.data(),str_length);
     usRxLength += str_length;
@@ -38,7 +39,7 @@ void CopeSerialData(std::string str_in)
     Joy_serialPort.buttons.clear();
 
 
-    while (usRxLength >= 9)
+    while (usRxLength >= 12)
     {
        
         if (chrTemp[0] != 0x7F )    //帧头
@@ -47,86 +48,129 @@ void CopeSerialData(std::string str_in)
             memcpy(&chrTemp[0],&chrTemp[1],usRxLength);
             continue;
         }
-        switch(chrTemp[2])//0x0D为手柄协议，0x0C为按键协议，0x09为旋钮
-        {
-            std::cout << std::hex << (chrTemp[2] & 0xff) << " ";
-            case 0x0D:	{
-                if(chrTemp[4]==0x01){   //将左侧摇杆赋值给Axies[0]
-                    Axies[0]=(float)-1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
-                    Axies[1]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+
+        if (chrTemp[0] == 0x7F ) //帧头
+        {   
+            ROS_INFO_STREAM("usRxLength:"<<usRxLength);
+            switch(chrTemp[2])//0x0D为手柄协议，0x0C为按键协议，0x09为旋钮
+            {
+                
+                case 0x0D:	
+                {
+                    ROS_INFO_STREAM("chrTemp[2]:"<<(int)chrTemp[2]);
+                    valid_length = 10;//有效协议长度为10
+                    if(chrTemp[4]==0x01){   //将左侧摇杆赋值给Axies[0],Axies[1]
+                        Axies[0]=(float)-1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                        Axies[1]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                    }
+                    if(chrTemp[4]==0x02){   //将右侧摇杆赋值给Axies[2],Axies[3]
+                        Axies[2]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                        Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                    }
+                    usRxLength -= 10;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
                 }
-                if(chrTemp[4]==0x02){   //将右侧摇杆赋值给Axies[1]
-                    Axies[2]=(float)-1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
-                    Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+
+                case 0x0C:
+                {
+                    valid_length = 12;//有效协议长度为12
+
+                        buttons[5] = 1-(int)chrTemp[9];    //左侧摇杆按钮，控制摄像头向上
+
+                        buttons[10] = 1-(int)chrTemp[7];    //急停按钮，底盘使能
+                        buttons[6] = 1-(int)chrTemp[7];     //急停按钮，功能电机使能
+
+                        buttons[7] = 1-(int)chrTemp[10];    //右侧摇杆按钮，控制摄像头向下
+
+                        buttons[4] = 1-(int)chrTemp[6];     //控制启动指令按钮，输送带使能
+
+                        buttons[1] = 1-(int)chrTemp[8];     //机械臂自动轨迹规划按钮，自动轨迹规划使能
+
+                    
+                    usRxLength -= 12;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
                 }
-                usRxLength -= 10;
-            //   ROS_INFO_STREAM("usRxLength:"<<usRxLength);
-                break;
+
+                case 0x09:
+                {
+                    valid_length = 9;//有效协议长度为9
+                    // Axies[5] = (float)((int)chrTemp[6]-7.5)/7.5;    //第1个旋钮作为直线模组的前进后退
+
+                    //第1个旋钮，作为直线模组的前进后退
+                    if((int)chrTemp[6]>10){
+                        Axies[5] = 1;
+                    }
+                    if((int)chrTemp[6]<5){
+                        Axies[5] = -1;
+                    }
+                    if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
+                        Axies[5] = 0;
+                    }
+
+                    //第4个旋钮，作为摄像头的旋转控制
+                    if((int)chrTemp[3]>10){
+                        Axies[4] = -1;
+                    }
+                    if((int)chrTemp[3]<5){
+                        Axies[4] = 1;
+                    }
+                    if((int)chrTemp[3]<=10 && (int)chrTemp[3]>=5){
+                        Axies[4] = 0;
+                    }
+
+                    // Axies[4] = (float)-1.0*((int)chrTemp[3]-7.5)/7.5;   //第4个旋钮作为摄像头旋转
+
+                    //第2个旋钮，作为斜板角度
+                    if((int)chrTemp[5]>10){
+                        buttons[3] = 1;
+                        buttons[11] = 0;
+                    }
+                    if((int)chrTemp[5]<5){
+                        buttons[3] = 0;
+                        buttons[11] = 1;
+                    }
+                    if((int)chrTemp[5]<=10 && (int)chrTemp[5]>=5){
+                        buttons[3] = 0;
+                        buttons[11] = 0;
+                    }
+
+                    //第3个旋钮，作为斜板角度
+                    if((int)chrTemp[4]>10){
+                        buttons[9] = 1;
+                        buttons[8] = 0;
+                        buttons[2] = 1;
+                        buttons[0] = 0;
+                    }
+                    if((int)chrTemp[4]<5){
+                        buttons[9] = 0;
+                        buttons[8] = 1;
+                        buttons[2] = 0;
+                        buttons[0] = 1;
+                    }
+                    if((int)chrTemp[4]<=10 && (int)chrTemp[4]>=5){
+                        buttons[9] = 0;
+                        buttons[8] = 0;
+                        buttons[2] = 0;
+                        buttons[0] = 0;
+                    }
+                    usRxLength -= 9;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
+                }
+
+                default: //如果协议不对，直接删除这几个字符
+                {
+                    usRxLength--;
+                    memcpy(&chrTemp[0],&chrTemp[1],usRxLength);
+                    break;
+                }
+
             }
-            case 0x0C:{
-                if(chrTemp[8] == 0x3D){
-                    buttons[5] = 1-(int)chrTemp[9];    //左侧摇杆按钮，控制摄像头向上
-                }
-                if(chrTemp[8] != 0x3D){
-                    buttons[10] = 1-(int)chrTemp[7];    //急停按钮，底盘使能
-                    buttons[6] = 1-(int)chrTemp[7];     //急停按钮，功能电机使能
-
-                    buttons[7] = 1-(int)chrTemp[10];    //左侧摇杆按钮，控制摄像头向上
-
-                    buttons[4] = 1-(int)chrTemp[6];     //控制启动指令按钮，输送带使能
-
-                    buttons[1] = 1-(int)chrTemp[8];     //机械臂自动轨迹规划按钮，自动轨迹规划使能
-
-                }
-                usRxLength -= 12;
-            }
-
-            case 0x09:{
-                Axies[5] = (float)((int)chrTemp[6]-7.5)/7.5;    //第1个旋钮作为直线模组的前进后退
-                Axies[4] = (float)-1.0*((int)chrTemp[3]-7.5)/7.5;   //第4个旋钮作为摄像头旋转
-
-                //第2个旋钮，作为斜板角度
-                if((int)chrTemp[5]>10){
-                    buttons[3] = 1;
-                    buttons[11] = 0;
-                }
-                if((int)chrTemp[5]<5){
-                    buttons[3] = 0;
-                    buttons[11] = 1;
-                }
-                if((int)chrTemp[5]<=10 && (int)chrTemp[5]>=5){
-                    buttons[3] = 0;
-                    buttons[11] = 0;
-                }
-
-                //第3个旋钮，作为斜板角度
-                if((int)chrTemp[4]>10){
-                    buttons[9] = 1;
-                    buttons[8] = 0;
-                    buttons[2] = 1;
-                    buttons[0] = 0;
-                }
-                if((int)chrTemp[4]<5){
-                    buttons[9] = 0;
-                    buttons[8] = 1;
-                    buttons[2] = 0;
-                    buttons[0] = 1;
-                }
-                if((int)chrTemp[4]<=10 && (int)chrTemp[5]>=5){
-                    buttons[9] = 0;
-                    buttons[8] = 0;
-                    buttons[2] = 0;
-                    buttons[0] = 0;
-                }
-                usRxLength -= 9;
-            }
-
-            // case 0x51:	memcpy(&stcAcc,&chrTemp[2],8);break;
-            // case 0x52:	memcpy(&stcGyro,&chrTemp[2],8);break;
-
         }
  
-        // memcpy(&chrTemp[0],&chrTemp[11],usRxLength); //将已经处理完的数据推出队列
+        
     }
 }
 
@@ -176,7 +220,7 @@ int main(int argc, char *argv[])
     }    
     /***************************************************************/
 
-    ros::Rate loop_rate(50);
+    ros::Rate loop_rate(20);
          
 
     while (ros::ok())
@@ -199,9 +243,9 @@ int main(int argc, char *argv[])
                 Joy_serialPort.buttons.push_back(buttons[j]);
             }
 
-            Joy_last=Joy_serialPort;
+            // Joy_last=Joy_serialPort;
 
-            Joy_pub.publish(Joy_last);
+            Joy_pub.publish(Joy_serialPort);
         }
     ros::spinOnce();
     loop_rate.sleep();

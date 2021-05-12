@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/ubuntu/xRobot_ws/src/communication_test/src/tele_data_serialPort.cpp
+/home/andy/xRobot_ws/src/communication_test/src/tele_data_serialPort.cpp
 ros/ros.h
 -
 string
@@ -16,11 +16,11 @@ serial/serial.h
 math.h
 -
 sensor_msgs/Joy.h
-/home/ubuntu/xRobot_ws/src/communication_test/src/sensor_msgs/Joy.h
+/home/andy/xRobot_ws/src/communication_test/src/sensor_msgs/Joy.h
 std_msgs/Float32.h
-/home/ubuntu/xRobot_ws/src/communication_test/src/std_msgs/Float32.h
+/home/andy/xRobot_ws/src/communication_test/src/std_msgs/Float32.h
 std_msgs/Int32.h
-/home/ubuntu/xRobot_ws/src/communication_test/src/std_msgs/Int32.h
+/home/andy/xRobot_ws/src/communication_test/src/std_msgs/Int32.h
 
 /opt/ros/kinetic/include/ros/advertise_options.h
 ros/forwards.h
