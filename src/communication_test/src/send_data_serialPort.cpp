@@ -104,7 +104,7 @@ int main(int argc, char *argv[])
     // ser.setPort("/dev/pts/22");//这是一个虚拟串口，用来发送消息，而/dev/pts/20会接收到通过此串口发送的消息， 具体的串口值需本机检查确认
     // 更改这里的串口号
     // ser.setPort("/dev/ttyUSB0");
-    ser.setPort("/dev/ttyUSB1");
+    ser.setPort("/dev/xRobot-belt-camera");
 
 
     ser.setBaudrate(9600);    

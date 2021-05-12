@@ -194,7 +194,7 @@ int main(int argc, char *argv[])
     //设置串口属性，并打开串口 
     // 更改这里的串口号
     // ser.setPort("/dev/ttyUSB0");
-    ser.setPort("/dev/ttyUSB1");
+    ser.setPort("/dev/xRobot-tele");
 
 
     ser.setBaudrate(115200);    
