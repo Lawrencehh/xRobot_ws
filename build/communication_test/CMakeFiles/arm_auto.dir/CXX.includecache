@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/andy/xRobot_ws/devel/include/communication_test/func_motors_feedback.h
+/home/ubuntu/xRobot_ws/devel/include/communication_test/func_motors_feedback.h
 string
 -
 vector
@@ -22,7 +22,7 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
+/home/ubuntu/xRobot_ws/devel/include/turtlebot_teleop/twist_hh.h
 string
 -
 vector
@@ -38,13 +38,13 @@ ros/builtin_message_traits.h
 ros/message_operations.h
 -
 
-/home/andy/xRobot_ws/src/communication_test/src/arm_auto.cpp
+/home/ubuntu/xRobot_ws/src/communication_test/src/arm_auto.cpp
 ros/ros.h
 -
 string
 -
 communication_test/func_motors_feedback.h
-/home/andy/xRobot_ws/src/communication_test/src/communication_test/func_motors_feedback.h
+/home/ubuntu/xRobot_ws/src/communication_test/src/communication_test/func_motors_feedback.h
 sensor_msgs/Joy.h
 -
 message_filters/subscriber.h
@@ -52,7 +52,7 @@ message_filters/subscriber.h
 message_filters/time_synchronizer.h
 -
 turtlebot_teleop/twist_hh.h
-/home/andy/xRobot_ws/src/communication_test/src/turtlebot_teleop/twist_hh.h
+/home/ubuntu/xRobot_ws/src/communication_test/src/turtlebot_teleop/twist_hh.h
 
 /opt/ros/kinetic/include/message_filters/connection.h
 boost/function.hpp

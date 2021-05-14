@@ -1,8 +1,8 @@
-# Install script for directory: /home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower
+# Install script for directory: /home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/andy/xRobot_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/ubuntu/xRobot_ws/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -32,45 +32,55 @@ if(NOT DEFINED CMAKE_INSTALL_SO_NO_EXE)
   set(CMAKE_INSTALL_SO_NO_EXE "1")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/turtlebot_follower" TYPE FILE FILES "/home/andy/xRobot_ws/devel/include/turtlebot_follower/FollowerConfig.h")
+# Is this installation the result of a crosscompile?
+if(NOT DEFINED CMAKE_CROSSCOMPILING)
+  set(CMAKE_CROSSCOMPILING "FALSE")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/turtlebot_follower" TYPE FILE FILES "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/__init__.py")
+# Set default install directory permissions.
+if(NOT DEFINED CMAKE_OBJDUMP)
+  set(CMAKE_OBJDUMP "/usr/bin/objdump")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/cfg")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/turtlebot_follower" TYPE FILE FILES "/home/ubuntu/xRobot_ws/devel/include/turtlebot_follower/FollowerConfig.h")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/turtlebot_follower" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/cfg")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/turtlebot_follower" TYPE FILE FILES "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/__init__.py")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_follower.pc")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/cfg")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/turtlebot_follower" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/devel/lib/python2.7/dist-packages/turtlebot_follower/cfg")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_follower.pc")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower/cmake" TYPE FILE FILES
-    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_followerConfig.cmake"
-    "/home/andy/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_followerConfig-version.cmake"
+    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_followerConfig.cmake"
+    "/home/ubuntu/xRobot_ws/build/turtlebot_apps/turtlebot_follower/catkin_generated/installspace/turtlebot_followerConfig-version.cmake"
     )
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE FILE FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower/package.xml")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE FILE FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower/package.xml")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libturtlebot_follower.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libturtlebot_follower.so")
     file(RPATH_CHECK
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libturtlebot_follower.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/andy/xRobot_ws/devel/lib/libturtlebot_follower.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/ubuntu/xRobot_ws/devel/lib/libturtlebot_follower.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libturtlebot_follower.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libturtlebot_follower.so")
     file(RPATH_CHANGE
@@ -83,19 +93,22 @@ if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspeci
   endif()
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower/launch")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower/param")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower/launch")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower/plugins")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower/param")
 endif()
 
-if(NOT CMAKE_INSTALL_COMPONENT OR "${CMAKE_INSTALL_COMPONENT}" STREQUAL "Unspecified")
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_follower" TYPE PROGRAM FILES "/home/andy/xRobot_ws/src/turtlebot_apps/turtlebot_follower/scripts/switch.py")
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/turtlebot_follower" TYPE DIRECTORY FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower/plugins")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/turtlebot_follower" TYPE PROGRAM FILES "/home/ubuntu/xRobot_ws/src/turtlebot_apps/turtlebot_follower/scripts/switch.py")
 endif()
 

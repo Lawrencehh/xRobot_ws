@@ -19,10 +19,25 @@ double Axies[6] = {0.0,0.0,0.0,0.0,0.0,0.0};//罗技手柄摇杆 （-32767，327
 int buttons[12] = {0,0,0,0,0,0,0,0,0,0,0,0};  //罗技手柄按键
 sensor_msgs::Joy Joy_serialPort;
 
-
-
-
 serial::Serial ser; //声明串口对象 
+
+//CRC8校验
+unsigned char Get_Crc8(unsigned char *ptr,int LEN)
+{
+    int i;
+    unsigned char crc;
+    crc=0;
+    while(LEN--)
+    {
+        crc^=*ptr++;
+        for(i=0;i<8;i++)
+        {
+            if(crc&0x01) crc=(crc>>1)^0x31;
+            else crc >>= 1;
+        }
+    }
+    return crc;
+};
 
 //将串口数据转为twist数据和cmd_vel数据
 void CopeSerialData(std::string str_in)
@@ -59,14 +74,26 @@ void CopeSerialData(std::string str_in)
                 {
                     ROS_INFO_STREAM("chrTemp[2]:"<<(int)chrTemp[2]);
                     valid_length = 10;//有效协议长度为10
-                    if(chrTemp[4]==0x01){   //将左侧摇杆赋值给Axies[0],Axies[1]
-                        Axies[0]=(float)-1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
-                        Axies[1]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
                     }
-                    if(chrTemp[4]==0x02){   //将右侧摇杆赋值给Axies[2],Axies[3]
-                        Axies[2]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
-                        Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                    
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理。
+                    {
+                        if(chrTemp[4]==0x01){   //将左侧摇杆赋值给Axies[0],Axies[1]
+                            Axies[0]=(float)-1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                            Axies[1]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                        }
+                        if(chrTemp[4]==0x02){   //将右侧摇杆赋值给Axies[2],Axies[3]
+                            Axies[2]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                            Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                        }
+                        ROS_INFO_STREAM("CRC success!");
                     }
+                    else ROS_INFO_STREAM("CRC failed!");
                     usRxLength -= 10;
                     memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
                     break;
@@ -75,7 +102,14 @@ void CopeSerialData(std::string str_in)
                 case 0x0C:
                 {
                     valid_length = 12;//有效协议长度为12
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
+                    }
 
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理。
+                    {
                         buttons[5] = 1-(int)chrTemp[9];    //左侧摇杆按钮，控制摄像头向上
 
                         buttons[10] = 1-(int)chrTemp[7];    //急停按钮，底盘使能
@@ -87,6 +121,9 @@ void CopeSerialData(std::string str_in)
 
                         buttons[1] = 1-(int)chrTemp[8];     //机械臂自动轨迹规划按钮，自动轨迹规划使能
 
+                        ROS_INFO_STREAM("CRC success!");
+                    }
+                    else ROS_INFO_STREAM("CRC failed!");
                     
                     usRxLength -= 12;
                     memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
