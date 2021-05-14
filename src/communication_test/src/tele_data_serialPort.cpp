@@ -133,6 +133,7 @@ void CopeSerialData(std::string str_in)
                 case 0x09:
                 {
                     //旋钮部分没有CRC
+                    ROS_INFO_STREAM("NO CRC!");
                     valid_length = 9;//有效协议长度为9
                     // Axies[5] = (float)((int)chrTemp[6]-7.5)/7.5;    //第1个旋钮作为直线模组的前进后退
 
