@@ -1,1 +1,0 @@
-/usr/bin/cc -rdynamic CMakeFiles/sixpair.dir/src/sixpair.c.o -o /home/ubuntu/xRobot_ws/devel/lib/ps3joy/sixpair  -Wl,-rpath,/opt/ros/kinetic/lib: -lusb /opt/ros/kinetic/lib/libroscpp_serialization.so /opt/ros/kinetic/lib/librostime.so /opt/ros/kinetic/lib/libcpp_common.so -lboost_system -lboost_thread -lboost_chrono -lboost_date_time -lboost_atomic -lpthread -lconsole_bridge 

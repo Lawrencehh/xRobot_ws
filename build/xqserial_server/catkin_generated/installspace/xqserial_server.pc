@@ -1,8 +1,0 @@
-prefix=/home/ubuntu/xRobot_ws/install
-
-Name: xqserial_server
-Description: Description of xqserial_server
-Version: 1.0.1
-Cflags: -I${prefix}/include
-Libs: -L${prefix}/lib 
-Requires: nav_msgs roscpp rospy sensor_msgs std_msgs geometry_msgs
