@@ -54,17 +54,18 @@ void CopeSerialData(std::string str_in)
     Joy_serialPort.buttons.clear();
 
 
-    while (usRxLength >= 12)
+    while (usRxLength >= 12) //之前数据为12
     {
        
-        if (chrTemp[0] != 0x7F )    //帧头
+        if (chrTemp[0] != 0x7F && chrTemp[0] != 0x8F )    //帧头
         {
             usRxLength--;
             memcpy(&chrTemp[0],&chrTemp[1],usRxLength);
             continue;
         }
 
-        if (chrTemp[0] == 0x7F ) //帧头
+        //MCU1的数据处理
+        if (chrTemp[0] == 0x7F ) //MCU1帧头
         {   
             ROS_INFO_STREAM("usRxLength:"<<usRxLength);
             switch(chrTemp[2])//0x0D为手柄协议，0x0C为按键协议，0x09为旋钮
@@ -91,9 +92,10 @@ void CopeSerialData(std::string str_in)
                             Axies[2]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
                             Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
                         }
-                        ROS_INFO_STREAM("CRC success!");
+                        ROS_INFO_STREAM("Joysticks1 CRC success!");
                     }
-                    else ROS_INFO_STREAM("CRC failed!");
+                    else ROS_INFO_STREAM("Joysticks1 CRC failed!");
+
                     usRxLength -= 10;
                     memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
                     break;
@@ -112,6 +114,120 @@ void CopeSerialData(std::string str_in)
                     {
                         buttons[5] = 1-(int)chrTemp[9];    //左侧摇杆按钮，控制摄像头向上
 
+                        // buttons[10] = 1-(int)chrTemp[7];    //急停按钮，底盘使能
+                        // buttons[6] = 1-(int)chrTemp[7];     //急停按钮，功能电机使能
+
+                        // buttons[7] = 1-(int)chrTemp[10];    //右侧摇杆按钮，控制摄像头向下
+
+                        // buttons[4] = 1-(int)chrTemp[6];     //控制启动指令按钮，输送带使能
+
+                        // buttons[1] = 1-(int)chrTemp[8];     //机械臂自动轨迹规划按钮，自动轨迹规划使能
+
+                        ROS_INFO_STREAM("Buttons1 CRC success!");
+                    }
+                    else ROS_INFO_STREAM("Buttons1 CRC failed!");
+                    
+                    usRxLength -= 12;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
+                }
+
+                case 0x09:
+                {
+                    
+                    valid_length = 9;//有效协议长度为9
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
+                    }
+
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理
+                    {
+                        //第5个旋钮，作为摄像头的旋转
+                        if((int)chrTemp[6]>10){
+                            buttons[5] = 1;
+                            buttons[7] = 0;
+                        }
+                        if((int)chrTemp[6]<5){
+                            buttons[5] = 0;
+                            buttons[7] = 1;
+                        }
+                        if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
+                            buttons[5] = 0;
+                            buttons[7] = 0;
+                        }
+
+                        ROS_INFO_STREAM("Knobs1 CRC success!");
+                    }
+                    else ROS_INFO_STREAM("Knobs1 CRC failed!");
+                    
+
+                    usRxLength -= 9;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
+                }
+
+                default: //如果协议不对，直接删除这几个字符
+                {
+                    usRxLength--;
+                    memcpy(&chrTemp[0],&chrTemp[1],usRxLength);
+                    break;
+                }
+
+            }
+        }
+
+        
+        //MCU2数据处理
+        if (chrTemp[0] == 0x8F ) //MUC2帧头
+        {   
+            ROS_INFO_STREAM("usRxLength:"<<usRxLength);
+            switch(chrTemp[2])//0x0D为手柄协议，0x0C为按键协议，0x09为旋钮
+            {
+                
+                case 0x0D:	
+                {
+                    ROS_INFO_STREAM("chrTemp[2]:"<<(int)chrTemp[2]);
+                    valid_length = 10;//有效协议长度为10
+
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
+                    }
+                    
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理。
+                    {
+                        if(chrTemp[4]==0x01){   //将左侧摇杆赋值给Axies[0],Axies[1]
+                            Axies[0]=(float)-1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                            Axies[1]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                        }
+                        if(chrTemp[4]==0x02){   //将右侧摇杆赋值给Axies[2],Axies[3]
+                            Axies[2]=(float)1/480*(256.0*(int)chrTemp[7]+(int)chrTemp[8]-512);
+                            Axies[3]=(float)1/480*(256.0*(int)chrTemp[5]+(int)chrTemp[6]-512);
+                        }
+                        ROS_INFO_STREAM("Joysticks2 CRC success!");
+                    }
+                    else ROS_INFO_STREAM("Joysticks2 CRC failed!");
+                    usRxLength -= 10;
+                    memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
+                    break;
+                }
+
+                case 0x0C:
+                {
+                    valid_length = 12;//有效协议长度为12
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
+                    }
+
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理。
+                    {
+                        // buttons[5] = 1-(int)chrTemp[9];    //左侧摇杆按钮，控制摄像头向上
+
                         buttons[10] = 1-(int)chrTemp[7];    //急停按钮，底盘使能
                         buttons[6] = 1-(int)chrTemp[7];     //急停按钮，功能电机使能
 
@@ -121,9 +237,9 @@ void CopeSerialData(std::string str_in)
 
                         buttons[1] = 1-(int)chrTemp[8];     //机械臂自动轨迹规划按钮，自动轨迹规划使能
 
-                        ROS_INFO_STREAM("CRC success!");
+                        ROS_INFO_STREAM("Buttons2 CRC success!");
                     }
-                    else ROS_INFO_STREAM("CRC failed!");
+                    else ROS_INFO_STREAM("Buttons2 CRC failed!");
                     
                     usRxLength -= 12;
                     memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
@@ -132,68 +248,77 @@ void CopeSerialData(std::string str_in)
 
                 case 0x09:
                 {
-                    //旋钮部分没有CRC
-                    ROS_INFO_STREAM("NO CRC!");
+                    
+                    
                     valid_length = 9;//有效协议长度为9
-                    // Axies[5] = (float)((int)chrTemp[6]-7.5)/7.5;    //第1个旋钮作为直线模组的前进后退
-
-                    //第1个旋钮，作为直线模组的前进后退
-                    if((int)chrTemp[6]>10){
-                        Axies[5] = 1;
-                    }
-                    if((int)chrTemp[6]<5){
-                        Axies[5] = -1;
-                    }
-                    if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
-                        Axies[5] = 0;
+                    
+                    unsigned char *ptr1[valid_length-1];
+                    for (int i = 0; i < valid_length-1; i++)
+                    {
+                        ptr1[i]=&chrTemp[i];
                     }
 
-                    //第4个旋钮，作为摄像头的旋转控制
-                    if((int)chrTemp[3]>10){
-                        Axies[4] = -1;
-                    }
-                    if((int)chrTemp[3]<5){
-                        Axies[4] = 1;
-                    }
-                    if((int)chrTemp[3]<=10 && (int)chrTemp[3]>=5){
-                        Axies[4] = 0;
-                    }
+                    if(Get_Crc8(*ptr1,valid_length-1) == chrTemp[valid_length-1])   //检验CRC是否准确，若不准确，则不进行赋值处理。
+                    {
+                        //第1个旋钮，作为直线模组的前进后退
+                        if((int)chrTemp[6]>10){
+                            Axies[5] = 1;
+                        }
+                        if((int)chrTemp[6]<5){
+                            Axies[5] = -1;
+                        }
+                        if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
+                            Axies[5] = 0;
+                        }
 
-                    // Axies[4] = (float)-1.0*((int)chrTemp[3]-7.5)/7.5;   //第4个旋钮作为摄像头旋转
+                        //第4个旋钮，作为摄像头的旋转控制
+                        if((int)chrTemp[3]>10){
+                            Axies[4] = -1;
+                        }
+                        if((int)chrTemp[3]<5){
+                            Axies[4] = 1;
+                        }
+                        if((int)chrTemp[3]<=10 && (int)chrTemp[3]>=5){
+                            Axies[4] = 0;
+                        }
 
-                    //第2个旋钮，作为斜板角度
-                    if((int)chrTemp[5]>10){
-                        buttons[3] = 1;
-                        buttons[11] = 0;
-                    }
-                    if((int)chrTemp[5]<5){
-                        buttons[3] = 0;
-                        buttons[11] = 1;
-                    }
-                    if((int)chrTemp[5]<=10 && (int)chrTemp[5]>=5){
-                        buttons[3] = 0;
-                        buttons[11] = 0;
-                    }
+                        //第2个旋钮，作为斜板角度
+                        if((int)chrTemp[5]>10){
+                            buttons[3] = 1;
+                            buttons[11] = 0;
+                        }
+                        if((int)chrTemp[5]<5){
+                            buttons[3] = 0;
+                            buttons[11] = 1;
+                        }
+                        if((int)chrTemp[5]<=10 && (int)chrTemp[5]>=5){
+                            buttons[3] = 0;
+                            buttons[11] = 0;
+                        }
 
-                    //第3个旋钮，作为斜板角度
-                    if((int)chrTemp[4]>10){
-                        buttons[9] = 1;
-                        buttons[8] = 0;
-                        buttons[2] = 1;
-                        buttons[0] = 0;
+                        //第3个旋钮，作为斜板角度
+                        if((int)chrTemp[4]>10){
+                            buttons[9] = 1;
+                            buttons[8] = 0;
+                            buttons[2] = 1;
+                            buttons[0] = 0;
+                        }
+                        if((int)chrTemp[4]<5){
+                            buttons[9] = 0;
+                            buttons[8] = 1;
+                            buttons[2] = 0;
+                            buttons[0] = 1;
+                        }
+                        if((int)chrTemp[4]<=10 && (int)chrTemp[4]>=5){
+                            buttons[9] = 0;
+                            buttons[8] = 0;
+                            buttons[2] = 0;
+                            buttons[0] = 0;
+                        }
+                        ROS_INFO_STREAM("Knobs2 CRC success!");
                     }
-                    if((int)chrTemp[4]<5){
-                        buttons[9] = 0;
-                        buttons[8] = 1;
-                        buttons[2] = 0;
-                        buttons[0] = 1;
-                    }
-                    if((int)chrTemp[4]<=10 && (int)chrTemp[4]>=5){
-                        buttons[9] = 0;
-                        buttons[8] = 0;
-                        buttons[2] = 0;
-                        buttons[0] = 0;
-                    }
+                    else ROS_INFO_STREAM("Knobs2 CRC failed!");
+                    
                     usRxLength -= 9;
                     memcpy(&chrTemp[0],&chrTemp[valid_length],usRxLength); //将已经处理完的数据推出队列
                     break;
