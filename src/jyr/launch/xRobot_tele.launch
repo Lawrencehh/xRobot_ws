@@ -1,0 +1,19 @@
+<launch>
+<!--include file="$(find turtlebot_teleop)/launch/includes/velocity_smoother.launch.xml"/-->
+  <!--- Teleop Joystick -->
+  <node pkg="turtlebot_teleop" type="logitech_joy" name="meizhong_teleop_joystick">
+    <param name="scale_angular" value="1.0"/>
+    <param name="scale_linear_x" value="1.0"/>
+    <param name="scale_linear_y" value="1.0"/>
+    <param name="axis_deadman" value="10"/>
+    <param name="axis_func_deadman" value="6"/>
+    <param name="axis_linear_x" value="1"/>
+    <param name="axis_linear_y" value="0"/>
+    <remap from="meizhong_teleop_joystick/cmd_vel" to="cmd_vel" />
+    <remap from="meizhong_teleop_joystick/func_motors" to="func_motors" />
+  </node>
+
+    <!-- 去除手柄模块 -->
+  <!-- <node pkg="joy" type="joy_node" name="joystick"/> -->
+
+</launch>

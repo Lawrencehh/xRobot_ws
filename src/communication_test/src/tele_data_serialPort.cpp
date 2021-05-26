@@ -146,16 +146,13 @@ void CopeSerialData(std::string str_in)
                     {
                         //第5个旋钮，作为摄像头的旋转
                         if((int)chrTemp[6]>10){
-                            buttons[5] = 1;
-                            buttons[7] = 0;
+                            Axies[4] = -1;
                         }
                         if((int)chrTemp[6]<5){
-                            buttons[5] = 0;
-                            buttons[7] = 1;
+                            Axies[4] = 1;
                         }
                         if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
-                            buttons[5] = 0;
-                            buttons[7] = 0;
+                            Axies[4] = 0;
                         }
 
                         ROS_INFO_STREAM("Knobs1 CRC success!");
@@ -271,15 +268,19 @@ void CopeSerialData(std::string str_in)
                             Axies[5] = 0;
                         }
 
-                        //第4个旋钮，作为摄像头的旋转控制
+                        //第4个旋钮，作为摄像头的俯仰控制
+                        
                         if((int)chrTemp[3]>10){
-                            Axies[4] = -1;
+                            buttons[7] = 1;
+                            buttons[5] = 0;
                         }
                         if((int)chrTemp[3]<5){
-                            Axies[4] = 1;
+                            buttons[7] = 0;
+                            buttons[5] = 1;
                         }
                         if((int)chrTemp[3]<=10 && (int)chrTemp[3]>=5){
-                            Axies[4] = 0;
+                            buttons[7] = 0;
+                            buttons[5] = 0;
                         }
 
                         //第2个旋钮，作为斜板角度
@@ -384,7 +385,7 @@ int main(int argc, char *argv[])
     }    
     /***************************************************************/
 
-    ros::Rate loop_rate(20);
+    ros::Rate loop_rate(100);   //之前的频率为20Hz
          
 
     while (ros::ok())

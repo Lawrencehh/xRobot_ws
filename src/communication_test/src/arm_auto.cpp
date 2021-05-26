@@ -8,6 +8,7 @@
 #include "turtlebot_teleop/twist_hh.h"  //引用自定义消息类型
 
 int auto_flag = 0; //自动轨迹规划运行flag，为1时执行第一段，为2时执行第二段，为0时退出自动轨迹规划
+int last_auto_flag = 0; //上一个时刻的auto_flag值
 
 int epoch = 0;       //轨迹规划阶段值，初始值为0
 
@@ -38,13 +39,13 @@ const double ratio_config=0.5;
 
 
 //误差阈值参数error，需要在现场调参数
-const double error_Encorder_linearModule = 1000; //1mm 1000个脉冲   ###直线模组
+const double error_Encorder_linearModule = 5000; //1mm 1000个脉冲   ###直线模组
 const double error_putter_1 = 100;  //1mm 100个脉冲                 ###大臂
 const double error_putter_2 = 2000; //1mm 2000个脉冲                ###小臂
 const double error_putter_3 = 1000; //1mm 1000个脉冲                ###斜板
 
 //P参数，需要在现场调参数, 这里设定为当运行到误差容忍区间时刻的速度百分比
-const double p_Encorder_linearModule = 30/error_Encorder_linearModule;
+const double p_Encorder_linearModule = 100/error_Encorder_linearModule;
 const double p_putter_1 = 60/error_putter_1;
 const double p_putter_2 = 30/error_putter_2;
 const double p_putter_3 = 15/error_putter_3; 
@@ -64,7 +65,7 @@ public:
 	{	
 		sub = nh.subscribe("xqserial_server/func_motors_feedback", 1, &multiReceiver::arm_autoCallback,this);
 		sub2 = nh.subscribe("joy", 1, &multiReceiver::joyCallback,this);
-        func_motors_pub_ = nh.advertise<turtlebot_teleop::twist_hh>("func_motors",1,true); //所有电机的控制状态发布
+        func_motors_pub_ = nh.advertise<turtlebot_teleop::twist_hh>("func_motors",1,true); //所有电机的控制状态发布，原先队列为1
 	}
 	void arm_autoCallback(const communication_test::func_motors_feedback::ConstPtr & msg);
 	void joyCallback(const sensor_msgs::Joy::ConstPtr& joy);
@@ -209,12 +210,23 @@ void multiReceiver::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
 {
     
     if(joy->buttons[6]==1 && joy->buttons[1]==1 && joy->buttons[5]==1)
-    auto_flag = 1,epoch = epoch_init_1;  
+    {
+        auto_flag = 1;
+        if(auto_flag != last_auto_flag) epoch = epoch_init_1; //如果auto_flag值有变化，就执行赋值操作
+    } 
 
     else if(joy->buttons[6]==1 && joy->buttons[1]==1 && joy->buttons[7]==1)
-    auto_flag = 2,epoch = epoch_init_2;
+    {
+        auto_flag = 2;
+        if(auto_flag != last_auto_flag) epoch = epoch_init_2; //如果auto_flag值有变化，就执行赋值操作
+    }
 
-    else auto_flag = 0, epoch = 0;      //断开自动轨迹规划模式时，将epoch置为0;
+
+    else  auto_flag = 0, epoch = 0;      //其余情况reset
+    //故启动时候应当先按使能和轨迹规划键，最后松开轨迹规划和使能键
+
+    last_auto_flag = auto_flag; //将这一个时刻的auto_flag值赋值给last_auto_flag
+
     ROS_INFO_STREAM("auto_flag:"<<auto_flag);
 }
   
