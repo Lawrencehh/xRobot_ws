@@ -13,7 +13,12 @@
     <remap from="meizhong_teleop_joystick/func_motors" to="func_motors" />
   </node>
 
+  <include file="$(find xqserial_server)/launch/xqserial.launch">
+  </include>
+    
     <!-- 去除手柄模块 -->
   <!-- <node pkg="joy" type="joy_node" name="joystick"/> -->
+  <!--<node pkg="communication_test" type="tele_data_serialPort" name="tele_data_serialPort">
+  </node>-->
 
 </launch>

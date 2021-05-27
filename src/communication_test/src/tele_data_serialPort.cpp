@@ -54,7 +54,7 @@ void CopeSerialData(std::string str_in)
     Joy_serialPort.buttons.clear();
 
 
-    while (usRxLength >= 12) //之前数据为12
+    while (usRxLength >= 30) //之前数据为12
     {
        
         if (chrTemp[0] != 0x7F && chrTemp[0] != 0x8F )    //帧头
