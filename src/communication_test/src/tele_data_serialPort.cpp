@@ -155,6 +155,20 @@ void CopeSerialData(std::string str_in)
                             Axies[4] = 0;
                         }
 
+                        //第6个旋钮，作为斜板抽屉的伸缩
+                        if((int)chrTemp[5]>10){
+                            buttons[2] = 1;
+                            buttons[0] = 0;
+                        }
+                        if((int)chrTemp[5]<5){
+                            buttons[2] = 0;
+                            buttons[0] = 1;
+                        }
+                        if((int)chrTemp[5]<=10 && (int)chrTemp[5]>=5){
+                            buttons[2] = 0;
+                            buttons[0] = 0;
+                        }
+
                         ROS_INFO_STREAM("Knobs1 CRC success!");
                     }
                     else ROS_INFO_STREAM("Knobs1 CRC failed!");
@@ -301,20 +315,16 @@ void CopeSerialData(std::string str_in)
                         if((int)chrTemp[4]>10){
                             buttons[9] = 1;
                             buttons[8] = 0;
-                            buttons[2] = 1;
-                            buttons[0] = 0;
+                            
                         }
                         if((int)chrTemp[4]<5){
                             buttons[9] = 0;
                             buttons[8] = 1;
-                            buttons[2] = 0;
-                            buttons[0] = 1;
+                            
                         }
                         if((int)chrTemp[4]<=10 && (int)chrTemp[4]>=5){
                             buttons[9] = 0;
                             buttons[8] = 0;
-                            buttons[2] = 0;
-                            buttons[0] = 0;
                         }
                         ROS_INFO_STREAM("Knobs2 CRC success!");
                     }
