@@ -22,7 +22,7 @@ https://blog.csdn.net/zhanghm1995/article/details/106781954
 ## 使用方法
 
 ```
-#启动机器人远程控制箱demo(包括现有的所有节点)
+#启动机器人远程控制箱demo(预计包括现有的所有节点)
 roslaunch jyr xRobot_tele.launch
 
 #启动底盘节点（包括摄像头输送带节点、控制箱节点、自动轨迹规划节点）
