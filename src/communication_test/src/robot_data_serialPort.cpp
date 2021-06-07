@@ -29,7 +29,7 @@ public:
 
         gps_sub_ = nh.subscribe<sensor_msgs::NavSatFix>("gps_Hz", 1, &multiRobotData::gpsCallback,this);
         twist_sub_ = nh.subscribe<geometry_msgs::Twist>("cmd_vel", 1, &multiRobotData::twistCallback,this);
-        func_motors_sub_ = nh.subscribe<communication_test::func_motors_feedback>("func_motors_feedback", 1, &multiRobotData::func_motorsCallback,this);
+        func_motors_sub_ = nh.subscribe<communication_test::func_motors_feedback>("/xqserial_server/func_motors_feedback", 1, &multiRobotData::func_motorsCallback,this);
         twist_hh_sub_ = nh.subscribe<turtlebot_teleop::twist_hh>("func_motors", 1, &multiRobotData::twist_hhCallback,this);
     }
     void twistCallback(const geometry_msgs::Twist::ConstPtr & msg);
