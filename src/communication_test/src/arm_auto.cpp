@@ -140,7 +140,7 @@ private:
         func_motors.flat_drawer = 1; //伸缩柜伸展控制 ×××××××××××××××××××在加装限位开关后可以改为1
         else func_motors.flat_drawer = 0;
 
-        if(epoch_switch>=4 && epoch_switch <=8)        func_motors.belt = 1; //输送带动作控制
+        if(epoch_switch>=4 && epoch_switch <=11)        func_motors.belt = 1; //输送带动作控制
         else                        func_motors.belt = 0;
         
         func_motors.camera_angle = 0;  //摄像头的旋转

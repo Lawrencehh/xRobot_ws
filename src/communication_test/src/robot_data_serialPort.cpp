@@ -27,7 +27,7 @@ public:
 		// sub = nh.subscribe("xqserial_server/func_motors_feedback", 1, &multiRobotData::arm_autoCallback,this);
 		// sub2 = nh.subscribe("joy", 1, &multiRobotData::joyCallback,this);
 
-        gps_sub_ = nh.subscribe<sensor_msgs::NavSatFix>("fix", 1, &multiRobotData::gpsCallback,this);
+        gps_sub_ = nh.subscribe<sensor_msgs::NavSatFix>("gps_Hz", 1, &multiRobotData::gpsCallback,this);
         twist_sub_ = nh.subscribe<geometry_msgs::Twist>("cmd_vel", 1, &multiRobotData::twistCallback,this);
         func_motors_sub_ = nh.subscribe<communication_test::func_motors_feedback>("func_motors_feedback", 1, &multiRobotData::func_motorsCallback,this);
         twist_hh_sub_ = nh.subscribe<turtlebot_teleop::twist_hh>("func_motors", 1, &multiRobotData::twist_hhCallback,this);
@@ -137,12 +137,12 @@ void multiRobotData::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr & msg)
         data[10]=(char)0xF8;//帧尾
         for (int i = 0; i < 4; i++)
         {
-            data[i] = lat16[i];
+            data[i+2] = lat16[i];
         }
 
         for (int i = 0; i < 4; i++)
         {
-            data[i+4] = long16[i];
+            data[i+6] = long16[i];
         }
 
 

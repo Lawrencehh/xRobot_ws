@@ -38,22 +38,10 @@ StatusPublisher::StatusPublisher()
     func_motors_feedback.Hall_putter_3_right=0;
 
     mbUpdated=false;
-   // mbUpdated=true;
-    // wheel_separation=0.4;
-    // wheel_radius=0.0762;
-
-    // CarPos2D.x=0.0;
-    // CarPos2D.y=0.0;
-    // CarPos2D.theta=0.0;
-
-    // CarTwist.linear.x=0.0;
-    // CarTwist.linear.y=0.0;
-    // CarTwist.linear.z=0.0;
-    // CarTwist.angular.x=0.0;
-    // CarTwist.angular.y=0.0;
-    // CarTwist.angular.z=0.0;
 
     CarPower.data = 0.0;
+
+    reset_flag=0;
 
     int i=0;
     int * status;
@@ -87,7 +75,8 @@ StatusPublisher::StatusPublisher(double separation,double radius)
 
 //清零回调函数
 void StatusPublisher::resetCallback(const sensor_msgs::Joy::ConstPtr& joy){
-  if(joy->buttons[4]==1 && joy->buttons[5]==1 && joy->buttons[6]==1 && joy->axes[4]==1 ){
+  // if(joy->buttons[4]==1 && joy->buttons[1]==1 && joy->buttons[6]==1 && joy->axes[4]==1 ){
+  if(joy->buttons[1]==1 && joy->buttons[4]==1 && joy->buttons[6]==1){ //按下 使能、自动轨迹规划、输送带使能，进行清零操作
     raw_Encorder_linearModule=0;
     raw_Hall_putter_1_left=0;
     raw_Hall_putter_1_right=0;
@@ -112,7 +101,10 @@ void StatusPublisher::resetCallback(const sensor_msgs::Joy::ConstPtr& joy){
     func_motors_feedback.Hall_putter_3_left=0;
     func_motors_feedback.Hall_putter_3_right=0;
     mFunc_motors_feedbackPub.publish(func_motors_feedback); //发布处理后的传感信号
+    ROS_INFO_STREAM("Reset success!!!");
+    reset_flag=1;
   }
+  else reset_flag=0;
 
 }
 
@@ -280,7 +272,8 @@ void StatusPublisher::Refresh()
       mPowerPub.publish(CarPower);
 
 
-      //反馈信号集成
+      if(reset_flag == 0){
+        //反馈信号集成
       //直线模组编码器值发布
       //大臂推杆霍尔传感器话题发布
       //小臂推杆霍尔传感器话题发布
@@ -325,6 +318,34 @@ void StatusPublisher::Refresh()
       if((raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)<-30000) func_motors_feedback.Hall_putter_3_right +=(raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)+65535;
       if((raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)>-30000 && (raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right)<30000 )
       func_motors_feedback.Hall_putter_3_right +=(raw_Hall_putter_3_right-pre_raw_Hall_putter_3_right);
+      }
+
+      if(reset_flag ==1){
+            raw_Encorder_linearModule=0;
+            raw_Hall_putter_1_left=0;
+            raw_Hall_putter_1_right=0;
+            raw_Hall_putter_2_left=0;
+            raw_Hall_putter_2_right=0;
+            raw_Hall_putter_3_left=0;
+            raw_Hall_putter_3_right=0;
+
+            pre_raw_Encorder_linearModule=0;
+            pre_raw_Hall_putter_1_left=0;
+            pre_raw_Hall_putter_1_right=0;
+            pre_raw_Hall_putter_2_left=0;
+            pre_raw_Hall_putter_2_right=0;
+            pre_raw_Hall_putter_3_left=0;
+            pre_raw_Hall_putter_3_right=0;
+
+            func_motors_feedback.Encorder_linearModule=0;
+            func_motors_feedback.Hall_putter_1_left=0;
+            func_motors_feedback.Hall_putter_1_right=0;
+            func_motors_feedback.Hall_putter_2_left=0;
+            func_motors_feedback.Hall_putter_2_right=0;
+            func_motors_feedback.Hall_putter_3_left=0;
+            func_motors_feedback.Hall_putter_3_right=0;
+      }
+      
 
       mFunc_motors_feedbackPub.publish(func_motors_feedback); //发布处理后的传感信号
 

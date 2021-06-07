@@ -73,6 +73,8 @@ private:
     //Wheel radius (assuming it's the same for the left and right wheels):meters
     double wheel_radius;
 
+    int reset_flag;
+
     geometry_msgs::Pose2D CarPos2D;//小车开始启动原点坐标系
     geometry_msgs::Twist  CarTwist;//小车自身坐标系
     std_msgs::Float64 CarPower;// 小车电池信息

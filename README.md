@@ -38,7 +38,7 @@ rosrun communication_test send_data_serialPort
 rosrun communication_test arm_auto
 
 #启动GPS定位模块数据获取节点
-rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/ttyUSB0 _baud:=115200
+rosrun nmea_navsat_driver nmea_serial_driver _port:=/dev/xRobot-gps _baud:=115200
 
 #启动机器人数据上传节点
 rosrun communication_test robot_data_serialPort
