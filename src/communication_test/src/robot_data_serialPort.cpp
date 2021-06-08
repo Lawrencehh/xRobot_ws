@@ -49,15 +49,15 @@ private:
 void multiRobotData::twistCallback(const geometry_msgs::Twist::ConstPtr & msg){
 
    
-    int vel = (int)floor(100*msg->linear.x);
+    int vel = (int)floor(10*msg->linear.x);
     ROS_INFO_STREAM("vel="<<vel);
-    ROS_INFO_STREAM("vel="<<(unsigned char)(vel+100));
+    ROS_INFO_STREAM("vel="<<(unsigned char)(vel+10));
 
     unsigned char data[4] = {};
     data[0]=(char)0x8F; //帧头
     data[1]=(char)0x02; //功能码，代表传输底盘速度信息
     data[3]=(char)0xF8;//帧尾
-    data[2]=(unsigned char)(vel+100);//将速度值转为16进制0x00~0xC8(200)
+    data[2]=(unsigned char)(vel+10);//将速度值转为16进制0x00~0x14(20)
     ser.write(data,4);
 }
 
@@ -66,21 +66,23 @@ void multiRobotData::twist_hhCallback(const turtlebot_teleop::twist_hh::ConstPtr
     int belt = (int)msg->belt;
     int oblique_drawer = (int)msg->oblique_drawer;
     int flat_drawer = (int)msg->flat_drawer;
-    ROS_INFO_STREAM("oblique_drawer="<<oblique_drawer);
-    ROS_INFO_STREAM("flat_drawer="<<flat_drawer);
-    ROS_INFO_STREAM("belt="<<belt);
+    int arm_auto = (int)msg->arm_auto;
+    // ROS_INFO_STREAM("oblique_drawer="<<oblique_drawer);
+    // ROS_INFO_STREAM("flat_drawer="<<flat_drawer);
+    // ROS_INFO_STREAM("belt="<<belt);
 
 
-    unsigned char data[6] = {};
+    unsigned char data[7] = {};
     data[0]=(char)0x8F; //帧头
     data[1]=(char)0x03; //功能码，代表传输输送带、斜板抽屉和伸缩柜信息
-    data[5]=(char)0xF8;//帧尾
+    data[6]=(char)0xF8;//帧尾
 
     data[2]=(unsigned char)(belt);//将输送带值转为16进制0x00~0x01
     data[3]=(unsigned char)(oblique_drawer+1);//将斜板抽屉转为16进制0x00~0x02，0x01表示静止，0x00表示闭合，0x02表示展开
     data[4]=(unsigned char)(flat_drawer+1);//将伸缩柜转为16进制0x00~0x02，0x01表示静止，0x00表示闭合，0x02表示展开
+    data[5]=(unsigned char)(arm_auto);//将arm_auto值转为16进制0x00~0x02
 
-    ser.write(data,6);
+    ser.write(data,7);
     
 
 }

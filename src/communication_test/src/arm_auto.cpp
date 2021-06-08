@@ -145,7 +145,7 @@ private:
         
         func_motors.camera_angle = 0;  //摄像头的旋转
         func_motors.camera_tilt = 0; //摄像头俯仰角控制
-        func_motors.arm_auto =1; //自动轨迹的使能
+        func_motors.arm_auto =auto_flag; //自动轨迹的使能
         func_motors_pub_.publish(func_motors);    //发布功能电机控制话题                
     }
 

@@ -184,18 +184,21 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   
 
 
+  if(arm_auto_enabled_ ==false) //只有自动使能为false的时候才赋值其他功能电机
+  {
+    func_motors.linear_module = 100*joy->axes[linear_module]; //线性模组的前进后退
+    func_motors.putter_1 = 100*joy->axes[putter_1]; //大臂
+    func_motors.putter_2 = 100*joy->axes[putter_2]; //小臂
+    
+    func_motors.oblique_angle = 100*(joy->buttons[oblique_angle1] - joy->buttons[oblique_angle2]); //斜板角度推杆控制
+    func_motors.oblique_drawer = joy->buttons[oblique_drawer1] - joy->buttons[oblique_drawer2]; //斜板抽屉推杆控制
+    func_motors.flat_drawer = joy->buttons[flat_drawer1] - joy->buttons[flat_drawer2]; //伸缩柜伸展控制
 
-  func_motors.linear_module = 100*joy->axes[linear_module]; //线性模组的前进后退
-  func_motors.putter_1 = 100*joy->axes[putter_1]; //大臂
-  func_motors.putter_2 = 100*joy->axes[putter_2]; //小臂
-  
-  func_motors.oblique_angle = 100*(joy->buttons[oblique_angle1] - joy->buttons[oblique_angle2]); //斜板角度推杆控制
-  func_motors.oblique_drawer = joy->buttons[oblique_drawer1] - joy->buttons[oblique_drawer2]; //斜板抽屉推杆控制
-  func_motors.flat_drawer = joy->buttons[flat_drawer1] - joy->buttons[flat_drawer2]; //伸缩柜伸展控制
-
-  func_motors.belt = joy->buttons[belt]; //输送带动作控制
-  func_motors.camera_angle = joy->axes[camera_angle];  //摄像头的旋转
-  func_motors.camera_tilt = joy->buttons[camera_tilt1] - joy->buttons[camera_tilt2]; //摄像头俯仰角控制
+    func_motors.belt = joy->buttons[belt]; //输送带动作控制
+    func_motors.camera_angle = joy->axes[camera_angle];  //摄像头的旋转
+    func_motors.camera_tilt = joy->buttons[camera_tilt1] - joy->buttons[camera_tilt2]; //摄像头俯仰角控制
+    
+  }
   func_motors.arm_auto =joy->buttons[arm_auto_axis_]; //自动轨迹的使能
 
 
@@ -228,6 +231,7 @@ void TurtlebotTeleop::publish()
     
     zero_twist_published_=false;
   }
+
   else if(!deadman_pressed_ && !zero_twist_published_)
   {
     vel_pub_.publish(*new geometry_msgs::Twist());
