@@ -53,6 +53,8 @@ private:
 
   int arm_auto_axis_;    //自动轨迹规划使能
 
+  int camera_tilt_;     //摄像头俯仰
+
  
 
   int linear_module;  //线性模组电机前进后退的按键设置
@@ -209,7 +211,7 @@ void TurtlebotTeleop::joyCallback(const sensor_msgs::Joy::ConstPtr& joy)
   if(joy->buttons[arm_auto_axis_] == 0)
   arm_auto_enabled_ = false;
 
-
+  camera_tilt_ = func_motors.camera_tilt;
 
   
 
