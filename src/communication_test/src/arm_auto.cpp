@@ -28,7 +28,7 @@ int goal_Hall_putter_3_left[] = \
    
 
 /******************************可以debug**************************************/
-int epoch_init_1 = 1; //第一段起始步数
+int epoch_init_1 = 0; //第一段起始步数
 int epoch_init_2 = 4; //第二段起始步数
 #define epoch_division 4            //定义分割步数，前epoch_division步数运行第一段，后面运行第二段
 #define epoch_length 13              //定义总步数，需要与goal的数组长度一致

@@ -22,8 +22,8 @@
   </node>
 
   <!-- gps模块解析节点 -->
-  <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_serial_driver" >
-  </node>
+  <!-- <node pkg="nmea_navsat_driver" type="nmea_serial_driver" name="nmea_serial_driver" >
+  </node> -->
 
   <!-- 降低gps频率 -->
   <node name="foo_throttler" type="throttle" pkg="topic_tools" args="messages /fix 1 /gps_Hz" >
