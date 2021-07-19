@@ -283,7 +283,7 @@ void StatusPublisher::Refresh()
       // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)>30000) func_motors_feedback.Encorder_linearModule +=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule)-65536;
       // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)<-30000) func_motors_feedback.Encorder_linearModule +=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule)+65536;
       // if((raw_Encorder_linearModule-pre_raw_Encorder_linearModule)>-30000 && (raw_Encorder_linearModule-pre_raw_Encorder_linearModule)<30000 )
-      func_motors_feedback.Encorder_linearModule -=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule);
+      func_motors_feedback.Encorder_linearModule +=(raw_Encorder_linearModule-pre_raw_Encorder_linearModule);
       // func_motors_feedback.Encorder_linearModule = raw_Encorder_linearModule;
 
       //大臂推杆霍尔传感器话题发布

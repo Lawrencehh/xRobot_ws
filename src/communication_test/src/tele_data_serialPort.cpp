@@ -273,10 +273,10 @@ void CopeSerialData(std::string str_in)
                     {
                         //第1个旋钮，作为直线模组的前进后退
                         if((int)chrTemp[6]>10){
-                            Axies[5] = 1;
+                            Axies[5] = -1;
                         }
                         if((int)chrTemp[6]<5){
-                            Axies[5] = -1;
+                            Axies[5] = 1;
                         }
                         if((int)chrTemp[6]<=10 && (int)chrTemp[6]>=5){
                             Axies[5] = 0;

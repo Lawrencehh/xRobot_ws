@@ -106,7 +106,7 @@ private:
         ROS_INFO_STREAM("epoch_switch:>>>"<<epoch_switch);
         ROS_INFO_STREAM("ratio:>>>"<<ratio);
         //直线模组
-        func_motors.linear_module = p_Encorder_linearModule*(goal_Encorder_linearModule[epoch_switch] - msg->Encorder_linearModule); //线性模组的前进后退
+        func_motors.linear_module = -1*p_Encorder_linearModule*(goal_Encorder_linearModule[epoch_switch] - msg->Encorder_linearModule); //线性模组的前进后退
         if(func_motors.linear_module > 100) func_motors.linear_module = 100;
         if(func_motors.linear_module < -100) func_motors.linear_module = -100;
         func_motors.linear_module=ratio*func_motors.linear_module;
