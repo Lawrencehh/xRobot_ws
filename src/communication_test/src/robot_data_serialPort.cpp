@@ -14,6 +14,67 @@
 #include <message_filters/subscriber.h>
 #include <message_filters/time_synchronizer.h>
 
+/************ gps 转百度坐标  *************/
+ const double pi = 3.14159265358979324;  
+//  
+// Krasovsky 1940  
+//   
+// a = 6378245.0, 1/f = 298.3   
+// b = a * (1 - f)  
+// ee = (a^2 - b^2) / a^2;   
+const double a = 6378245.0;  
+const double ee = 0.00669342162296594323;
+
+ static double transformLat(double x, double y)  
+{   
+double ret = -100.0 + 2.0 * x + 3.0 * y + 0.2 * y * y + 0.1 * x * y + 0.2 * sqrt(abs(x));  
+ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;   
+ret += (20.0 * sin(y * pi) + 40.0 * sin(y / 3.0 * pi)) * 2.0 / 3.0;   
+ret += (160.0 * sin(y / 12.0 * pi) + 320 * sin(y * pi / 30.0)) * 2.0 / 3.0;   
+return ret;  
+}   
+static double transformLon(double x, double y)  
+{   
+double ret = 300.0 + x + 2.0 * y + 0.1 * x * x + 0.1 * x * y + 0.1 * sqrt(abs(x));   
+ret += (20.0 * sin(6.0 * x * pi) + 20.0 * sin(2.0 * x * pi)) * 2.0 / 3.0;   
+ret += (20.0 * sin(x * pi) + 40.0 * sin(x / 3.0 * pi)) * 2.0 / 3.0;  
+ret += (150.0 * sin(x / 12.0 * pi) + 300.0 * sin(x / 30.0 * pi)) * 2.0 / 3.0;   
+return ret;  
+}   
+/* 
+参数 
+wgLat:WGS-84纬度wgLon:WGS-84经度 
+返回值： 
+mgLat：GCJ-02纬度mgLon：GCJ-02经度 
+*/  
+void gps_transform( double wgLat, double wgLon, double& mgLat, double& mgLon)   
+{   
+
+double dLat = transformLat(wgLon - 105.0, wgLat - 35.0);   
+double dLon = transformLon(wgLon - 105.0, wgLat - 35.0);   
+double radLat = wgLat / 180.0 * pi; double magic = sin(radLat);  
+magic = 1 - ee * magic * magic; double sqrtMagic = sqrt(magic);  
+dLat = (dLat * 180.0) / ((a * (1 - ee)) / (magic * sqrtMagic) * pi);  
+dLon = (dLon * 180.0) / (a / sqrtMagic * cos(radLat) * pi);  
+mgLat = wgLat + dLat; mgLon = wgLon + dLon;  
+}  
+
+const double x_pi = 3.14159265358979324 * 3000.0 / 180.0;    
+//将 GCJ-02 坐标转换成 BD-09 坐标  
+void bd_encrypt(double gg_lat, double gg_lon, double &bd_lat, double &bd_lon)    
+{    
+    double x = gg_lon, y = gg_lat;    
+    double z = sqrt(x * x + y * y) + 0.00002 * sin(y * x_pi);    
+    double theta = atan2(y, x) + 0.000003 * cos(x * x_pi);    
+    bd_lon = z * cos(theta) + 0.0065;    
+    bd_lat = z * sin(theta) + 0.006;    
+}    
+  
+double  bd_lat = 0; //百度纬度
+double  bd_lon = 0; //百度经度
+double  mgLat = 0;  //google纬度
+double  mgLon = 0;  //google经度
+/************ gps 转百度坐标  *************/
 
 
 
@@ -50,8 +111,7 @@ void multiRobotData::twistCallback(const geometry_msgs::Twist::ConstPtr & msg){
 
    
     int vel = (int)floor(100*msg->linear.x);
-    ROS_INFO_STREAM("vel="<<vel);
-    ROS_INFO_STREAM("vel="<<(unsigned char)(vel+100));
+
 
     unsigned char data[4] = {};
     data[0]=(char)0x8F; //帧头
@@ -67,9 +127,6 @@ void multiRobotData::twist_hhCallback(const turtlebot_teleop::twist_hh::ConstPtr
     int oblique_drawer = (int)msg->oblique_drawer;
     int flat_drawer = (int)msg->flat_drawer;
     int arm_auto = (int)msg->arm_auto;
-    // ROS_INFO_STREAM("oblique_drawer="<<oblique_drawer);
-    // ROS_INFO_STREAM("flat_drawer="<<flat_drawer);
-    // ROS_INFO_STREAM("belt="<<belt);
 
 
     unsigned char data[7] = {};
@@ -108,15 +165,24 @@ void multiRobotData::func_motorsCallback(const communication_test::func_motors_f
 
 void multiRobotData::gpsCallback(const sensor_msgs::NavSatFix::ConstPtr & msg)
 {
-        ROS_INFO_STREAM("msg->latitude:"<<floor(msg->latitude));
-        ROS_INFO_STREAM("msg->latitude:"<<1000000*(msg->latitude-floor(msg->latitude)));
-        int lat_integer=floor(msg->latitude);//整数部分
-        long lat_decimal=1000000*(msg->latitude-floor(msg->latitude)); //6位小数
+        gps_transform( msg->latitude, msg->longitude, mgLat, mgLon); //gps 转 google坐标
+        bd_encrypt(mgLat, mgLon, bd_lat, bd_lon); //google坐标转百度坐标
 
-        ROS_INFO_STREAM("msg->longitude:"<<floor(msg->longitude));
-        ROS_INFO_STREAM("msg->longitude:"<<1000000*(msg->longitude-floor(msg->longitude)));
-        int long_integer=floor(msg->longitude);//整数部分
-        long long_decimal=1000000*(msg->longitude-floor(msg->longitude)); //6位小数
+        // ROS_INFO_STREAM("msg->latitude:"<<msg->latitude);
+        // ROS_INFO_STREAM("bd_lat:"<<bd_lat);
+        int lat_integer=floor(bd_lat);//整数部分
+        long lat_decimal=1000000*(bd_lat-floor(bd_lat)); //6位小数
+        ROS_INFO_STREAM("lat_integer:"<<lat_integer);
+        ROS_INFO_STREAM("lat_decimal:"<<lat_decimal);
+
+
+        // ROS_INFO_STREAM("msg->longitude:"<<msg->longitude);
+        // ROS_INFO_STREAM("bd_lat:"<<bd_lon);
+        int long_integer=floor(bd_lon);//整数部分
+        long long_decimal=1000000*(bd_lon-floor(bd_lon)); //6位小数
+        ROS_INFO_STREAM("long_integer:"<<long_integer);
+        ROS_INFO_STREAM("long_decimal:"<<long_decimal);
+
         
         //将十进制转为十六进制
         unsigned char lat16[4] = {0x00,0x00,0x00,0x00};//16进制表示的北纬度数，第一位为整数位，后三位为小数位
